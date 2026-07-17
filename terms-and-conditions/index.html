@@ -1,1 +1,290 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions - KVR Smart Tools</title>
+    <base href="/"> <!-- CRITICAL: This ensures Logo.png loads from the root -->
+    <meta name="description" content="Terms and Conditions for downloading and using KVR Smart Tools.">
+    <meta name="theme-color" content="#0F172A">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <style>
+        /* Exact same CSS as index.html */
+        :root {
+            --primary: #5E3BEE;
+            --primary-hover: #4b2fc0;
+            --secondary: #7C4DFF;
+            --accent: #00E5FF;
+            --bg-dark: #0F172A;
+            --bg-darker: #0b1121;
+            --text-main: #FFFFFF;
+            --text-muted: #94A3B8;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --border-radius: 16px;
+            --container-width: 1200px;
+        }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+        a { color: var(--accent); text-decoration: none; transition: var(--transition); }
+        a:hover { color: var(--text-main); }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+        
+        h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.2; margin-bottom: 1rem; }
+        .gradient-text { background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 1rem; }
+        .mt-2 { margin-top: 2rem; }
+        .mt-4 { margin-top: 4rem; }
+        .w-100 { width: 100%; }
+
+        .container { width: 90%; max-width: var(--container-width); margin: 0 auto; }
+        .grid { display: grid; gap: 2rem; }
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; }
+
+        @media (max-width: 992px) { .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } }
+
+        .glass-card { background: var(--glass-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--glass-border); border-radius: var(--border-radius); padding: 2rem; box-shadow: var(--glass-shadow); transition: var(--transition); }
+        .glass-nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--glass-border); transition: var(--transition); }
+
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer; border: none; transition: var(--transition); text-transform: capitalize; }
+        .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 4px 15px rgba(94, 59, 238, 0.4); }
+        .btn-primary:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(94, 59, 238, 0.6); color: #fff; }
+        .btn-outline { background: transparent; color: var(--text-main); border: 1px solid var(--glass-border); }
+        .btn-outline:hover { background: var(--glass-bg); border-color: var(--text-main); }
+        .btn-sm { padding: 0.5rem 1rem; font-size: 0.9rem; }
+        .btn-lg { padding: 1rem 2rem; font-size: 1.1rem; border-radius: 12px; }
+
+        #scroll-progress { position: fixed; top: 0; left: 0; height: 3px; background: var(--accent); width: 0%; z-index: 1001; transition: width 0.1s ease; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+        .logo { font-size: 1.25rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 0.75rem; }
+        .logo img { height: 32px; width: auto; border-radius: 8px; }
+        .nav-list { display: flex; gap: 2rem; align-items: center; }
+        .nav-list a { color: var(--text-muted); font-weight: 500; }
+        .nav-list a:hover, .nav-list a.active { color: var(--accent); }
+        .mobile-toggle { display: none; background: none; border: none; color: var(--text-main); font-size: 1.5rem; cursor: pointer; }
+
+        @media (max-width: 768px) {
+            .mobile-toggle { display: block; }
+            #nav-links { position: fixed; top: 70px; left: -100%; width: 100%; height: calc(100vh - 70px); background: var(--bg-dark); flex-direction: column; justify-content: center; align-items: center; transition: var(--transition); }
+            #nav-links.active { left: 0; }
+            .nav-list { flex-direction: column; margin-bottom: 2rem; }
+        }
+
+        .page-padding { padding-top: 120px; padding-bottom: 60px; min-height: calc(100vh - 300px); }
+        .text-document { max-width: 800px; margin: 0 auto; }
+        .text-document h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .text-document h2 { font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1rem; color: var(--accent); border-bottom: 1px solid var(--glass-border); padding-bottom: 0.5rem; }
+        .text-document p, .text-document ul, .text-document li { color: var(--text-muted); margin-bottom: 1rem; font-size: 1.05rem; }
+        .text-document ul { padding-left: 1.5rem; list-style-type: disc; }
+
+        .site-footer { background: #080c17; padding-top: 4rem; border-top: 1px solid var(--glass-border); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 2rem; margin-bottom: 3rem; }
+        @media (max-width: 992px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; text-align: center; } .social-links, .info-item { justify-content: center; text-align: center; flex-direction: column; align-items: center; } }
+        
+        .footer-brand p { color: var(--text-muted); margin: 1rem 0; }
+        .social-links { display: flex; gap: 1rem; }
+        .social-links a { width: 40px; height: 40px; border-radius: 50%; background: var(--glass-bg); display: flex; align-items: center; justify-content: center; border: 1px solid var(--glass-border); }
+        .social-links a:hover { background: var(--primary); border-color: var(--primary); color: #fff; }
+        .footer-links h4, .footer-contact h4 { margin-bottom: 1.5rem; }
+        .footer-links li { margin-bottom: 0.8rem; }
+        .footer-links a { color: var(--text-muted); }
+        .footer-links a:hover { color: var(--accent); padding-left: 5px; }
+        .footer-bottom { padding: 1.5rem 0; border-top: 1px solid var(--glass-border); text-align: center; color: var(--text-muted); font-size: 0.9rem; }
+
+        #back-to-top { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; border-radius: 50%; background: var(--primary); color: white; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); opacity: 0; visibility: hidden; transform: translateY(20px); transition: var(--transition); z-index: 999; font-size: 1.5rem; }
+        #back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+        #back-to-top:hover { background: var(--accent); }
+        
+        .fade-in { opacity: 0; transition: opacity 0.8s ease-out; }
+        .fade-in.visible { opacity: 1; }
+    </style>
+</head>
+<body>
+    <div id="scroll-progress"></div>
+
+    <!-- Navigation -->
+    <header id="navbar" class="glass-nav">
+        <div class="container nav-container">
+            <a href="/" class="logo">
+                <img src="Logo.png" alt="KVR Smart Tools Logo">
+                KVR Smart Tools
+            </a>
+            <button class="mobile-toggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="nav-links">
+                <i class="ri-menu-line"></i>
+            </button>
+            <nav id="nav-links">
+                <ul class="nav-list">
+                    <li><a href="/#features">Features</a></li>
+                    <li><a href="/#categories">Categories</a></li>
+                    <li><a href="/#screenshots">Screenshots</a></li>
+                    <li><a href="/#about">About</a></li>
+                    <li><a href="/#contact">Contact</a></li>
+                </ul>
+                <a href="/#hero" class="btn btn-primary btn-sm">Get App</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-padding">
+        <div class="container text-document glass-card fade-in">
+            <h1 class="gradient-text">Terms & Conditions</h1>
+            <p><strong>Effective Date:</strong> January 1, 2026</p>
+
+            <h2>1. Acceptance of Terms</h2>
+            <p>By downloading, installing, or using the KVR Smart Tools Android application, these terms will automatically apply to you. You should ensure that you read them carefully before using the app.</p>
+
+            <h2>2. App Usage License</h2>
+            <p>KVR Smart Developer grants you a revocable, non-exclusive, non-transferable, limited license to download, install and use the application solely for your personal, non-commercial, and professional purposes strictly in accordance with the terms of this Agreement.</p>
+            <p>You are not allowed to:</p>
+            <ul>
+                <li>Copy, decompile, reverse engineer, or modify the app, any part of the app, or our trademarks.</li>
+                <li>Extract the source code of the app.</li>
+                <li>Translate the app into other languages or make derivative versions.</li>
+            </ul>
+
+            <h2>3. Disclaimer of Liability</h2>
+            <p>KVR Smart Tools is provided "as is" and "as available". While we strive for 100% accuracy in our calculators, converters, and tools, we make no warranties, expressed or implied, and hereby disclaim all warranties. We shall not be liable for any data loss, device issues, financial losses due to conversion inaccuracies, or damages arising out of the use or inability to use the tools.</p>
+
+            <h2>4. Updates and Availability</h2>
+            <p>The app is currently available on Android. The requirements for the system (and for any additional systems we decide to extend the availability of the app to) may change, and you will need to download the updates if you want to keep using the app. We do not promise that we will always update the app so that it is relevant to you and/or works with the Android version installed on your device.</p>
+
+            <h2>5. Modifications to Terms</h2>
+            <p>We reserve the right to modify these terms at any time. Continued use of the app constitutes acceptance of any updated terms.</p>
+
+            <h2>6. Contact</h2>
+            <p>For questions regarding these Terms & Conditions, please contact: <a href="mailto:venkatesh.official4775@gmail.com" style="color:var(--accent);">venkatesh.official4775@gmail.com</a>.</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <h3><i class="ri-tools-fill"></i> KVR Smart Tools</h3>
+                <p>100+ Powerful Smart Tools in One App. Designed with precision, built for performance.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="GitHub"><i class="ri-github-fill"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="ri-twitter-x-line"></i></a>
+                    <a href="mailto:venkatesh.official4775@gmail.com" aria-label="Email"><i class="ri-mail-send-line"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#about">About Us</a></li>
+                    <li><a href="/#features">Features</a></li>
+                    <li><a href="/#faq">FAQ</a></li>
+                    <li><a href="/#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Legal Info</h4>
+                <ul>
+                    <li><a href="/privacy-policy/">Privacy Policy</a></li>
+                    <li><a href="/terms-and-conditions/">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h4>Developer Info</h4>
+                <p><strong>KVR Smart Developer</strong></p>
+                <p><i class="ri-mail-line"></i> venkatesh.official4775@gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 KVR Smart Developer. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" aria-label="Back to top">
+        <i class="ri-arrow-up-line"></i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const navLinks = document.getElementById('nav-links');
+            const toggleIcon = mobileToggle?.querySelector('i');
+
+            if (mobileToggle && navLinks) {
+                mobileToggle.addEventListener('click', () => {
+                    const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+                    mobileToggle.setAttribute('aria-expanded', !isExpanded);
+                    navLinks.classList.toggle('active');
+                    if (toggleIcon) toggleIcon.className = navLinks.classList.contains('active') ? 'ri-close-line' : 'ri-menu-line';
+                });
+            }
+
+            const progressBar = document.getElementById('scroll-progress');
+            const navbar = document.getElementById('navbar');
+            const backToTopBtn = document.getElementById('back-to-top');
+
+            window.addEventListener('scroll', () => {
+                if (progressBar) {
+                    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    const scrolled = (winScroll / height) * 100;
+                    progressBar.style.width = scrolled + "%";
+                }
+
+                if (navbar) {
+                    if (window.scrollY > 50) {
+                        navbar.style.background = 'rgba(15, 23, 42, 0.9)';
+                        navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.5)';
+                    } else {
+                        navbar.style.background = 'rgba(15, 23, 42, 0.7)';
+                        navbar.style.boxShadow = 'none';
+                    }
+                }
+
+                if (backToTopBtn) {
+                    if (window.scrollY > 500) {
+                        backToTopBtn.classList.add('show');
+                    } else {
+                        backToTopBtn.classList.remove('show');
+                    }
+                }
+            });
+
+            if (backToTopBtn) {
+                backToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            const animationObserverOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+            const animationObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, animationObserverOptions);
+
+            const animatedElements = document.querySelectorAll('.fade-in, .fade-in-up');
+            animatedElements.forEach(el => animationObserver.observe(el));
+        });
+    </script>
+</body>
+</html>
