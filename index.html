@@ -10,165 +10,89 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
+font-family:Arial,sans-serif;
 }
 
 body{
-background:#f5f7fb;
-color:#333;
-}
-
-header{
-background:linear-gradient(135deg,#4f46e5,#7c3aed);
+background:#0d1324;
 color:white;
-padding:70px 20px;
-text-align:center;
 }
 
-header h1{
-font-size:48px;
+.hero{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+background:linear-gradient(135deg,#182848,#4b6cb7);
+}
+
+.hero img{
+width:120px;
+margin-bottom:20px;
+}
+
+.hero h1{
+font-size:55px;
 margin-bottom:15px;
 }
 
-header p{
-font-size:20px;
-margin-bottom:30px;
+.hero p{
+font-size:22px;
+max-width:700px;
+opacity:.9;
 }
 
 .btn{
 display:inline-block;
-background:white;
-color:#4f46e5;
-padding:15px 35px;
-border-radius:50px;
-font-weight:bold;
+margin-top:40px;
+padding:16px 45px;
+border-radius:40px;
+background:#00c853;
+color:white;
 text-decoration:none;
+font-size:20px;
+font-weight:bold;
+transition:.3s;
+}
+
+.btn:hover{
+background:#00e676;
+transform:scale(1.05);
+}
+
+.coming{
+margin-top:18px;
 font-size:18px;
-}
-
-.section{
-padding:70px 20px;
-max-width:1100px;
-margin:auto;
-}
-
-.section h2{
-text-align:center;
-margin-bottom:40px;
-font-size:36px;
-}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
-
-.card{
-background:white;
-padding:30px;
-border-radius:15px;
-box-shadow:0 5px 20px rgba(0,0,0,.08);
-text-align:center;
-}
-
-.card h3{
-margin-bottom:15px;
-color:#4f46e5;
-}
-
-.download{
-background:#4f46e5;
-color:white;
-padding:70px 20px;
-text-align:center;
-}
-
-.download a{
-display:inline-block;
-margin-top:20px;
-background:white;
-color:#4f46e5;
-padding:15px 35px;
-border-radius:50px;
-font-weight:bold;
-text-decoration:none;
-}
-
-footer{
-background:#111827;
-color:white;
-text-align:center;
-padding:30px;
+opacity:.8;
 }
 </style>
-
 </head>
+
 <body>
 
-<header>
+<section class="hero">
+
+<img src="logo.png">
 
 <h1>KVR Smart Tools</h1>
 
-<p>All Essential Smart Tools in One App</p>
+<p>
+100+ Powerful Smart Tools in One App.<br>
+PDF Tools • Internet Tools • Security • Health • Developer Tools • Utility Tools
+</p>
 
-<a class="btn" href="#">
-Download App
+<a href="#" class="btn">
+Coming Soon on Google Play
 </a>
 
-</header>
-
-<section class="section">
-
-<h2>Features</h2>
-
-<div class="cards">
-
-<div class="card">
-<h3>📱 Easy to Use</h3>
-<p>Simple and clean user interface.</p>
-</div>
-
-<div class="card">
-<h3>⚡ Fast Performance</h3>
-<p>Optimized for speed and reliability.</p>
-</div>
-
-<div class="card">
-<h3>🔒 Secure</h3>
-<p>Your data stays safe and protected.</p>
-</div>
-
-<div class="card">
-<h3>🛠 Smart Utilities</h3>
-<p>Useful tools for daily productivity.</p>
-</div>
-
+<div class="coming">
+Release Coming Soon 🚀
 </div>
 
 </section>
-
-<section class="download">
-
-<h2>Download KVR Smart Tools</h2>
-
-<p>Coming Soon on Google Play Store</p>
-
-<a href="#">
-Download Now
-</a>
-
-</section>
-
-<footer>
-
-<h3>KVR Smart Tools</h3>
-
-<p>Official Website</p>
-
-<p>© 2026 All Rights Reserved.</p>
-
-</footer>
 
 </body>
 </html>
