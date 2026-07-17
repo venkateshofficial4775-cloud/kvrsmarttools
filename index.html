@@ -307,6 +307,59 @@
             .nav-list { flex-direction: column; margin-bottom: 2rem; }
         }
 
+        /* ==========================================================================
+           SPA View System (Virtual Pages)
+           ========================================================================== */
+        .spa-view {
+            display: none;
+            opacity: 0;
+            animation: fadeInView 0.5s forwards;
+        }
+        .spa-view.active-view {
+            display: block;
+        }
+
+        @keyframes fadeInView {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .page-padding {
+            padding-top: 120px;
+            padding-bottom: 60px;
+            min-height: calc(100vh - 300px);
+        }
+
+        .text-document {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .text-document h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .text-document h2 {
+            font-size: 1.5rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 0.5rem;
+        }
+
+        .text-document p, .text-document ul, .text-document li {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .text-document ul {
+            padding-left: 1.5rem;
+            list-style-type: disc;
+        }
+
         /* Sections */
         .section {
             padding: 6rem 0;
@@ -467,13 +520,27 @@
         .icon-large { font-size: 2rem; color: var(--accent); }
         .info-item { display: flex; gap: 1rem; align-items: flex-start; text-align: left; }
 
-        /* Footer */
+        /* Footer Updates for 4 Columns */
         .site-footer {
             background: #080c17;
             padding-top: 4rem;
             border-top: 1px solid var(--glass-border);
         }
-        .footer-grid { margin-bottom: 3rem; }
+        .footer-grid { 
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr; 
+            gap: 2rem;
+            margin-bottom: 3rem; 
+        }
+        @media (max-width: 992px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .social-links { justify-content: center; }
+            .info-item { justify-content: center; text-align: center; flex-direction: column; align-items: center; }
+        }
+        
         .footer-brand p { color: var(--text-muted); margin: 1rem 0; }
         .social-links { display: flex; gap: 1rem; }
         .social-links a {
@@ -548,7 +615,7 @@
     <!-- Navigation -->
     <header id="navbar" class="glass-nav">
         <div class="container nav-container">
-            <a href="#" class="logo">
+            <a href="#home" class="logo nav-route">
                 <img src="Logo.png" alt="KVR Smart Tools Logo">
                 KVR Smart Tools
             </a>
@@ -557,272 +624,358 @@
             </button>
             <nav id="nav-links">
                 <ul class="nav-list">
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#categories">Categories</a></li>
-                    <li><a href="#screenshots">Screenshots</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#features" class="nav-route">Features</a></li>
+                    <li><a href="#categories" class="nav-route">Categories</a></li>
+                    <li><a href="#screenshots" class="nav-route">Screenshots</a></li>
+                    <li><a href="#about" class="nav-route">About</a></li>
+                    <li><a href="#contact" class="nav-route">Contact</a></li>
                 </ul>
-                <a href="#hero" class="btn btn-primary btn-sm">Get App</a>
+                <a href="#hero" class="btn btn-primary btn-sm nav-route">Get App</a>
             </nav>
         </div>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="hero" class="hero-section">
-            <div class="hero-bg-glow"></div>
-            <div class="container hero-container">
-                <div class="hero-content fade-in">
-                    <span class="badge glass-badge">Coming Soon on Google Play</span>
-                    <h1 class="hero-title">100+ <span class="gradient-text">Powerful Smart Tools</span> in One App</h1>
-                    <p class="hero-subtitle">Elevate your productivity with our comprehensive suite of developer, utility, and security tools. Built for speed, offline use, and absolute privacy.</p>
-                    
-                    <div class="hero-cta">
-                        <a href="#" class="btn btn-primary btn-lg">
-                            <i class="ri-android-line"></i> Download APK
-                        </a>
-                        <a href="https://github.com" target="_blank" rel="noopener" class="btn btn-outline btn-lg">
-                            <i class="ri-github-fill"></i> GitHub
-                        </a>
+    <div id="app-content">
+        <!-- ==================== HOME VIEW ==================== -->
+        <main id="view-home" class="spa-view active-view">
+            <!-- Hero Section -->
+            <section id="hero" class="hero-section">
+                <div class="hero-bg-glow"></div>
+                <div class="container hero-container">
+                    <div class="hero-content fade-in">
+                        <span class="badge glass-badge">Coming Soon on Google Play</span>
+                        <h1 class="hero-title">100+ <span class="gradient-text">Powerful Smart Tools</span> in One App</h1>
+                        <p class="hero-subtitle">Elevate your productivity with our comprehensive suite of developer, utility, and security tools. Built for speed, offline use, and absolute privacy.</p>
+                        
+                        <div class="hero-cta">
+                            <a href="#" class="btn btn-primary btn-lg">
+                                <i class="ri-android-line"></i> Download APK
+                            </a>
+                            <a href="https://github.com" target="_blank" rel="noopener" class="btn btn-outline btn-lg">
+                                <i class="ri-github-fill"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-image fade-in-up">
+                        <img src="home.png" alt="KVR Smart Tools Home Interface" class="glass-img floating" loading="lazy">
                     </div>
                 </div>
-                <div class="hero-image fade-in-up">
-                    <img src="home.png" alt="KVR Smart Tools Home Interface" class="glass-img floating" loading="lazy">
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Features Section -->
-        <section id="features" class="section">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <h2>Why Choose KVR Smart Tools?</h2>
-                    <p>Designed for professionals, loved by everyone. Experience the difference.</p>
+            <!-- Features Section -->
+            <section id="features" class="section">
+                <div class="container">
+                    <div class="section-header fade-in">
+                        <h2>Why Choose KVR Smart Tools?</h2>
+                        <p>Designed for professionals, loved by everyone. Experience the difference.</p>
+                    </div>
+                    
+                    <div class="grid grid-3 features-grid">
+                        <div class="glass-card feature-card fade-in-up">
+                            <div class="icon-box"><i class="ri-rocket-line"></i></div>
+                            <h3>Lightning Fast</h3>
+                            <p>Optimized for instantaneous load times and rapid processing. No waiting, just doing.</p>
+                        </div>
+                        <div class="glass-card feature-card fade-in-up" style="transition-delay: 0.1s;">
+                            <div class="icon-box"><i class="ri-shield-check-line"></i></div>
+                            <h3>Secure & Private</h3>
+                            <p>Your data never leaves your device. Total privacy focused with no telemetry.</p>
+                        </div>
+                        <div class="glass-card feature-card fade-in-up" style="transition-delay: 0.2s;">
+                            <div class="icon-box"><i class="ri-wifi-off-line"></i></div>
+                            <h3>Offline Tools</h3>
+                            <p>Over 90% of our tools work completely offline without needing an internet connection.</p>
+                        </div>
+                        <div class="glass-card feature-card fade-in-up" style="transition-delay: 0.3s;">
+                            <div class="icon-box"><i class="ri-advertisement-line"></i></div>
+                            <h3>No Ads Experience</h3>
+                            <p>Enjoy a clean, distraction-free environment. No pop-ups, no banners, no tracking.</p>
+                        </div>
+                        <div class="glass-card feature-card fade-in-up" style="transition-delay: 0.4s;">
+                            <div class="icon-box"><i class="ri-loop-right-line"></i></div>
+                            <h3>Regular Updates</h3>
+                            <p>Continuous improvements and new tools added based on community feedback.</p>
+                        </div>
+                        <div class="glass-card feature-card fade-in-up" style="transition-delay: 0.5s;">
+                            <div class="icon-box"><i class="ri-brush-line"></i></div>
+                            <h3>Modern UI</h3>
+                            <p>Beautiful, intuitive glassmorphism design that looks incredible on any Android device.</p>
+                        </div>
+                    </div>
                 </div>
+            </section>
+
+            <!-- Categories Section -->
+            <section id="categories" class="section bg-darker">
+                <div class="container">
+                    <div class="section-header fade-in">
+                        <h2>Everything You Need</h2>
+                        <p>Over 100 tools categorized for your convenience.</p>
+                    </div>
+
+                    <div class="grid grid-4 category-grid">
+                        <div class="category-item glass-card hover-lift fade-in">
+                            <i class="ri-code-s-slash-line"></i>
+                            <h4>Developer Tools</h4>
+                            <span>25+ Tools</span>
+                        </div>
+                        <div class="category-item glass-card hover-lift fade-in">
+                            <i class="ri-tools-line"></i>
+                            <h4>Utility Tools</h4>
+                            <span>30+ Tools</span>
+                        </div>
+                        <div class="category-item glass-card hover-lift fade-in">
+                            <i class="ri-file-pdf-line"></i>
+                            <h4>PDF Tools</h4>
+                            <span>15+ Tools</span>
+                        </div>
+                        <div class="category-item glass-card hover-lift fade-in">
+                            <i class="ri-global-line"></i>
+                            <h4>Internet Tools</h4>
+                            <span>12+ Tools</span>
+                        </div>
+                        <div class="category-item glass-card hover-lift fade-in">
+                            <i class="ri-lock-password-line"></i>
+                            <h4>Security Tools</h4>
+                            <span>10+ Tools</span>
+                        </div>
+                        <div class="category-item glass-card hover-lift fade-in">
+                            <i class="ri-heart-pulse-line"></i>
+                            <h4>Health Tools</h4>
+                            <span>8+ Tools</span>
+                        </div>
+                        <div class="category-item glass-card hover-lift fade-in">
+                            <i class="ri-book-read-line"></i>
+                            <h4>Education Tools</h4>
+                            <span>14+ Tools</span>
+                        </div>
+                        <div class="category-item glass-card hover-lift fade-in">
+                            <i class="ri-task-line"></i>
+                            <h4>Productivity Tools</h4>
+                            <span>20+ Tools</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Screenshots Gallery -->
+            <section id="screenshots" class="section">
+                <div class="container">
+                    <div class="section-header fade-in">
+                        <h2>App Screenshots</h2>
+                        <p>Take a look inside the KVR Smart Tools ecosystem.</p>
+                    </div>
+                    
+                    <div class="gallery-grid">
+                        <img src="categories.png" alt="App Categories Screenshot" class="glass-card hover-scale fade-in" loading="lazy">
+                        <img src="categories2.png" alt="More Categories Screenshot" class="glass-card hover-scale fade-in" loading="lazy">
+                        <img src="calculators.png" alt="Calculators Tool Screenshot" class="glass-card hover-scale fade-in" loading="lazy">
+                        <img src="finance.png" alt="Finance Tools Screenshot" class="glass-card hover-scale fade-in" loading="lazy">
+                        <img src="flash.png" alt="Flash Tools Screenshot" class="glass-card hover-scale fade-in" loading="lazy">
+                        <img src="health.png" alt="Health Tools Screenshot" class="glass-card hover-scale fade-in" loading="lazy">
+                        <img src="qrtools.png" alt="QR Tools Screenshot" class="glass-card hover-scale fade-in" loading="lazy">
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section id="faq" class="section bg-darker">
+                <div class="container">
+                    <div class="section-header fade-in">
+                        <h2>Frequently Asked Questions</h2>
+                        <p>Got questions? We've got answers.</p>
+                    </div>
+
+                    <div class="faq-container fade-in-up">
+                        <div class="faq-item glass-card">
+                            <button class="faq-question" aria-expanded="false">
+                                <span>1. What is KVR Smart Tools?</span>
+                                <i class="ri-add-line"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>KVR Smart Tools is a comprehensive Android application that bundles over 100 essential utility, developer, productivity, and security tools into a single, lightweight package.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item glass-card">
+                            <button class="faq-question" aria-expanded="false">
+                                <span>2. Is the app completely free?</span>
+                                <i class="ri-add-line"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Yes, KVR Smart Tools is completely free to download and use. We believe in providing premium utility without paywalls.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item glass-card">
+                            <button class="faq-question" aria-expanded="false">
+                                <span>3. Does it contain annoying ads?</span>
+                                <i class="ri-add-line"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Absolutely not. We provide a 100% ad-free experience. No banners, no pop-ups, no interruptions.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item glass-card">
+                            <button class="faq-question" aria-expanded="false">
+                                <span>4. Do I need an internet connection to use the tools?</span>
+                                <i class="ri-add-line"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Over 90% of our tools operate entirely offline. Only specific tools like IP lookup or real-time currency conversion require internet access.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item glass-card">
+                            <button class="faq-question" aria-expanded="false">
+                                <span>5. Is my data secure and private?</span>
+                                <i class="ri-add-line"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Yes. KVR Smart Tools processes almost everything locally on your device. We do not collect, store, or transmit your personal data to external servers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="section">
+                <div class="container text-center fade-in">
+                    <div class="section-header">
+                        <h2>Get in Touch</h2>
+                        <p>Have a feature request, found a bug, or just want to say hi?</p>
+                    </div>
+                </div>
+
+                <div class="container grid grid-2">
+                    <div class="contact-info glass-card fade-in-up">
+                        <h3>Contact Information</h3>
+                        <p>We are always looking to improve KVR Smart Tools. Reach out to us anytime!</p>
+                        
+                        <div class="info-item mt-2">
+                            <i class="ri-mail-send-line icon-large"></i>
+                            <div>
+                                <h4>Email Us</h4>
+                                <a href="mailto:venkatesh.official4775@gmail.com">venkatesh.official4775@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item mt-2">
+                            <i class="ri-github-fill icon-large"></i>
+                            <div>
+                                <h4>GitHub</h4>
+                                <p>Contribute or report issues on our repo.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card fade-in-up" style="transition-delay: 0.2s;">
+                        <h3>Send a Message</h3>
+                        <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent successfully! (Frontend demo)');">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" class="form-control glass-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" class="form-control glass-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" rows="5" class="form-control glass-input" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Send Message <i class="ri-send-plane-fill"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- ==================== ABOUT VIEW ==================== -->
+        <main id="view-about" class="spa-view page-padding">
+            <div class="container text-document glass-card">
+                <h1 class="gradient-text text-center">About KVR Smart Tools</h1>
+                <p class="text-center mb-2" style="font-size: 1.2rem;">The vision behind the ultimate Android utility suite.</p>
                 
-                <div class="grid grid-3 features-grid">
-                    <div class="glass-card feature-card fade-in-up">
-                        <div class="icon-box"><i class="ri-rocket-line"></i></div>
-                        <h3>Lightning Fast</h3>
-                        <p>Optimized for instantaneous load times and rapid processing. No waiting, just doing.</p>
-                    </div>
-                    <div class="glass-card feature-card fade-in-up" style="transition-delay: 0.1s;">
-                        <div class="icon-box"><i class="ri-shield-check-line"></i></div>
-                        <h3>Secure & Private</h3>
-                        <p>Your data never leaves your device. Total privacy focused with no telemetry.</p>
-                    </div>
-                    <div class="glass-card feature-card fade-in-up" style="transition-delay: 0.2s;">
-                        <div class="icon-box"><i class="ri-wifi-off-line"></i></div>
-                        <h3>Offline Tools</h3>
-                        <p>Over 90% of our tools work completely offline without needing an internet connection.</p>
-                    </div>
-                    <div class="glass-card feature-card fade-in-up" style="transition-delay: 0.3s;">
-                        <div class="icon-box"><i class="ri-advertisement-line"></i></div>
-                        <h3>No Ads Experience</h3>
-                        <p>Enjoy a clean, distraction-free environment. No pop-ups, no banners, no tracking.</p>
-                    </div>
-                    <div class="glass-card feature-card fade-in-up" style="transition-delay: 0.4s;">
-                        <div class="icon-box"><i class="ri-loop-right-line"></i></div>
-                        <h3>Regular Updates</h3>
-                        <p>Continuous improvements and new tools added based on community feedback.</p>
-                    </div>
-                    <div class="glass-card feature-card fade-in-up" style="transition-delay: 0.5s;">
-                        <div class="icon-box"><i class="ri-brush-line"></i></div>
-                        <h3>Modern UI</h3>
-                        <p>Beautiful, intuitive glassmorphism design that looks incredible on any Android device.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Categories Section -->
-        <section id="categories" class="section bg-darker">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <h2>Everything You Need</h2>
-                    <p>Over 100 tools categorized for your convenience.</p>
-                </div>
-
-                <div class="grid grid-4 category-grid">
-                    <div class="category-item glass-card hover-lift fade-in">
-                        <i class="ri-code-s-slash-line"></i>
-                        <h4>Developer Tools</h4>
-                        <span>25+ Tools</span>
-                    </div>
-                    <div class="category-item glass-card hover-lift fade-in">
-                        <i class="ri-tools-line"></i>
-                        <h4>Utility Tools</h4>
-                        <span>30+ Tools</span>
-                    </div>
-                    <div class="category-item glass-card hover-lift fade-in">
-                        <i class="ri-file-pdf-line"></i>
-                        <h4>PDF Tools</h4>
-                        <span>15+ Tools</span>
-                    </div>
-                    <div class="category-item glass-card hover-lift fade-in">
-                        <i class="ri-global-line"></i>
-                        <h4>Internet Tools</h4>
-                        <span>12+ Tools</span>
-                    </div>
-                    <div class="category-item glass-card hover-lift fade-in">
-                        <i class="ri-lock-password-line"></i>
-                        <h4>Security Tools</h4>
-                        <span>10+ Tools</span>
-                    </div>
-                    <div class="category-item glass-card hover-lift fade-in">
-                        <i class="ri-heart-pulse-line"></i>
-                        <h4>Health Tools</h4>
-                        <span>8+ Tools</span>
-                    </div>
-                    <div class="category-item glass-card hover-lift fade-in">
-                        <i class="ri-book-read-line"></i>
-                        <h4>Education Tools</h4>
-                        <span>14+ Tools</span>
-                    </div>
-                    <div class="category-item glass-card hover-lift fade-in">
-                        <i class="ri-task-line"></i>
-                        <h4>Productivity Tools</h4>
-                        <span>20+ Tools</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Screenshots Gallery -->
-        <section id="screenshots" class="section">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <h2>App Screenshots</h2>
-                    <p>Take a look inside the KVR Smart Tools ecosystem.</p>
-                </div>
+                <h2>Our Mission</h2>
+                <p>At KVR Smart Tools, our mission is straightforward: to declutter your smartphone by combining over 100 essential daily utilities into one seamless, fast, and beautifully designed application.</p>
+                <p>We grew tired of downloading separate apps for QR scanning, PDF merging, network testing, and unit conversion—apps that were often bloated with advertisements, paywalls, and hidden tracking scripts. So, we built the all-in-one solution.</p>
                 
-                <div class="gallery-grid">
-                    <img src="categories.png" alt="App Categories Screenshot" class="glass-card hover-scale fade-in" loading="lazy">
-                    <img src="categories2.png" alt="More Categories Screenshot" class="glass-card hover-scale fade-in" loading="lazy">
-                    <img src="calculators.png" alt="Calculators Tool Screenshot" class="glass-card hover-scale fade-in" loading="lazy">
-                    <img src="finance.png" alt="Finance Tools Screenshot" class="glass-card hover-scale fade-in" loading="lazy">
-                    <img src="flash.png" alt="Flash Tools Screenshot" class="glass-card hover-scale fade-in" loading="lazy">
-                    <img src="health.png" alt="Health Tools Screenshot" class="glass-card hover-scale fade-in" loading="lazy">
-                    <img src="qrtools.png" alt="QR Tools Screenshot" class="glass-card hover-scale fade-in" loading="lazy">
+                <h2>The Developer</h2>
+                <p>KVR Smart Tools is proudly developed by <strong>KVR Smart Developer</strong>. With a focus on performance optimization and user-centric design, the goal is to provide a premium toolset accessible to everyone globally, completely free of charge.</p>
+
+                <h2>Why "Smart"?</h2>
+                <ul>
+                    <li><strong>Smart Architecture:</strong> Built using modern Android frameworks ensuring the app size remains lightweight despite housing 100+ tools.</li>
+                    <li><strong>Smart Privacy:</strong> Processing happens on the silicon of your device. We respect your data by not collecting it.</li>
+                    <li><strong>Smart Design:</strong> A unified Glassmorphism UI means you don't have to learn a new interface for every tool.</li>
+                </ul>
+
+                <div class="text-center mt-4">
+                    <a href="#contact" class="btn btn-primary nav-route">Contact Developer</a>
                 </div>
             </div>
-        </section>
+        </main>
 
-        <!-- FAQ Section -->
-        <section id="faq" class="section bg-darker">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <h2>Frequently Asked Questions</h2>
-                    <p>Got questions? We've got answers.</p>
-                </div>
+        <!-- ==================== PRIVACY POLICY VIEW ==================== -->
+        <main id="view-privacy" class="spa-view page-padding">
+            <div class="container text-document glass-card">
+                <h1 class="gradient-text">Privacy Policy</h1>
+                <p><strong>Effective Date:</strong> January 1, 2026</p>
+                
+                <h2>1. Introduction</h2>
+                <p>KVR Smart Developer ("we", "our", or "us") is deeply committed to respecting and protecting your privacy. This Privacy Policy details how KVR Smart Tools handles data. Because our application is designed to be highly secure and offline-first, our data collection is strictly minimal to non-existent.</p>
 
-                <div class="faq-container fade-in-up">
-                    <div class="faq-item glass-card">
-                        <button class="faq-question" aria-expanded="false">
-                            <span>1. What is KVR Smart Tools?</span>
-                            <i class="ri-add-line"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <p>KVR Smart Tools is a comprehensive Android application that bundles over 100 essential utility, developer, productivity, and security tools into a single, lightweight package.</p>
-                        </div>
-                    </div>
+                <h2>2. Data Collection & Usage</h2>
+                <p>KVR Smart Tools operates locally on your device. We <strong>do not</strong> collect, transmit, distribute, sell, or store your personal data on external servers. Files processed via PDF tools, text converted, passwords generated, and calculations made remain entirely on your smartphone's local storage or RAM during runtime.</p>
 
-                    <div class="faq-item glass-card">
-                        <button class="faq-question" aria-expanded="false">
-                            <span>2. Is the app completely free?</span>
-                            <i class="ri-add-line"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Yes, KVR Smart Tools is completely free to download and use. We believe in providing premium utility without paywalls.</p>
-                        </div>
-                    </div>
+                <h2>3. Permissions Required</h2>
+                <p>To function correctly, KVR Smart Tools may request certain device permissions. These are used strictly locally for the specific tool you are using:</p>
+                <ul>
+                    <li><strong>Camera:</strong> Required only for the QR & Barcode Scanner tools. Images are processed locally and not saved.</li>
+                    <li><strong>Storage / Media:</strong> Required to save generated PDFs, export text files, or read files you select for processing.</li>
+                    <li><strong>Network/Internet:</strong> Required strictly for specific tools (e.g., IP Lookup, Currency Converter fetching exchange rates).</li>
+                </ul>
 
-                    <div class="faq-item glass-card">
-                        <button class="faq-question" aria-expanded="false">
-                            <span>3. Does it contain annoying ads?</span>
-                            <i class="ri-add-line"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Absolutely not. We provide a 100% ad-free experience. No banners, no pop-ups, no interruptions.</p>
-                        </div>
-                    </div>
+                <h2>4. Third-Party Services & Advertising</h2>
+                <p>KVR Smart Tools contains absolutely no third-party advertisements. We do not use advertising SDKs or tracking SDKs that share your behavioral data with third parties.</p>
 
-                    <div class="faq-item glass-card">
-                        <button class="faq-question" aria-expanded="false">
-                            <span>4. Do I need an internet connection to use the tools?</span>
-                            <i class="ri-add-line"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Over 90% of our tools operate entirely offline. Only specific tools like IP lookup or real-time currency conversion require internet access.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item glass-card">
-                        <button class="faq-question" aria-expanded="false">
-                            <span>5. Is my data secure and private?</span>
-                            <i class="ri-add-line"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Yes. KVR Smart Tools processes almost everything locally on your device. We do not collect, store, or transmit your personal data to external servers.</p>
-                        </div>
-                    </div>
-                </div>
+                <h2>5. Contact Us</h2>
+                <p>If you have any questions or suggestions regarding our Privacy Policy, please contact us at: <a href="mailto:venkatesh.official4775@gmail.com" style="color:var(--accent);">venkatesh.official4775@gmail.com</a>.</p>
             </div>
-        </section>
+        </main>
 
-        <!-- Contact Section -->
-        <section id="contact" class="section">
-            <div class="container text-center fade-in">
-                <div class="section-header">
-                    <h2>Get in Touch</h2>
-                    <p>Have a feature request, found a bug, or just want to say hi?</p>
-                </div>
+        <!-- ==================== TERMS OF SERVICE VIEW ==================== -->
+        <main id="view-terms" class="spa-view page-padding">
+            <div class="container text-document glass-card">
+                <h1 class="gradient-text">Terms & Conditions</h1>
+                <p><strong>Effective Date:</strong> January 1, 2026</p>
+
+                <h2>1. Acceptance of Terms</h2>
+                <p>By downloading, installing, or using the KVR Smart Tools Android application, these terms will automatically apply to you. You should ensure that you read them carefully before using the app.</p>
+
+                <h2>2. App Usage License</h2>
+                <p>KVR Smart Developer grants you a revocable, non-exclusive, non-transferable, limited license to download, install and use the application solely for your personal, non-commercial, and professional purposes strictly in accordance with the terms of this Agreement.</p>
+                <p>You are not allowed to:</p>
+                <ul>
+                    <li>Copy, decompile, reverse engineer, or modify the app, any part of the app, or our trademarks.</li>
+                    <li>Extract the source code of the app.</li>
+                    <li>Translate the app into other languages or make derivative versions.</li>
+                </ul>
+
+                <h2>3. Disclaimer of Liability</h2>
+                <p>KVR Smart Tools is provided "as is" and "as available". While we strive for 100% accuracy in our calculators, converters, and tools, we make no warranties, expressed or implied, and hereby disclaim all warranties. We shall not be liable for any data loss, device issues, financial losses due to conversion inaccuracies, or damages arising out of the use or inability to use the tools.</p>
+
+                <h2>4. Modifications to Terms</h2>
+                <p>We reserve the right to modify these terms at any time. Continued use of the app constitutes acceptance of any updated terms.</p>
+
+                <h2>5. Contact</h2>
+                <p>For questions regarding these Terms & Conditions, please contact: <a href="mailto:venkatesh.official4775@gmail.com" style="color:var(--accent);">venkatesh.official4775@gmail.com</a>.</p>
             </div>
-
-            <div class="container grid grid-2">
-                <div class="contact-info glass-card fade-in-up">
-                    <h3>Contact Information</h3>
-                    <p>We are always looking to improve KVR Smart Tools. Reach out to us anytime!</p>
-                    
-                    <div class="info-item mt-2">
-                        <i class="ri-mail-send-line icon-large"></i>
-                        <div>
-                            <h4>Email Us</h4>
-                            <a href="mailto:venkatesh.official4775@gmail.com">venkatesh.official4775@gmail.com</a>
-                        </div>
-                    </div>
-                    
-                    <div class="info-item mt-2">
-                        <i class="ri-github-fill icon-large"></i>
-                        <div>
-                            <h4>GitHub</h4>
-                            <p>Contribute or report issues on our repo.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="glass-card fade-in-up" style="transition-delay: 0.2s;">
-                    <h3>Send a Message</h3>
-                    <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent successfully! (Frontend demo)');">
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" class="form-control glass-input" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" class="form-control glass-input" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" rows="5" class="form-control glass-input" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100">Send Message <i class="ri-send-plane-fill"></i></button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
+        </main>
+    </div> <!-- END VIEWS CONTAINER -->
 
     <!-- Footer -->
     <footer class="site-footer">
@@ -840,10 +993,19 @@
             <div class="footer-links">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="#hero">Home</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#home" class="nav-route">Home</a></li>
+                    <li><a href="#about" class="nav-route">About Us</a></li>
+                    <li><a href="#features" class="nav-route">Features</a></li>
+                    <li><a href="#faq" class="nav-route">FAQ</a></li>
+                    <li><a href="#contact" class="nav-route">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Legal Info</h4>
+                <ul>
+                    <li><a href="#privacy" class="nav-route">Privacy Policy</a></li>
+                    <li><a href="#terms" class="nav-route">Terms & Conditions</a></li>
                 </ul>
             </div>
 
@@ -866,6 +1028,65 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            
+            /* SPA Router Logic */
+            function handleRouting() {
+                let hash = window.location.hash;
+                
+                const routes = {
+                    '#about': 'view-about',
+                    '#privacy': 'view-privacy',
+                    '#terms': 'view-terms',
+                    '#home': 'view-home',
+                    '#hero': 'view-home',
+                    '#features': 'view-home',
+                    '#categories': 'view-home',
+                    '#screenshots': 'view-home',
+                    '#faq': 'view-home',
+                    '#contact': 'view-home',
+                    '': 'view-home'
+                };
+
+                const viewId = routes[hash] || 'view-home';
+                
+                // Toggle Views
+                document.querySelectorAll('.spa-view').forEach(view => {
+                    view.classList.remove('active-view');
+                });
+                document.getElementById(viewId).classList.add('active-view');
+
+                // Navigation active state
+                document.querySelectorAll('.nav-route').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === hash || (hash === '' && link.getAttribute('href') === '#home')) {
+                        link.classList.add('active');
+                    }
+                });
+
+                // Scroll Handling
+                if (viewId === 'view-home' && hash !== '#home' && hash !== '' && hash !== '#hero') {
+                    const targetSection = document.querySelector(hash);
+                    if (targetSection) {
+                        setTimeout(() => {
+                            const yOffset = -70;
+                            const y = targetSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                            window.scrollTo({top: y, behavior: 'smooth'});
+                        }, 50); 
+                    }
+                } else {
+                    window.scrollTo(0, 0);
+                }
+
+                // Close mobile menu
+                if (navLinks && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    if(mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
+                    if (toggleIcon) toggleIcon.className = 'ri-menu-line';
+                }
+            }
+
+            window.addEventListener('hashchange', handleRouting);
+
             const mobileToggle = document.querySelector('.mobile-toggle');
             const navLinks = document.getElementById('nav-links');
             const toggleIcon = mobileToggle?.querySelector('i');
@@ -881,14 +1102,6 @@
                             ? 'ri-close-line' 
                             : 'ri-menu-line';
                     }
-                });
-
-                navLinks.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        navLinks.classList.remove('active');
-                        mobileToggle.setAttribute('aria-expanded', 'false');
-                        if (toggleIcon) toggleIcon.className = 'ri-menu-line';
-                    });
                 });
             }
 
@@ -929,6 +1142,11 @@
                         top: 0,
                         behavior: 'smooth'
                     });
+                    
+                    if(window.location.hash.startsWith('#') && !['#privacy', '#terms', '#about'].includes(window.location.hash)){
+                        history.pushState(null, null, '#home');
+                        handleRouting();
+                    }
                 });
             }
 
@@ -966,6 +1184,9 @@
 
             const animatedElements = document.querySelectorAll('.fade-in, .fade-in-up');
             animatedElements.forEach(el => animationObserver.observe(el));
+            
+            // Initialize Routing
+            handleRouting();
         });
     </script>
 </body>
