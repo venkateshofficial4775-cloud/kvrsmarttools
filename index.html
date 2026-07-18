@@ -1,1058 +1,1046 @@
 <!DOCTYPE html>
+
 <html lang="en" class="dark">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>KVR Smart Tools - The Ultimate Android Utility Suite</title>
+
     <meta name="description" content="Download KVR Smart Tools, the ultimate Android app featuring 100+ powerful utility, developer, PDF, and security tools. Fast, secure, and privacy-focused.">
+
     <meta name="keywords" content="KVR Smart Tools, Android App, Utility Tools, Developer Tools, PDF Tools, Smart Tools">
+
     <meta name="author" content="KVR Smart Developer">
+
     <meta name="theme-color" content="#020617">
+
     
+
     <!-- Open Graph / Social -->
+
     <meta property="og:type" content="website">
+
     <meta property="og:url" content="https://jkelectricalstpg.in/">
+
     <meta property="og:title" content="KVR Smart Tools - The Ultimate Android Utility Suite">
+
     <meta property="og:description" content="Download KVR Smart Tools. Fast, secure, and highly optimized offline tools.">
+
     <meta property="og:image" content="Logo.png">
 
+
+
     <!-- Schema.org JSON-LD -->
+
     <script type="application/ld+json">
+
     {
+
       "@context": "https://schema.org",
+
       "@type": "SoftwareApplication",
+
       "name": "KVR Smart Tools",
+
       "operatingSystem": "Android",
+
       "applicationCategory": "UtilitiesApplication",
+
       "aggregateRating": {
+
         "@type": "AggregateRating",
+
         "ratingValue": "4.9",
+
         "ratingCount": "1024"
+
       },
+
       "offers": {
+
         "@type": "Offer",
+
         "price": "0",
+
         "priceCurrency": "USD"
+
       },
+
       "developer": {
+
         "@type": "Person",
+
         "name": "KVR Smart Developer",
+
         "email": "venkatesh.official4775@gmail.com"
+
       },
+
       "featureList": [
+
         "Calculators",
+
         "QRTools",
+
         "Finance",
+
         "Health",
+
         "PDFTools",
+
         "File Tools",
+
         "Internet Tools",
+
         "Security",
+
         "Utility Tools",
+
         "DevTools"
+
       ]
+
     }
+
     </script>
+
+
 
     <!-- Google Fonts & Icons -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
     
+
     <style>
+
         /* ==========================================================================
+
            CSS Variables & Global Reset
+
            ========================================================================== */
+
         :root {
+
             --primary: #5E3BEE;
+
             --primary-hover: #4b2fc0;
+
             --secondary: #7C4DFF;
+
             --accent: #00E5FF;
+
             --bg-dark: #020617; /* Very dark modern navy/black */
+
             --bg-darker: #01030b;
+
             --text-main: #f8fafc;
+
             --text-muted: #94a3b8;
+
             --text-gradient: linear-gradient(180deg, #FFFFFF 0%, #94a3b8 100%);
+
             
+
             --glass-bg: rgba(15, 23, 42, 0.3);
+
             --glass-border: rgba(255, 255, 255, 0.05);
+
             --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+
             
+
             --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
             --border-radius: 24px;
+
             --container-width: 1240px;
+
         }
+
+
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         html { scroll-behavior: smooth; }
+
         body { 
+
             font-family: 'Inter', system-ui, sans-serif; 
+
             background-color: var(--bg-dark); 
+
             color: var(--text-main); 
+
             line-height: 1.7; 
+
             overflow-x: hidden; 
+
             -webkit-font-smoothing: antialiased;
+
         }
+
+
 
         /* Preloader */
+
         #preloader {
+
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+
             background: var(--bg-dark); z-index: 9999;
+
             display: flex; justify-content: center; align-items: center;
+
             transition: opacity 0.6s ease, visibility 0.6s ease;
+
         }
+
         .spinner {
+
             width: 40px; height: 40px; border-radius: 50%;
+
             border: 2px solid rgba(255,255,255,0.1); border-top-color: var(--accent);
+
             animation: spin 0.8s linear infinite;
+
         }
+
         @keyframes spin { to { transform: rotate(360deg); } }
 
+
+
         /* Background Effects (Mesh & Particles) */
+
         .bg-mesh {
+
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+
             background-image: 
+
                 radial-gradient(at 0% 0%, rgba(94, 59, 238, 0.1) 0px, transparent 50%),
+
                 radial-gradient(at 100% 0%, rgba(0, 229, 255, 0.05) 0px, transparent 50%);
+
             z-index: -2; pointer-events: none;
+
         }
+
         .bg-grid {
+
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+
             background-image: linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+
                               linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+
             background-size: 60px 60px; z-index: -3; pointer-events: none;
+
             mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+
             -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+
         }
+
         #particles {
+
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+
             z-index: -1; pointer-events: none; overflow: hidden;
+
         }
+
         .particle {
+
             position: absolute; border-radius: 50%; background: var(--accent);
+
             opacity: 0; animation: floatParticle linear infinite;
+
         }
+
         @keyframes floatParticle {
+
             0% { transform: translateY(100vh) scale(0); opacity: 0; }
+
             20% { opacity: 0.4; }
+
             80% { opacity: 0.4; }
+
             100% { transform: translateY(-100px) scale(1); opacity: 0; }
+
         }
+
+
 
         a { color: var(--accent); text-decoration: none; transition: var(--transition); }
+
         a:hover { color: var(--text-main); }
+
         ul { list-style: none; }
+
         img { max-width: 100%; height: auto; display: block; }
 
+
+
         /* Typography */
+
         h1, h2, h3, h4, h5, h6 { font-weight: 800; line-height: 1.1; margin-bottom: 1rem; color: #fff; letter-spacing: -0.03em; }
+
         
+
         .gradient-text {
+
             background: linear-gradient(135deg, #fff 0%, #a78bfa 50%, var(--accent) 100%);
+
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+
         }
+
         .text-premium { background: var(--text-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
         
+
         .text-center { text-align: center; }
+
         .w-100 { width: 100%; }
 
+
+
         /* Layout */
+
         .container { width: 90%; max-width: var(--container-width); margin: 0 auto; position: relative; z-index: 1; }
+
         .grid { display: grid; gap: 2.5rem; }
+
         .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
         .grid-3 { grid-template-columns: repeat(3, 1fr); }
+
         .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2.5rem; align-items: center; }
 
+
+
         @media (max-width: 1024px) { .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+
         @media (max-width: 768px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } }
 
+
+
+        /* Promo Banner */
+
+        .promo-banner {
+
+            background: linear-gradient(90deg, #1e1b4b, var(--primary), #1e1b4b);
+
+            background-size: 200% auto; color: #fff; text-align: center;
+
+            padding: 0.6rem 1rem; font-size: 0.9rem; font-weight: 500;
+
+            position: relative; z-index: 1002; animation: gradientMove 4s linear infinite;
+
+        }
+
+        @keyframes gradientMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+
+
         /* Premium Buttons */
+
         .btn {
+
             display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+
             padding: 0.85rem 1.8rem; border-radius: 999px; font-weight: 600; font-size: 1rem;
+
             cursor: pointer; border: none; transition: var(--transition);
+
             position: relative; overflow: hidden; letter-spacing: 0.2px; text-decoration: none;
+
         }
+
         
+
         .btn::after {
+
             content: ''; position: absolute; top: 50%; left: 50%; width: 150%; height: 150%;
+
             background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
+
             transform: translate(-50%, -50%) scale(0); transition: transform 0.4s ease-out; opacity: 0;
+
         }
+
         .btn:active::after { transform: translate(-50%, -50%) scale(1); opacity: 1; transition: 0s; }
 
+
+
         .btn-primary {
+
             background: linear-gradient(135deg, var(--primary), var(--secondary));
+
             color: #fff; box-shadow: 0 10px 25px -5px rgba(94, 59, 238, 0.6);
+
             border: 1px solid rgba(255,255,255,0.1);
+
         }
+
         .btn-primary:hover {
+
             transform: translateY(-2px); box-shadow: 0 15px 30px -5px rgba(94, 59, 238, 0.8);
+
             background: linear-gradient(135deg, var(--primary-hover), var(--secondary)); color: #fff;
+
         }
+
         
+
         .btn-outline {
+
             background: rgba(255,255,255,0.02); color: var(--text-main); border: 1px solid rgba(255,255,255,0.1);
+
             backdrop-filter: blur(10px);
+
         }
+
         .btn-outline:hover {
+
             background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.3); transform: translateY(-2px);
+
         }
+
         .btn-lg { padding: 1.2rem 2.8rem; font-size: 1.1rem; }
 
+
+
         /* Premium Glass Cards */
+
         .glass-card {
+
             background: var(--glass-bg); backdrop-filter: blur(24px) saturate(150%); -webkit-backdrop-filter: blur(24px) saturate(150%);
+
             border: 1px solid var(--glass-border); border-radius: var(--border-radius);
+
             padding: 2.5rem; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
+
             transition: var(--transition); position: relative; overflow: hidden;
+
         }
+
         .glass-card::before {
+
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1px;
+
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+
         }
+
+
 
         /* Phone Mockup */
+
         .phone-mockup {
+
             border: 6px solid #1e293b; border-radius: 40px; overflow: hidden;
+
             box-shadow: 0 30px 60px -12px rgba(0,0,0,1), 0 0 0 1px rgba(255,255,255,0.1);
+
             position: relative; background: #020617; margin: 0 auto; transition: var(--transition);
-        }
-        .phone-mockup::before {
-            content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-            width: 40%; height: 28px; background: #1e293b; border-bottom-left-radius: 18px; border-bottom-right-radius: 18px; z-index: 2;
-        }
-        .phone-mockup img {
-            border-radius: 34px; width: 100%; display: block; position: relative; z-index: 1;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
         }
 
-        /* ==========================================================================
-           1. PREMIUM HEADER & NAVIGATION (REDESIGNED)
-           ========================================================================== */
-        #scroll-progress {
-            position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--primary), var(--accent));
-            width: 0%; z-index: 1004; box-shadow: 0 0 15px var(--accent);
+        .phone-mockup::before {
+
+            content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+
+            width: 40%; height: 28px; background: #1e293b; border-bottom-left-radius: 18px; border-bottom-right-radius: 18px; z-index: 2;
+
         }
+
+        .phone-mockup img {
+
+            border-radius: 34px; width: 100%; display: block; position: relative; z-index: 1;
+
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+        }
+
+
+
+        /* ==========================================================================
+
+           1. PREMIUM HEADER & NAVIGATION
+
+           ========================================================================== */
+
+        #scroll-progress {
+
+            position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--primary), var(--accent));
+
+            width: 0%; z-index: 1004; box-shadow: 0 0 15px var(--accent);
+
+        }
+
+
 
         .glass-nav {
-            position: fixed; top: 20px; width: 100%; z-index: 1000;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .nav-inner-wrapper {
-            margin: 0 auto; width: 92%; max-width: var(--container-width);
-            background: rgba(15, 23, 42, 0.35); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%);
-            border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 999px;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); padding: 0.6rem 2rem;
-            position: relative;
-        }
-        .nav-inner-wrapper::after {
-            content: ''; position: absolute; inset: 0; border-radius: 999px; padding: 1px;
-            background: linear-gradient(90deg, rgba(94, 59, 238, 0.2), rgba(0, 229, 255, 0.2));
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
-            animation: borderPulse 4s linear infinite;
-        }
-        @keyframes borderPulse {
-            0%, 100% { opacity: 0.5; } 50% { opacity: 1; }
-        }
-        
-        .glass-nav.scrolled { top: 12px; }
-        .glass-nav.scrolled .nav-inner-wrapper {
-            background: rgba(2, 6, 23, 0.75);
-            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.6), inset 0 1px 0 0 rgba(255,255,255,0.05);
-            border-color: rgba(255, 255, 255, 0.03);
-            padding: 0.4rem 1.8rem;
+
+            position: fixed; top: 35px; width: 100%; z-index: 1000;
+
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
         }
 
-        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 54px; }
+        .nav-inner-wrapper {
+
+            margin: 0 auto; width: 95%; max-width: 1300px;
+
+            background: rgba(2, 6, 23, 0.4); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+
+            border: 1px solid rgba(255,255,255,0.05); border-radius: 999px;
+
+            transition: var(--transition); padding: 0.5rem 1.5rem;
+
+        }
+
         
-        .logo { font-size: 1.25rem; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 0.8rem; letter-spacing: -0.5px; text-decoration: none; }
-        .logo img { height: 34px; width: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(94, 59, 238, 0.3); transition: transform 0.3s ease; }
-        .logo:hover img { transform: scale(1.05) rotate(-3deg); }
-        .logo span { font-weight: 800; background: linear-gradient(90deg, #fff, #cbd5e1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .glass-nav.scrolled { top: 15px; }
+
+        .glass-nav.scrolled .nav-inner-wrapper {
+
+            background: rgba(2, 6, 23, 0.85); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.8);
+
+            border-color: rgba(255,255,255,0.1);
+
+        }
+
+
+
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 60px; }
+
         
+
+        .logo { font-size: 1.3rem; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 0.75rem; letter-spacing: -0.5px; }
+
+        .logo img { height: 32px; width: auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+
+        
+
         .nav-center { position: relative; display: flex; align-items: center; }
-        .nav-list { display: flex; gap: 0.3rem; align-items: center; position: relative; }
+
+        .nav-list { display: flex; gap: 0.5rem; align-items: center; position: relative; }
+
         .nav-list li { position: relative; }
+
         .nav-list a { 
-            color: var(--text-muted); font-weight: 600; font-size: 0.9rem; letter-spacing: 0.1px;
-            padding: 0.55rem 1.1rem; border-radius: 999px; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); position: relative; z-index: 2;
-            text-decoration: none; display: block;
+
+            color: var(--text-muted); font-weight: 500; font-size: 0.95rem; 
+
+            padding: 0.5rem 1.2rem; border-radius: 999px; transition: all 0.3s ease; position: relative; z-index: 2;
+
         }
+
         
+
         /* Animated Pill Indicator */
+
         #nav-indicator {
-            position: absolute; background: rgba(255, 255, 255, 0.06); border-radius: 999px;
-            height: 100%; top: 0; left: 0; transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); z-index: 1; opacity: 0;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+
+            position: absolute; background: rgba(255,255,255,0.08); border-radius: 999px;
+
+            height: 100%; top: 0; left: 0; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 1; opacity: 0;
+
         }
+
         .nav-list a:hover { color: #fff; }
-        .nav-list a.active { color: var(--accent); font-weight: 600; }
+
+        .nav-list a.active { color: #fff; text-shadow: 0 0 15px rgba(255,255,255,0.4); }
+
+
 
         /* Right Nav Actions */
-        .nav-actions { display: flex; align-items: center; }
 
-        .mobile-toggle { display: none; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); color: #fff; font-size: 1.5rem; cursor: pointer; width: 42px; height: 42px; border-radius: 50%; align-items: center; justify-content: center; transition: var(--transition); }
-        .mobile-toggle:hover { background: rgba(255,255,255,0.08); color: var(--accent); }
+        .nav-actions { display: flex; align-items: center; gap: 1.2rem; }
 
-        @media (max-width: 920px) {
-            .mobile-toggle { display: flex; z-index: 1005; }
-            .nav-actions .btn { display: none; }
-            .nav-inner-wrapper { border-radius: 28px; width: 92%; padding: 0.5rem 1.2rem; }
-            .glass-nav { top: 15px; } .glass-nav.scrolled { top: 10px; }
-            
-            #nav-center-wrapper {
-                position: fixed; top: 0; left: -100%; width: 100%; height: 100vh;
-                background: rgba(2, 6, 23, 0.96); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-                display: flex; flex-direction: column; justify-content: center; align-items: center;
-                transition: left 0.5s cubic-bezier(0.16, 1, 0.3, 1); z-index: 1004;
-            }
-            #nav-center-wrapper.active { left: 0; }
-            .nav-list { flex-direction: column; gap: 1.2rem; width: 80%; }
-            .nav-list a { font-size: 1.35rem; padding: 0.8rem 2rem; text-align: center; border-radius: 16px; }
-            .nav-list a:hover { background: rgba(255, 255, 255, 0.04); }
-            #nav-indicator { display: none; }
-            .nav-actions-mobile { display: flex; flex-direction: column; gap: 1rem; margin-top: 2.5rem; align-items: center; width: 80%;}
-            .nav-actions-mobile .btn { width: 100%; max-width: 280px; }
+        .nav-badge-play {
+
+            display: flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; font-weight: 600;
+
+            color: #94a3b8; padding: 0.4rem 0.8rem; border-radius: 20px;
+
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+
         }
-        @media (min-width: 921px) { .nav-actions-mobile { display: none; } }
+
+        .nav-badge-play i { color: #10B981; }
+
+
+
+        .mobile-toggle { display: none; background: none; border: none; color: #fff; font-size: 1.8rem; cursor: pointer; }
+
+
+
+        @media (max-width: 1060px) { .nav-badge-play { display: none; } }
+
+        @media (max-width: 860px) {
+
+            .mobile-toggle { display: block; z-index: 1005; }
+
+            .nav-actions .btn { display: none; }
+
+            .nav-inner-wrapper { border-radius: 16px; width: 100%; padding: 0.5rem 1rem; border: none; border-bottom: 1px solid rgba(255,255,255,0.05); border-radius: 0;}
+
+            .glass-nav { top: 35px; } .glass-nav.scrolled { top: 0; }
+
+            
+
+            #nav-center-wrapper {
+
+                position: fixed; top: 0; left: -100%; width: 100%; height: 100vh;
+
+                background: rgba(2, 6, 23, 0.98); backdrop-filter: blur(20px);
+
+                display: flex; flex-direction: column; justify-content: center; align-items: center;
+
+                transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 1004;
+
+            }
+
+            #nav-center-wrapper.active { left: 0; }
+
+            .nav-list { flex-direction: column; gap: 1.5rem; }
+
+            .nav-list a { font-size: 1.5rem; }
+
+            #nav-indicator { display: none; }
+
+            .nav-actions-mobile { display: flex; flex-direction: column; gap: 1rem; margin-top: 3rem; align-items: center;}
+
+        }
+
+        @media (min-width: 861px) { .nav-actions-mobile { display: none; } }
+
+
 
         /* ==========================================================================
+
            2. HERO SECTION
+
            ========================================================================== */
+
         .hero-section { min-height: 100vh; display: flex; align-items: center; position: relative; padding-top: 100px; }
+
         
+
         /* Gradient Lighting */
+
         .glow-orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.4; z-index: 0; pointer-events: none; }
+
         .orb-1 { top: 5%; left: 5%; width: 400px; height: 400px; background: var(--primary); animation: pulseOrb 8s alternate infinite; }
+
         .orb-2 { bottom: 10%; right: 5%; width: 500px; height: 500px; background: var(--accent); opacity: 0.2; animation: pulseOrb 10s alternate-reverse infinite; }
+
         @keyframes pulseOrb { 0% { transform: scale(1); opacity: 0.3; } 100% { transform: scale(1.2); opacity: 0.5; } }
 
+
+
         .hero-container { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 4rem; align-items: center; }
+
         
+
         .badge-pill {
+
             display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1.2rem; border-radius: 30px;
+
             font-size: 0.9rem; font-weight: 600; color: var(--text-main); margin-bottom: 2rem;
+
             background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+
             backdrop-filter: blur(10px);
+
         }
+
         .badge-pill span { color: var(--accent); }
 
+
+
         .hero-title { font-size: 5.5rem; line-height: 1.05; margin-bottom: 1.5rem; }
+
         .hero-subtitle { font-size: 1.35rem; color: var(--text-muted); margin-bottom: 3rem; max-width: 90%; font-weight: 400; }
+
         .hero-cta { display: flex; gap: 1.2rem; flex-wrap: wrap; }
 
+
+
         .hero-image { position: relative; perspective: 1000px; }
+
         .hero-image .phone-mockup { 
+
             transform: rotateY(-18deg) rotateX(8deg) translateY(0); 
+
             max-width: 320px; box-shadow: -30px 40px 80px rgba(0,0,0,0.8); 
+
             animation: floatPhone 6s ease-in-out infinite;
+
         }
+
         @keyframes floatPhone { 0% { transform: rotateY(-18deg) rotateX(8deg) translateY(0); } 50% { transform: rotateY(-18deg) rotateX(8deg) translateY(-20px); } 100% { transform: rotateY(-18deg) rotateX(8deg) translateY(0); } }
 
+
+
         @media (max-width: 1024px) {
+
             .hero-container { grid-template-columns: 1fr; text-align: center; gap: 4rem; padding-top: 4rem; }
+
             .hero-title { font-size: 4rem; }
+
             .hero-subtitle { margin-inline: auto; }
+
             .hero-cta { justify-content: center; }
+
             .hero-image .phone-mockup { transform: none; margin: 0 auto; box-shadow: 0 40px 80px rgba(0,0,0,0.8); animation: floatPhoneMobile 6s ease-in-out infinite; }
+
             @keyframes floatPhoneMobile { 0% { transform: translateY(0); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0); } }
+
         }
+
         @media (max-width: 576px) { .hero-title { font-size: 3rem; } }
 
+
+
         /* ==========================================================================
+
            Animated Statistics
+
            ========================================================================== */
+
         .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: -3rem; position: relative; z-index: 10; padding: 0 2%; }
+
         .stat-card {
+
             background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.05);
+
             border-radius: 24px; padding: 2.5rem 1.5rem; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+
             transition: var(--transition);
+
         }
+
         .stat-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.15); background: rgba(15, 23, 42, 0.8); }
+
         .stat-number { font-size: 3.5rem; font-weight: 900; color: #fff; line-height: 1; margin-bottom: 0.5rem; display: flex; justify-content: center; align-items: baseline; letter-spacing: -2px;}
+
         .stat-suffix { color: var(--accent); font-size: 2.2rem; margin-left: 2px; }
+
         .stat-label { color: var(--text-muted); font-size: 1rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
+
         
+
         @media (max-width: 992px) { .stats-grid { grid-template-columns: repeat(2, 1fr); margin-top: 3rem; } }
+
         @media (max-width: 576px) { .stats-grid { grid-template-columns: 1fr; } }
 
+
+
         /* ==========================================================================
+
            Sections Layout
+
            ========================================================================== */
+
         .section { padding: 8rem 0; position: relative; }
+
         .bg-darker { background-color: rgba(15,23,42,0.2); border-top: 1px solid rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.02); }
+
         .section-header { text-align: center; margin-bottom: 5rem; max-width: 750px; margin-inline: auto; position: relative; z-index: 2; }
+
         .section-header h2 { font-size: 3.5rem; margin-bottom: 1.2rem; }
+
         .section-header p { color: var(--text-muted); font-size: 1.2rem; }
+
         @media (max-width: 768px) { .section-header h2 { font-size: 2.5rem; } }
 
+
+
         /* ==========================================================================
+
            3. FEATURES SECTION
+
            ========================================================================== */
+
         .feature-card { text-align: left; background: linear-gradient(180deg, rgba(30,41,59,0.4) 0%, rgba(15,23,42,0.1) 100%); }
+
         .feature-card:hover { transform: translateY(-8px); box-shadow: 0 25px 50px rgba(0,0,0,0.5); border-color: rgba(255,255,255,0.15); }
+
         .icon-box {
+
             width: 64px; height: 64px; background: linear-gradient(135deg, rgba(94, 59, 238, 0.2), rgba(0, 229, 255, 0.1));
+
             color: var(--accent); border-radius: 16px; display: flex; align-items: center; justify-content: center;
+
             font-size: 2rem; margin-bottom: 1.8rem; border: 1px solid rgba(255, 255, 255, 0.05); transition: var(--transition);
+
         }
+
         .feature-card:hover .icon-box { background: var(--primary); color: #fff; transform: scale(1.1) rotate(5deg); }
+
         .feature-card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #fff; }
+
         .feature-card p { color: var(--text-muted); font-size: 1.05rem; }
 
+
+
         /* Categories / Utilities */
+
         .category-item {
+
             text-align: center; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: space-between;
+
             padding: 3rem 2rem; background: rgba(15, 23, 42, 0.4); border: 1px solid rgba(255,255,255,0.03); border-radius: 24px;
+
         }
+
         .category-item:hover { border-color: rgba(255,255,255,0.1); background: rgba(30, 41, 59, 0.6); transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+
         .category-item i { font-size: 3rem; color: #fff; margin-bottom: 1.5rem; transition: var(--transition); opacity: 0.8; }
+
         .category-item:hover i { color: var(--accent); transform: scale(1.1); opacity: 1; }
+
         .category-item h4 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+
         .category-subtitle { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.4; flex-grow: 1; }
+
         .category-item span { 
+
             font-size: 0.85rem; font-weight: 700; color: #fff; 
+
             background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+
             padding: 0.4rem 1.2rem; border-radius: 20px; transition: var(--transition);
+
         }
+
         .category-item:hover span { background: var(--primary); border-color: var(--primary); }
 
+
+
         /* Screenshots */
+
         .screenshot-gallery .phone-mockup { max-width: 280px; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+
         .screenshot-gallery .phone-mockup:hover { transform: translateY(-15px) scale(1.03); box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8); border-color: rgba(255,255,255,0.2); }
+
         
+
         /* Premium Animated Separator */
+
         .premium-separator { height: 1px; width: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); margin: 0; position: relative;}
+
         .premium-separator::after { content: ''; position: absolute; top: -1px; left: 50%; transform: translateX(-50%); width: 20%; height: 3px; background: linear-gradient(90deg, transparent, var(--primary), var(--accent), transparent); filter: blur(2px); }
 
+
+
         /* ==========================================================================
+
            4. NEW PREMIUM SECTIONS
+
            ========================================================================== */
+
         
+
         /* Testimonials */
+
         .testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+
         .testi-card { background: rgba(30,41,59,0.2); border-radius: 24px; padding: 2.5rem; border: 1px solid rgba(255,255,255,0.05); position: relative; }
+
         .testi-card::before { content: '"'; position: absolute; top: 1rem; right: 2rem; font-size: 5rem; color: rgba(255,255,255,0.03); font-family: serif; line-height: 1;}
+
         .testi-stars { color: #F59E0B; font-size: 1.2rem; margin-bottom: 1.5rem; display: flex; gap: 0.3rem; }
+
         .testi-text { font-size: 1.1rem; color: var(--text-main); margin-bottom: 2rem; line-height: 1.6; }
+
         .testi-user { display: flex; align-items: center; gap: 1rem; }
+
         .testi-avatar { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--accent)); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem; color: #fff; }
+
         .testi-info h4 { margin-bottom: 0; font-size: 1.05rem; }
+
         .testi-info p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0;}
+
         @media (max-width: 992px) { .testimonial-grid { grid-template-columns: repeat(2, 1fr); } }
+
         @media (max-width: 768px) { .testimonial-grid { grid-template-columns: 1fr; } }
 
+
+
         /* Trust Badges */
+
         .trust-section { padding: 4rem 0; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.02); }
+
         .trust-text { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 2rem; font-weight: 600;}
+
         .trust-badges { display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap; opacity: 0.6; }
+
         .trust-badges i { font-size: 2.5rem; color: #fff; transition: var(--transition); }
+
         .trust-badges i:hover { opacity: 1; color: var(--accent); transform: scale(1.1); }
 
+
+
         /* Feature Timeline / Roadmap */
-        .timeline { relative; max-width: 800px; margin: 0 auto; padding: 2rem 0; }
+
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; padding: 2rem 0; }
+
         .timeline::before { content: ''; position: absolute; top: 0; left: 50%; width: 2px; height: 100%; background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.1) 10%, rgba(255,255,255,0.1) 90%, transparent); transform: translateX(-50%); }
+
         .timeline-item { margin-bottom: 4rem; position: relative; width: 50%; padding-right: 4rem; left: 0; }
+
         .timeline-item:nth-child(even) { left: 50%; padding-right: 0; padding-left: 4rem; text-align: left; }
+
         .timeline-item:nth-child(odd) { text-align: right; }
+
         .timeline-dot {
+
             position: absolute; top: 0; right: -12px; width: 24px; height: 24px; border-radius: 50%;
+
             background: var(--bg-dark); border: 4px solid var(--primary); z-index: 2; transition: var(--transition);
+
         }
+
         .timeline-item:hover .timeline-dot { border-color: var(--accent); box-shadow: 0 0 20px var(--accent); transform: scale(1.2); }
+
         .timeline-item:nth-child(even) .timeline-dot { left: -12px; right: auto; }
+
         .timeline-content { background: rgba(15,23,42,0.4); padding: 2rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); transition: var(--transition); }
+
         .timeline-content:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-5px); background: rgba(15,23,42,0.6); }
+
         .timeline-date { color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; display: inline-block; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase;}
+
         @media (max-width: 768px) {
+
             .timeline::before { left: 30px; }
+
             .timeline-item { width: 100%; padding-left: 70px; padding-right: 0; text-align: left !important; }
+
             .timeline-item:nth-child(even), .timeline-item:nth-child(odd) { left: 0; }
+
             .timeline-dot { left: 18px !important; right: auto !important; }
+
         }
+
+
 
         /* FAQ */
+
         .faq-container { max-width: 850px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.2rem; }
+
         .faq-item { padding: 0; background: rgba(30, 41, 59, 0.2); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; transition: var(--transition); }
+
         .faq-item:hover { border-color: rgba(255,255,255,0.1); }
+
         .faq-question {
+
             width: 100%; text-align: left; padding: 1.8rem 2rem; background: transparent; border: none;
+
             color: #fff; font-size: 1.2rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+
         }
+
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1); padding: 0 2rem; }
+
         .faq-answer p { padding-bottom: 1.8rem; color: var(--text-muted); font-size: 1.05rem; }
+
         .faq-item.active { border-color: var(--primary); background: rgba(94, 59, 238, 0.05); }
+
         .faq-item.active .faq-answer { max-height: 300px; }
+
         .faq-item.active .faq-question i { transform: rotate(45deg); color: var(--accent); }
+
         .faq-question i { transition: transform 0.4s ease; font-size: 1.5rem; color: var(--text-muted); }
 
+
+
         /* Contact Section */
+
         .contact-info { background: transparent; padding: 0; border: none; box-shadow: none; }
+
         .info-item { display: flex; gap: 1.5rem; align-items: center; padding: 2rem; background: rgba(30, 41, 59, 0.3); border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 1.5rem; transition: var(--transition); }
+
         .info-item:hover { border-color: var(--primary); transform: translateX(10px); background: rgba(30, 41, 59, 0.6); }
+
         .icon-large { font-size: 2.5rem; color: var(--accent); background: rgba(0, 229, 255, 0.1); padding: 1.2rem; border-radius: 50%; }
+
         .info-item h4 { margin-bottom: 0.3rem; font-size: 1.2rem; }
+
         .info-item a, .info-item p { color: var(--text-muted); font-size: 1.05rem; }
+
         
+
         .form-group { margin-bottom: 1.5rem; text-align: left; }
+
         .form-group label { display: block; margin-bottom: 0.6rem; font-weight: 500; color: #cbd5e1; font-size: 0.95rem; }
+
         .glass-input {
+
             width: 100%; padding: 1.2rem; background: rgba(2, 6, 23, 0.5); border: 1px solid rgba(255,255,255,0.1);
+
             border-radius: 16px; color: #fff; font-family: inherit; font-size: 1rem; transition: var(--transition);
+
         }
+
         .glass-input:focus { outline: none; border-color: var(--accent); background: rgba(2, 6, 23, 0.8); box-shadow: 0 0 0 4px rgba(0, 229, 255, 0.1); }
 
+
+
         /* Premium Download CTA */
+
         .cta-box {
+
             background: linear-gradient(135deg, rgba(30,27,75,0.8), rgba(15,23,42,0.9));
+
             border: 1px solid rgba(94, 59, 238, 0.3); border-radius: 40px;
+
             padding: 6rem 3rem; text-align: center; position: relative; overflow: hidden;
+
             box-shadow: 0 30px 60px -10px rgba(0,0,0,0.8);
+
         }
+
         .cta-box::before {
+
             content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+
             background: radial-gradient(circle, rgba(94, 59, 238, 0.15) 0%, transparent 50%);
+
             animation: rotateGlow 15s linear infinite; pointer-events: none;
+
         }
+
         @keyframes rotateGlow { 100% { transform: rotate(360deg); } }
+
         .cta-box h2 { font-size: 4rem; margin-bottom: 1.5rem; position: relative; z-index: 1; }
+
         .cta-box p { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 3rem; position: relative; z-index: 1; max-width: 600px; margin-inline: auto;}
 
+
+
         /* Premium Footer */
+
         .site-footer { background: #01030b; padding-top: 6rem; position: relative; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 4rem; margin-bottom: 4rem; }
-    </style>
-</head>
-<body>
-    <div id="preloader"><div class="spinner"></div></div>
-    <div id="scroll-progress"></div>
-    <div class="bg-mesh"></div>
-    <div class="bg-grid"></div>
-    <div id="particles"></div>
 
-    <!-- PREMIUM SINGLE STICKY GLASSMORPHISM NAVBAR -->
-    <nav class="glass-nav" id="main-navbar">
-        <div class="nav-inner-wrapper">
-            <div class="nav-container">
-                <a href="#hero" class="logo">
-                    <img src="Logo.png" alt="KVR Smart Tools Logo">
-                    <span>KVR Tools</span>
-                </a>
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 4rem; margin-bottom: 
 
-                <div id="nav-center-wrapper">
-                    <ul class="nav-list">
-                        <div id="nav-indicator"></div>
-                        <li><a href="#features" class="nav-link">Features</a></li>
-                        <li><a href="#toolkit" class="nav-link">Toolkit</a></li>
-                        <li><a href="#gallery" class="nav-link">Gallery</a></li>
-                        <li><a href="#roadmap" class="nav-link">Roadmap</a></li>
-                        <li><a href="#faq" class="nav-link">FAQ</a></li>
-                        <li><a href="#contact" class="nav-link">Contact</a></li>
-                    </ul>
-                    
-                    <!-- Mobile View Action Button Area -->
-                    <div class="nav-actions-mobile">
-                        <a href="#download" class="btn btn-primary">
-                            <i class="ri-download-cloud-2-line"></i> Download APK
-                        </a>
-                    </div>
-                </div>
-
-                <div class="nav-actions">
-                    <a href="#download" class="btn btn-primary">
-                        <i class="ri-download-cloud-2-line"></i> Download APK
-                    </a>
-                    <button class="mobile-toggle" id="menu-btn" aria-label="Toggle navigation menu">
-                        <i class="ri-menu-3-line"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- HERO SECTION -->
-    <section class="hero-section" id="hero">
-        <div class="glow-orb orb-1"></div>
-        <div class="glow-orb orb-2"></div>
-        <div class="container hero-container">
-            <div class="hero-content">
-                <div class="badge-pill">
-                    <i class="ri-sparkling-fill"></i> Modern v4.0 Release <span>• Clean & Fast</span>
-                </div>
-                <h1 class="hero-title text-premium">One App.<br><span class="gradient-text">100+ Powerful</span> Smart Tools.</h1>
-                <p class="hero-subtitle">Simplify your daily mobile workflows with an ultimate, highly-optimized utility collection. Engineering efficient tools directly onto your device with absolute privacy focus.</p>
-                <div class="hero-cta">
-                    <a href="#download" class="btn btn-primary btn-lg"><i class="ri-download-cloud-2-line"></i> Download Premium APK</a>
-                    <a href="#features" class="btn btn-outline btn-lg">Explore All Features</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="phone-mockup">
-                    <img src="HeroDashboard.png" alt="KVR Smart Tools Application UI">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- STATS -->
-    <div class="container">
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number">100<span class="stat-suffix">+</span></div>
-                <div class="stat-label">Smart Utilities</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">4.9<span class="stat-suffix">★</span></div>
-                <div class="stat-label">User Rating</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">500<span class="stat-suffix">K+</span></div>
-                <div class="stat-label">Active Global Users</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">100<span class="stat-suffix">%</span></div>
-                <div class="stat-label">Secure & Private</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- FEATURES SECTION -->
-    <section class="section" id="features">
-        <div class="container">
-            <div class="section-header">
-                <h2>Why Choose <span class="gradient-text">KVR Smart Tools</span>?</h2>
-                <p>Designed carefully for creators, casual users, developers, and speed-optimized enthusiasts alike.</p>
-            </div>
-            <div class="grid grid-3">
-                <div class="glass-card feature-card">
-                    <div class="icon-box"><i class="ri-flashlight-line"></i></div>
-                    <h3>Blazing Fast Performance</h3>
-                    <p>Optimized compiled backend footprint ensures immediate loading speed under 15ms across every toolkit component.</p>
-                </div>
-                <div class="glass-card feature-card">
-                    <div class="icon-box"><i class="ri-shield-keyhole-line"></i></div>
-                    <h3>Privacy-First Architecture</h3>
-                    <p>Operates completely local and offline. Your security identifiers, documents, and measurements never upload anywhere.</p>
-                </div>
-                <div class="glass-card feature-card">
-                    <div class="icon-box"><i class="ri-palette-line"></i></div>
-                    <h3>Beautiful Luxury Dark UI</h3>
-                    <p>A completely responsive custom design containing fluid interactive element motion states tailored perfectly for luxury visibility.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="premium-separator"></div>
-
-    <!-- TOOLKIT CATEGORIES -->
-    <section class="section bg-darker" id="toolkit">
-        <div class="container">
-            <div class="section-header">
-                <h2>Mastering the Ultimate <span class="gradient-text">Ecosystem Modules</span></h2>
-                <p>Categorized intuitively so you can find precisely what you require instantly when you need it.</p>
-            </div>
-            <div class="grid grid-4">
-                <div class="category-item">
-                    <i class="ri-calculator-line"></i>
-                    <h4>Advanced Calculators</h4>
-                    <p class="category-subtitle">Dynamic systems, BMI modules, age metrics, complex currency vectors, discount indicators.</p>
-                    <span>14 Tools</span>
-                </div>
-                <div class="category-item">
-                    <i class="ri-qr-code-line"></i>
-                    <h4>QR & Barcode Suites</h4>
-                    <p class="category-subtitle">Instant multi-format scanning arrays, variable barcode dynamic engines, customizable data generation matrices.</p>
-                    <span>8 Tools</span>
-                </div>
-                <div class="category-item">
-                    <i class="ri-file-pdf-2-line"></i>
-                    <h4>Elite PDF & Files</h4>
-                    <p class="category-subtitle">Lossless photo compress formats, fast text extraction maps, encrypted format readers, metadata cleaners.</p>
-                    <span>18 Tools</span>
-                </div>
-                <div class="category-item">
-                    <i class="ri-braces-line"></i>
-                    <h4>Developer Console</h4>
-                    <p class="category-subtitle">Base64 decoders, cryptographic checksum validation nodes, structural code pretty print compilers.</p>
-                    <span>12 Tools</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="premium-separator"></div>
-
-    <!-- GALLERY SCREENSHOTS -->
-    <section class="section" id="gallery">
-        <div class="container">
-            <div class="section-header">
-                <h2>Premium Aesthetics, <span class="gradient-text">Functional Power</span></h2>
-                <p>Sneak peek into our stunning layout architecture crafted specifically for high-efficiency Android frameworks.</p>
-            </div>
-            <div class="gallery-grid screenshot-gallery">
-                <div class="phone-mockup"><img src="Screen1.png" alt="Smart Tools Home Hub Grid UI"></div>
-                <div class="phone-mockup"><img src="Screen2.png" alt="Dynamic Engineering Conversion Module Grid Screen"></div>
-                <div class="phone-mockup"><img src="Screen3.png" alt="High Security Encoded Password Terminal Screen"></div>
-            </div>
-        </div>
-    </section>
-
-    <div class="premium-separator"></div>
-
-    <!-- TIMELINE / ROADMAP -->
-    <section class="section bg-darker" id="roadmap">
-        <div class="container">
-            <div class="section-header">
-                <h2>The Development Plan <span class="gradient-text">& Roadmap</span></h2>
-                <p>Tracking the trajectory of features moving straight from planning pipelines to target production releases.</p>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Phase 1 - Launched</span>
-                        <h3>Core Architecture Framework</h3>
-                        <p>Established underlying ultra-optimized offline core structures containing early diagnostic modules and fundamental algorithmic configurations.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Phase 2 - Current Stable</span>
-                        <h3>PDF Suites & Dev Array Additions</h3>
-                        <p>Integrated full standalone client-side file conversions, real-time string hashing configurations, and enhanced base layout responsiveness templates.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Phase 3 - Future Target</span>
-                        <h3>Cloud Analytics Link (Optional Patch)</h3>
-                        <p>Developing fully secure remote telemetry capabilities alongside continuous integration updates containing expanded custom parameters.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="premium-separator"></div>
-
-    <!-- TESTIMONIALS -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Validated by millions <span class="gradient-text">worldwide</span></h2>
-                <p>See what professional utility users, elite mobile developers, and casual users express about their daily interaction experiences.</p>
-            </div>
-            <div class="testimonial-grid">
-                <div class="testi-card">
-                    <div class="testi-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
-                    <p class="testi-text">"KVR completely replaced nearly a dozen single-purpose applications on my local device storage. The base performance scaling rates feel absolutely phenomenal."</p>
-                    <div class="testi-user">
-                        <div class="testi-avatar">A</div>
-                        <div class="testi-info"><h4>Alex Rivera</h4><p>Senior Android Systems Architect</p></div>
-                    </div>
-                </div>
-                <div class="testi-card">
-                    <div class="testi-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
-                    <p class="testi-text">"The scanning response profiles work seamlessly offline. I highly commend the privacy-first model architecture choices across the core parameters."</p>
-                    <div class="testi-user">
-                        <div class="testi-avatar">M</div>
-                        <div class="testi-info"><h4>Marcus Chen</h4><p>Lead Cyber Security Reviewer</p></div>
-                    </div>
-                </div>
-                <div class="testi-card">
-                    <div class="testi-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
-                    <p class="testi-text">"Incredibly rich feature set cleanly organized into a premium dark glass interface theme layout that looks stunning on high refresh screens."</p>
-                    <div class="testi-user">
-                        <div class="testi-avatar">S</div>
-                        <div class="testi-info"><h4>Sarah Jenkins</h4><p>Freelance Fullstack Creator</p></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TRUST BADGES -->
-    <section class="trust-section">
-        <div class="container">
-            <p class="trust-text">Verified Secure Distribution Integrations</p>
-            <div class="trust-badges">
-                <i class="ri-android-line" title="Native Android Core Architecture Package"></i>
-                <i class="ri-shield-check-line" title="Completely Clean Malware Scanning Pass Signature"></i>
-                <i class="ri-code-box-line" title="W3C Validated Fluid Layout Integration Framework"></i>
-                <i class="ri-lock-password-line" title="Total Advanced Local Cryptography Integration Standard"></i>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ SECTION -->
-    <section class="section bg-darker" id="faq">
-        <div class="container">
-            <div class="section-header">
-                <h2>Frequently Asked <span class="gradient-text">Insights</span></h2>
-                <p>Clear, direct context responses answering common foundational application functionality mechanics questions.</p>
-            </div>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <button class="faq-question">Are there hidden subscription rates or microtransactions? <i class="ri-add-line"></i></button>
-                    <div class="faq-answer"><p>No. KVR Smart Tools features a fully comprehensive distribution setup. Every single toolkit calculator, analyzer, encoder, and conversion option operates uniformly without hidden microtransaction frameworks.</p></div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">Can the application function completely decoupled from mobile data connection matrices? <i class="ri-add-line"></i></button>
-                    <div class="faq-answer"><p>Absolutely. The application suite architecture models are built locally right onto target user terminal instances. All data manipulations process securely within internal boundaries without requiring remote verification infrastructure.</p></div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">How does local media compression preserve high fidelity properties? <i class="ri-add-line"></i></button>
-                    <div class="faq-answer"><p>Our utility frameworks process specialized quantizations targeting heavy mathematical structural artifacts without introducing significant generational blur to visual components.</p></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section class="section" id="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2>Connect with <span class="gradient-text">Our Engineers</span></h2>
-                <p>Have an explicit optimization idea, custom tooling requirements suggestion, or standard configuration check? Drop us a prompt.</p>
-            </div>
-            <div class="grid grid-2">
-                <div class="contact-info">
-                    <div class="info-item">
-                        <i class="ri-mail-open-line icon-large"></i>
-                        <div>
-                            <h4>Direct Email Terminal</h4>
-                            <a href="mailto:venkatesh.official4775@gmail.com">venkatesh.official4775@gmail.com</a>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="ri-map-pin-user-line icon-large"></i>
-                        <div>
-                            <h4>Global Core Lab Operations</h4>
-                            <p>Premium Digital Infrastructure Circle, Suite 404</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="glass-card">
-                    <form id="contactForm" onsubmit="event.preventDefault();">
-                        <div class="form-group">
-                            <label for="form-name">Identified Name Signature</label>
-                            <input type="text" id="form-name" class="glass-input" placeholder="e.g. John Doe" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="form-email">Target Return Email Address</label>
-                            <input type="email" id="form-email" class="glass-input" placeholder="e.g. name@domain.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="form-message">Telemetry Message Content</label>
-                            <textarea id="form-message" class="glass-input" rows="5" placeholder="Specify your primary architectural suggestions or inquiries..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100"><i class="ri-send-plane-2-line"></i> Transmit Request Packet</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- DOWNLOAD CALL TO ACTION (CTA) -->
-    <section class="section pt-0" id="download">
-        <div class="container">
-            <div class="cta-box">
-                <h2 class="text-premium">Experience Mobile Sovereignty Today.</h2>
-                <p>Equip your personal hardware ecosystem terminal instances with over 100+ native high efficiency utilities packaged cleanly together inside a single optimized executable file signature.</p>
-                <a href="#" class="btn btn-primary btn-lg"><i class="ri-download-cloud-2-line"></i> Download Core APK Framework</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <a href="#hero" class="logo" style="margin-bottom: 1.5rem;">
-                        <img src="Logo.png" alt="KVR Smart Tools Logo">
-                        <span>KVR Tools</span>
-                    </a>
-                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Empowering target system hardware architectures with highly localized processing layers engineered for modern efficiency standards.</p>
-                </div>
-                <div>
-                    <h4 style="font-size: 1.1rem; margin-bottom: 1.5rem;">Ecosystem Nodes</h4>
-                    <ul style="display: flex; flex-direction: column; gap: 0.8rem;">
-                        <li><a href="#features" style="color: var(--text-muted); text-decoration: none;">Core Features</a></li>
-                        <li><a href="#toolkit" style="color: var(--text-muted); text-decoration: none;">Utility Suite Matrix</a></li>
-                        <li><a href="#gallery" style="color: var(--text-muted); text-decoration: none;">Screenshot Interface</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 style="font-size: 1.1rem; margin-bottom: 1.5rem;">Direct Compliance</h4>
-                    <ul style="display: flex; flex-direction: column; gap: 0.8rem;">
-                        <li><a href="#faq" style="color: var(--text-muted); text-decoration: none;">Faq Database</a></li>
-                        <li><a href="#roadmap" style="color: var(--text-muted); text-decoration: none;">Product Lifecycle</a></li>
-                        <li><a href="#contact" style="color: var(--text-muted); text-decoration: none;">Secure Support Channels</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 style="font-size: 1.1rem; margin-bottom: 1.5rem;">Signature Verification</h4>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">MD5 Hash Signoff Pass check verification token active for clean build distributions.</p>
-                    <span style="font-family: monospace; font-size: 0.8rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 0.4rem 0.8rem; border-radius: 8px; display: inline-block; color: var(--accent);">SHA-256: 9E107D9D372B...</span>
-                </div>
-            </div>
-            
-            <div style="border-t: 1px solid rgba(255,255,255,0.05); padding: 2.5rem 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
-                <p style="color: var(--text-muted); font-size: 0.95rem;">&copy; 2026 KVR Smart Developer Suite Systems. All rights reserved globally.</p>
-                <div style="display: flex; gap: 2rem;">
-                    <a href="#" style="color: var(--text-muted); font-size: 0.9rem;">Privacy Protocols</a>
-                    <a href="#" style="color: var(--text-muted); font-size: 0.9rem;">Terms of Service Map</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scripts Logic -->
-    <script>
-        // Preloader Handling
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            preloader.style.opacity = '0';
-            setTimeout(() => preloader.style.visibility = 'hidden', 600);
-        });
-
-        // Dynamic Particles Array Generator
-        const particleContainer = document.getElementById('particles');
-        const particleCount = 20;
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-            particle.style.left = `${Math.random() * 100}vw`;
-            const size = Math.random() * 4 + 2;
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-            particle.style.animationDuration = `${Math.random() * 8 + 6}s`;
-            particle.style.animationDelay = `${Math.random() * 5}s`;
-            particleContainer.appendChild(particle);
-        }
-
-        // Scroll Tracker Mechanics
-        const navbar = document.getElementById('main-navbar');
-        const progressBar = document.getElementById('scroll-progress');
-        window.addEventListener('scroll', () => {
-            const scrollMax = document.documentElement.scrollHeight - window.innerHeight;
-            const percentage = (window.scrollY / scrollMax) * 100;
-            progressBar.style.width = `${percentage}%`;
-            
-            if (window.scrollY > 40) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-            updateActiveNav();
-        });
-
-        // Interactive Menu Mobile Handling
-        const toggleBtn = document.getElementById('menu-btn');
-        const centerWrapper = document.getElementById('nav-center-wrapper');
-        const mobileLinks = document.querySelectorAll('.nav-link');
-        
-        toggleBtn.addEventListener('click', () => {
-            centerWrapper.classList.toggle('active');
-            const icon = toggleBtn.querySelector('i');
-            if (centerWrapper.classList.contains('active')) {
-                icon.className = 'ri-close-line';
-            } else {
-                icon.className = 'ri-menu-3-line';
-            }
-        });
-
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                centerWrapper.classList.remove('active');
-                toggleBtn.querySelector('i').className = 'ri-menu-3-line';
-            });
-        });
-
-        // Modern Luxury Dynamic Pill Navigation Trackers
-        const navLinks = document.querySelectorAll('.nav-link');
-        const navIndicator = document.getElementById('nav-indicator');
-        const sections = document.querySelectorAll('section[id]');
-
-        function updateIndicator(element) {
-            if (!element || window.innerWidth <= 920) {
-                navIndicator.style.opacity = '0';
-                return;
-            }
-            const rect = element.getBoundingClientRect();
-            const wrapperRect = element.closest('.nav-list').getBoundingClientRect();
-            navIndicator.style.width = `${rect.width}px`;
-            navIndicator.style.left = `${rect.left - wrapperRect.left}px`;
-            navIndicator.style.opacity = '1';
-        }
-
-        function updateActiveNav() {
-            let scrollY = window.pageYOffset;
-            let currentSection = null;
-
-            sections.forEach(section => {
-                const sectionHeight = section.offsetHeight;
-                const sectionTop = section.offsetTop - 160;
-                const sectionId = section.getAttribute('id');
-                
-                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                    currentSection = document.querySelector(`.nav-link[href="#${sectionId}"]`);
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-
-            if (currentSection) {
-                currentSection.classList.add('active');
-                updateIndicator(currentSection);
-            } else {
-                navIndicator.style.opacity = '0';
-            }
-        }
-
-        navLinks.forEach(link => {
-            link.addEventListener('mouseenter', (e) => {
-                if(window.innerWidth > 920) {
-                    updateIndicator(e.target);
-                }
-            });
-        });
-
-        document.querySelector('.nav-list').addEventListener('mouseleave', () => {
-            updateActiveNav();
-        });
-
-        window.addEventListener('resize', () => {
-            updateActiveNav();
-        });
-        
-        // Initial call
-        setTimeout(updateActiveNav, 100);
-
-        // Accordion FAQ Layout Mechanics
-        document.querySelectorAll('.faq-question').forEach(button => {
-            button.addEventListener('click', () => {
-                const item = button.parentElement;
-                item.classList.toggle('active');
-                
-                // Collapse sibling entries optional loop
-                document.querySelectorAll('.faq-item').forEach(sibling => {
-                    if (sibling !== item) {
-                        sibling.classList.remove('active');
-                    }
-                });
-            });
-        });
-    </script>
-</body>
-</html>
