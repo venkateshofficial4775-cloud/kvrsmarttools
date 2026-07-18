@@ -3,646 +3,976 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KVR Smart Tools - Premium All-in-One Android Utility Application</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            blue: '#3b82f6',
-                            purple: '#8b5cf6',
-                            dark: '#0f172a',
-                            light: '#f8fafc',
-                        }
-                    },
-                    animation: {
-                        'gradient-x': 'gradient-x 15s ease infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'border-glow': 'border-glow 4s linear infinite',
-                    },
-                    keyframes: {
-                        'gradient-x': {
-                            '0%, 100%': { 'background-position': '0% 50%' },
-                            '50%': { 'background-position': '100% 50%' },
-                        },
-                        'border-glow': {
-                            '0%, 100%': { 'border-color': 'rgba(59, 130, 246, 0.4)' },
-                            '50%': { 'border-color': 'rgba(139, 92, 246, 0.4)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <title>KVR Smart Tools - The Ultimate All-in-One Utility App</title>
     <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #131a2c;
+            --bg-tertiary: #1e293b;
+            --accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.5);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         html {
             scroll-behavior: smooth;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
         }
+
         body {
-            background-color: #0b0f19;
-            color: #f8fafc;
             overflow-x: hidden;
+            line-height: 1.6;
         }
-        .glass-panel {
-            background: rgba(15, 23, 42, 0.65);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+
+        /* Utilities */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
-        .glass-card {
-            background: rgba(30, 41, 59, 0.4);
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 60px auto;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: #fff;
+            box-shadow: 0 4px 14px var(--accent-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--accent-glow);
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(11, 15, 25, 0.8);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-bottom: 1px solid var(--border);
+            height: 70px;
+            display: flex;
+            align-items: center;
         }
-        .glass-card:hover {
-            background: rgba(30, 41, 59, 0.6);
-            border-color: rgba(139, 92, 246, 0.3);
-            transform: translateY(-6px);
-            box-shadow: 0 20px 40px -15px rgba(139, 92, 246, 0.15);
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
         }
-        .text-gradient {
-            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #f472b6 100%);
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .nav-toggle span {
+            width: 24px;
+            height: 2px;
+            background-color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        /* Hero */
+        .hero {
+            padding-top: 160px;
+            padding-bottom: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .hero-content h1 span {
+            color: var(--accent);
+            background: linear-gradient(45deg, #3b82f6, #60a5fa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .bg-gradient-brand {
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 36px;
+            max-width: 540px;
         }
-        .nav-active {
-            color: #60a5fa !important;
-            background: rgba(59, 130, 246, 0.08);
+
+        .hero-image-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        .nav-link-glow {
+
+        .hero-image-wrapper img {
+            max-width: 320px;
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 40px rgba(59, 130, 246, 0.2);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Features Quick Grid */
+        .features-quick {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .f-quick-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 24px;
+            border-radius: var(--radius-md);
+            transition: var(--transition);
+        }
+
+        .f-quick-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .f-quick-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .f-quick-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Categories Section */
+        .categories-section {
+            background-color: var(--bg-secondary);
+        }
+
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .cat-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .cat-img-box {
+            padding: 24px 24px 0 24px;
+            background: linear-gradient(180deg, var(--bg-tertiary) 0%, var(--bg-primary) 100%);
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+            height: 240px;
+        }
+
+        .cat-img-box img {
+            max-width: 180px;
+            width: 100%;
+            object-fit: contain;
+            object-position: top;
+            transition: var(--transition);
+        }
+
+        .cat-card:hover .cat-img-box img {
+            transform: scale(1.05);
+        }
+
+        .cat-info {
+            padding: 24px;
+            flex-grow: 1;
+        }
+
+        .cat-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .cat-info p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Screenshots Slider/Gallery */
+        .screenshots-section {
             position: relative;
         }
-        .nav-link-glow::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
+
+        .slider-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            padding: 20px 0;
         }
-        .nav-link-glow:hover::after, .nav-active::after {
-            width: 80%;
+
+        .slider-track {
+            display: flex;
+            gap: 24px;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            width: max-content;
         }
-        /* Custom dynamic scroll behavior for Header */
-        .scrolled-navbar {
-            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.7), 0 1px 0px 0px rgba(255, 255, 255, 0.08);
-            padding-top: 0.75rem !important;
-            padding-bottom: 0.75rem !important;
-            background: rgba(11, 15, 25, 0.8) !important;
+
+        .slide {
+            width: 260px;
+            flex-shrink: 0;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+            background: var(--bg-secondary);
         }
-        /* Hide scrollbar for gallery */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
+
+        .slide img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .slider-btn {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .slider-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* FAQ Accordion */
+        .faq-section {
+            background-color: var(--bg-secondary);
+        }
+
+        .faq-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .faq-trigger {
+            width: 100%;
+            padding: 20px 24px;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-trigger span::after {
+            content: '+';
+            font-size: 1.4rem;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .faq-item.active .faq-trigger span::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 24px;
+            color: var(--text-muted);
+        }
+
+        .faq-item.active .faq-content {
+            padding: 0 24px 20px 24px;
+        }
+
+        /* Contact Form */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .contact-info-panel {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: var(--radius-md);
+            height: 100%;
+        }
+
+        .contact-info-panel h3 {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+        }
+
+        .contact-info-panel p {
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .contact-method {
+            margin-bottom: 24px;
+        }
+
+        .contact-method h4 {
+            font-size: 1rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .contact-method p {
+            color: var(--text-main);
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+
+        .contact-form {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: var(--radius-md);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .form-group input, .form-group textarea {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 8px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-primary);
+            border-top: 1px solid var(--border);
+            padding: 60px 0 30px 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            margin-top: 16px;
+            max-width: 320px;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 30px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 968px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+            .hero-content p {
+                margin: 0 auto 36px auto;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--bg-secondary);
+                flex-direction: column;
+                padding: 24px;
+                gap: 16px;
+                border-bottom: 1px solid var(--border);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-toggle {
+                display: flex;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
         }
     </style>
 </head>
-<body class="font-sans dynamic-nav-tracker">
+<body>
 
-    <!-- PREMIUM REDESIGNED NAVIGATION BAR -->
-    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out py-5 px-4 md:px-8 border-b border-white/[0.03] bg-slate-950/40 backdrop-blur-xl animate-border-glow">
-        <div class="max-w-7xl mx-auto flex items-center justify-between">
-            
-            <!-- Logo Alignment -->
-            <a href="#" class="flex items-center gap-3 group transition-transform duration-300 hover:scale-[1.02]">
-                <div class="w-10 h-10 rounded-xl bg-gradient-brand flex items-center justify-between p-2 shadow-lg shadow-blue-500/20 group-hover:shadow-purple-500/30 transition-all duration-500">
-                    <i class="fa-solid fa-sliders text-white text-xl m-auto"></i>
-                </div>
-                <div class="flex flex-col">
-                    <span class="text-xl font-extrabold tracking-tight text-white group-hover:text-blue-400 transition-colors duration-300">KVR <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Smart Tools</span></span>
-                    <span class="text-[10px] text-slate-400 font-medium uppercase tracking-widest -mt-0.5">Utility Ecosystem</span>
-                </div>
+    <!-- Header / Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="Logo.png" alt="KVR Smart Tools Logo">
+                <span>KVR Smart Tools</span>
             </a>
-
-            <!-- Desktop Luxurious Navigation Links -->
-            <nav class="hidden lg:flex items-center gap-1 bg-white/[0.03] border border-white/[0.05] p-1.5 rounded-full backdrop-blur-md">
-                <a href="#hero" class="nav-item nav-link-glow px-4 py-2 rounded-full text-sm font-medium text-slate-300 hover:text-white transition-all duration-300">Home</a>
-                <a href="#features" class="nav-item nav-link-glow px-4 py-2 rounded-full text-sm font-medium text-slate-300 hover:text-white transition-all duration-300">Features</a>
-                <a href="#toolkit" class="nav-item nav-link-glow px-4 py-2 rounded-full text-sm font-medium text-slate-300 hover:text-white transition-all duration-300">Toolkit</a>
-                <a href="#gallery" class="nav-item nav-link-glow px-4 py-2 rounded-full text-sm font-medium text-slate-300 hover:text-white transition-all duration-300">Gallery</a>
-                <a href="#roadmap" class="nav-item nav-link-glow px-4 py-2 rounded-full text-sm font-medium text-slate-300 hover:text-white transition-all duration-300">Roadmap</a>
-                <a href="#faq" class="nav-item nav-link-glow px-4 py-2 rounded-full text-sm font-medium text-slate-300 hover:text-white transition-all duration-300">FAQ</a>
-                <a href="#contact" class="nav-item nav-link-glow px-4 py-2 rounded-full text-sm font-medium text-slate-300 hover:text-white transition-all duration-300">Contact</a>
-            </nav>
-
-            <!-- Premium Premium Single Action Call -->
-            <div class="hidden lg:block">
-                <a href="#download" class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-bold text-white rounded-full group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-800 transition-all duration-300 transform hover:scale-[1.05] hover:shadow-lg hover:shadow-blue-500/25">
-                    <span class="relative px-6 py-2.5 transition-all ease-in duration-75 bg-slate-950 rounded-full group-hover:bg-opacity-0 flex items-center gap-2">
-                        <i class="fa-solid fa-cloud-arrow-down text-blue-400 group-hover:text-white transition-colors duration-300"></i>
-                        Download APK
-                    </span>
-                </a>
-            </div>
-
-            <!-- Mobile Hamburger Button -->
-            <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 rounded-xl bg-white/[0.05] border border-white/[0.1] flex flex-col items-center justify-center gap-1.5 focus:outline-none transition-all duration-300 active:scale-95" aria-label="Toggle Menu">
-                <span class="w-5 h-0.5 bg-slate-200 transition-all duration-300 transform raw-line-1"></span>
-                <span class="w-5 h-0.5 bg-slate-200 transition-all duration-300 opacity-100 raw-line-2"></span>
-                <span class="w-5 h-0.5 bg-slate-200 transition-all duration-300 transform raw-line-3"></span>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#screenshots">Screenshots</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
+    </nav>
 
-        <!-- Mobile Drawer Menu -->
-        <div id="mobile-drawer" class="lg:hidden fixed top-[73px] left-0 right-0 bottom-0 bg-slate-950/95 backdrop-blur-2xl border-t border-white/[0.05] px-6 py-8 flex flex-col gap-6 transform translate-x-full transition-transform duration-500 ease-in-out overflow-y-auto">
-            <nav class="flex flex-col gap-2">
-                <a href="#hero" class="mobile-nav-item flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] transition-all duration-300">
-                    <span>Home</span><i class="fa-solid fa-chevron-right text-xs opacity-50"></i>
-                </a>
-                <a href="#features" class="mobile-nav-item flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] transition-all duration-300">
-                    <span>Features</span><i class="fa-solid fa-chevron-right text-xs opacity-50"></i>
-                </a>
-                <a href="#toolkit" class="mobile-nav-item flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] transition-all duration-300">
-                    <span>Toolkit</span><i class="fa-solid fa-chevron-right text-xs opacity-50"></i>
-                </a>
-                <a href="#gallery" class="mobile-nav-item flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] transition-all duration-300">
-                    <span>Gallery</span><i class="fa-solid fa-chevron-right text-xs opacity-50"></i>
-                </a>
-                <a href="#roadmap" class="mobile-nav-item flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] transition-all duration-300">
-                    <span>Roadmap</span><i class="fa-solid fa-chevron-right text-xs opacity-50"></i>
-                </a>
-                <a href="#faq" class="mobile-nav-item flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] transition-all duration-300">
-                    <span>FAQ</span><i class="fa-solid fa-chevron-right text-xs opacity-50"></i>
-                </a>
-                <a href="#contact" class="mobile-nav-item flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] transition-all duration-300">
-                    <span>Contact</span><i class="fa-solid fa-chevron-right text-xs opacity-50"></i>
-                </a>
-            </nav>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <h1>Simplify Your Day With <span>KVR Smart Tools</span></h1>
+                <p>The premium, all-in-one Android utility box designed to bundle your everyday essentials into a sleek, lightning-fast application. No junk, no bloat—just smart features.</p>
+                <a href="#contact" class="btn btn-primary">Get the App</a>
+            </div>
+            <div class="hero-image-wrapper">
+                <img src="home.png" alt="KVR Smart Tools Home Screen View">
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Features Section -->
+    <section class="section" id="features">
+        <div class="container">
+            <h2 class="section-title">Engineered to Supercharge Efficiency</h2>
+            <p class="section-subtitle">Why load down your storage with dozens of separate single-use apps? KVR Smart Tools offers an elegant suite that handles it all beautifully.</p>
             
-            <div class="mt-auto pt-6 border-t border-white/[0.05]">
-                <a href="#download" class="mobile-nav-item w-full bg-gradient-brand text-center block py-4 rounded-xl font-bold text-white shadow-lg shadow-blue-500/20 hover:opacity-95 transition-opacity duration-300">
-                    <i class="fa-solid fa-cloud-arrow-down mr-2"></i>Download APK
-                </a>
+            <div class="features-quick">
+                <div class="f-quick-card">
+                    <h3>⚡ Extreme Performance</h3>
+                    <p>Optimized package size that responds instantly without eating up device system memory or background battery life.</p>
+                </div>
+                <div class="f-quick-card">
+                    <h3>🎨 Clean Modern Interface</h3>
+                    <p>Designed strictly for the dark mode aesthetic. Clean padding, minimal lines, and high discoverability.</p>
+                </div>
+                <div class="f-quick-card">
+                    <h3>🔒 Strict Data Privacy</h3>
+                    <p>Your measurements, scans, and calculations stay local. We don't farm your personal details out to third parties.</p>
+                </div>
             </div>
         </div>
-    </header>
+    </section>
 
-    <!-- PREMIUM HERO SECTION -->
-    <section id="hero" class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden flex items-center justify-center min-h-screen">
-        <!-- Background Elements -->
-        <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] animate-pulse-slow"></div>
-        <div class="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[150px] animate-pulse-slow"></div>
-        <div class="absolute inset-0 bg-[radial-gradient(transparent_1px,#0b0f19_1px)] bg-[size:20px_20px] opacity-30"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <!-- Hero Content -->
-            <div class="lg:col-span-7 text-center lg:text-left space-y-6" data-aos="fade-right" data-aos-duration="1000">
-                <div class="inline-flex items-center gap-2 bg-white/[0.04] border border-white/[0.08] px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide text-blue-400 backdrop-blur-sm">
-                    <span class="flex h-2 w-2 rounded-full bg-blue-400 animate-ping"></span>
-                    <span>v4.2.0 Premium Upgrade Live</span>
-                </div>
-                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
-                    One Single App.<br>
-                    <span class="text-gradient">100+ Premium</span> Smart Tools.
-                </h1>
-                <p class="text-lg text-slate-400 max-w-2xl mx-auto lg:mx-0">
-                    Optimize your Android system, manage advanced conversions, scan assets, calculate variables, and run system diagnostics instantly using the absolute peak of utility application architecture.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
-                    <a href="#download" class="bg-gradient-brand hover:opacity-90 text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-blue-500/20 transform hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-3">
-                        <i class="fa-brands fa-android text-xl"></i> Get Premium APK
-                    </a>
-                    <a href="#toolkit" class="bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 backdrop-blur-sm flex items-center justify-center gap-2">
-                        Explore Ecosystem <i class="fa-solid fa-arrow-right text-xs"></i>
-                    </a>
-                </div>
-                <!-- Mini Stats -->
-                <div class="grid grid-cols-3 gap-4 pt-8 border-t border-white/[0.05] max-w-md mx-auto lg:mx-0">
-                    <div>
-                        <p class="text-2xl font-bold text-white">4.9★</p>
-                        <p class="text-xs text-slate-500 font-medium">App Rating</p>
+    <!-- Categories Section -->
+    <section class="section categories-section" id="categories">
+        <div class="container">
+            <h2 class="section-title">Explore Built-in Tools</h2>
+            <p class="section-subtitle">Dive into dedicated tool hubs engineered to provide immediate value whenever and wherever you need them.</p>
+            
+            <div class="cat-grid">
+                <!-- Category 1 -->
+                <div class="cat-card">
+                    <div class="cat-img-box">
+                        <img src="calculators.png" alt="Calculators Interface">
                     </div>
-                    <div>
-                        <p class="text-2xl font-bold text-white">5M+</p>
-                        <p class="text-xs text-slate-500 font-medium">Downloads</p>
-                    </div>
-                    <div>
-                        <p class="text-2xl font-bold text-white">100+</p>
-                        <p class="text-xs text-slate-500 font-medium">Built-in Utilities</p>
+                    <div class="cat-info">
+                        <h3>Advanced Calculators</h3>
+                        <p>Perform precise computational equations, standard arithmetic variations, unit conversions, and operational algorithms on a streamlined interface.</p>
                     </div>
                 </div>
-            </div>
 
-            <!-- Hero Graphics/Device -->
-            <div class="lg:col-span-5 flex justify-center relative" data-aos="fade-left" data-aos-duration="1000">
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full filter blur-3xl opacity-30 transform scale-75 animate-pulse-slow"></div>
-                <!-- Realistic Premium Phone Mockup container -->
-                <div class="relative max-w-[280px] sm:max-w-[310px] w-full border-[6px] border-slate-800 rounded-[40px] shadow-2xl overflow-hidden bg-slate-950 backdrop-blur-xl">
-                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-4 bg-slate-800 rounded-b-xl z-20"></div>
-                    <div class="p-4 space-y-4 pt-8">
-                        <!-- Simulated App UI inside mockup -->
-                        <div class="flex justify-between items-center text-xs opacity-60">
-                            <span>KVR Dashboard</span>
-                            <i class="fa-solid fa-battery-three-quarters text-emerald-400"></i>
-                        </div>
-                        <div class="bg-white/[0.03] p-3 rounded-xl border border-white/[0.05]">
-                            <p class="text-[10px] uppercase tracking-wider text-slate-400">RAM Status</p>
-                            <p class="text-xl font-bold text-blue-400">34% Used <span class="text-xs text-slate-500 font-normal">of 12GB</span></p>
-                            <div class="w-full bg-slate-800 h-1.5 rounded-full mt-2 overflow-hidden">
-                                <div class="bg-blue-500 h-full w-[34%]"></div>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-2 gap-2">
-                            <div class="bg-white/[0.03] p-2.5 rounded-xl border border-white/[0.05] flex flex-col items-center text-center">
-                                <i class="fa-solid fa-bolt text-amber-400 text-lg mb-1"></i>
-                                <span class="text-[10px] font-semibold">Speed Booster</span>
-                            </div>
-                            <div class="bg-white/[0.03] p-2.5 rounded-xl border border-white/[0.05] flex flex-col items-center text-center">
-                                <i class="fa-solid fa-qrcode text-purple-400 text-lg mb-1"></i>
-                                <span class="text-[10px] font-semibold">QR Scanner</span>
-                            </div>
-                            <div class="bg-white/[0.03] p-2.5 rounded-xl border border-white/[0.05] flex flex-col items-center text-center">
-                                <i class="fa-solid fa-gauge-high text-blue-400 text-lg mb-1"></i>
-                                <span class="text-[10px] font-semibold">Sensor Monitor</span>
-                            </div>
-                            <div class="bg-white/[0.03] p-2.5 rounded-xl border border-white/[0.05] flex flex-col items-center text-center">
-                                <i class="fa-solid fa-compass text-rose-400 text-lg mb-1"></i>
-                                <span class="text-[10px] font-semibold">Compass Pro</span>
-                            </div>
-                        </div>
-                        <div class="bg-gradient-to-r from-blue-600/20 to-purple-600/20 p-3 rounded-xl border border-blue-500/20 text-center">
-                            <p class="text-[11px] text-slate-300">100+ additional tools ready</p>
-                        </div>
+                <!-- Category 2 -->
+                <div class="cat-card">
+                    <div class="cat-img-box">
+                        <img src="finance.png" alt="Finance Tools Interface">
+                    </div>
+                    <div class="cat-info">
+                        <h3>Financial Trackers</h3>
+                        <p>Keep your financial calculations organized. Manage dynamic mathematical insights covering currency rates, EMI interest options, and instant micro-budgets.</p>
+                    </div>
+                </div>
+
+                <!-- Category 3 -->
+                <div class="cat-card">
+                    <div class="cat-img-box">
+                        <img src="qrtools.png" alt="QR Tools Interface">
+                    </div>
+                    <div class="cat-info">
+                        <h3>QR & Scanner Utilities</h3>
+                        <p>Generate clean vector QR matrices or scan barcodes instantly via your device's built-in optical sensor array without latency barriers.</p>
+                    </div>
+                </div>
+
+                <!-- Category 4 -->
+                <div class="cat-card">
+                    <div class="cat-img-box">
+                        <img src="health.png" alt="Health Utilities Interface">
+                    </div>
+                    <div class="cat-info">
+                        <h3>Vital Health Trackers</h3>
+                        <p>Evaluate body metrics quickly using integrated indicators like Body Mass Index computations to track structural lifestyle baselines seamlessly.</p>
+                    </div>
+                </div>
+
+                <!-- Category 5 -->
+                <div class="cat-card">
+                    <div class="cat-img-box">
+                        <img src="flash.png" alt="Flash and Light tools Interface">
+                    </div>
+                    <div class="cat-info">
+                        <h3>System Utilities</h3>
+                        <p>Control dynamic hardware sensors with high-intensity brightness toggles, emergency pulsing signals, and standard lighting assistance functions.</p>
+                    </div>
+                </div>
+
+                <!-- Category 6 -->
+                <div class="cat-card">
+                    <div class="cat-img-box">
+                        <img src="categories.png" alt="Diverse Tool Categories">
+                    </div>
+                    <div class="cat-info">
+                        <h3>Comprehensive Hub</h3>
+                        <p>Access intuitive configurations grouping multi-functional assets. Switch effortlessly between distinct utility modes without losing user configurations.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CORE FEATURE CARDS SECTION -->
-    <section id="features" class="py-24 relative z-20 bg-slate-950/40 border-y border-white/[0.02]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center space-y-4 mb-16" data-aos="fade-up">
-                <p class="text-sm font-bold uppercase tracking-widest text-purple-400">Engineered Architecture</p>
-                <h2 class="text-3xl md:text-5xl font-extrabold text-white">Built for Maximum Efficiency</h2>
-                <div class="w-16 h-1 bg-gradient-brand mx-auto rounded-full"></div>
+    <!-- Screenshots Section -->
+    <section class="section screenshots-section" id="screenshots">
+        <div class="container">
+            <h2 class="section-title">App Walkthrough Gallery</h2>
+            <p class="section-subtitle">Take a direct visual tour through the refined user experience layouts built entirely within KVR Smart Tools.</p>
+            
+            <div class="slider-container">
+                <div class="slider-track" id="sliderTrack">
+                    <div class="slide"><img src="home.png" alt="App Home Panel View"></div>
+                    <div class="slide"><img src="categories.png" alt="Main Dashboard Configurations Layout"></div>
+                    <div class="slide"><img src="categories2.png" alt="Extended Tools Matrix View"></div>
+                    <div class="slide"><img src="calculators.png" alt="Mathematical Calculations Module View"></div>
+                    <div class="slide"><img src="finance.png" alt="Finance Calculator Interface Screen"></div>
+                    <div class="slide"><img src="qrtools.png" alt="QR Generator Matrix Controls Panel"></div>
+                    <div class="slide"><img src="health.png" alt="BMI Tracking Interface Module"></div>
+                    <div class="slide"><img src="flash.png" alt="Light Utility Optimization Screen"></div>
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="glass-card p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-6">
-                        <i class="fa-solid fa-rocket text-blue-400 text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Ultra-Fast Performance</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Engineered with native components guaranteeing execution speeds sub-10ms for complex mathematical processes and operations.
-                    </p>
-                </div>
-                <!-- Card 2 -->
-                <div class="glass-card p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-6">
-                        <i class="fa-solid fa-shield-halved text-purple-400 text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Zero-Data Logging Policy</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Complete offline architecture. All local storage, hardware testing, conversions, and metrics remain localized securely on your target terminal.
-                    </p>
-                </div>
-                <!-- Card 3 -->
-                <div class="glass-card p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-12 h-12 rounded-2xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center mb-6">
-                        <i class="fa-solid fa-wand-magic-sparkles text-pink-400 text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Fluid Glassmorphism UI</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Clean elegant styling lines crafted carefully following advanced modern design languages to create an immersive responsive interaction system.
-                    </p>
-                </div>
+            <div class="slider-controls">
+                <button class="slider-btn" id="slidePrev" aria-label="Previous Slide">←</button>
+                <button class="slider-btn" id="slideNext" aria-label="Next Slide">→</button>
             </div>
         </div>
     </section>
 
-    <!-- TOOLKIT CATEGORIES SECTION -->
-    <section id="toolkit" class="py-24 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center space-y-4 mb-16" data-aos="fade-up">
-                <p class="text-sm font-bold uppercase tracking-widest text-blue-400">Endless Possibilities</p>
-                <h2 class="text-3xl md:text-5xl font-extrabold text-white">100+ Tools Organized Professionally</h2>
-                <div class="w-16 h-1 bg-gradient-brand mx-auto rounded-full"></div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Cat 1 -->
-                <div class="bg-white/[0.02] border border-white/[0.05] rounded-2xl p-6 hover:bg-white/[0.04] transition-all duration-300" data-aos="zoom-in" data-aos-delay="100">
-                    <i class="fa-solid fa-screwdriver-wrench text-blue-400 text-2xl mb-4 block"></i>
-                    <h4 class="text-lg font-bold text-white mb-2">System Utilities</h4>
-                    <ul class="text-slate-400 text-xs space-y-2">
-                        <li>• Real-time Sensor Monitors</li>
-                        <li>• CPU & GPU Frequency Testers</li>
-                        <li>• Precise Hardware Benchmarks</li>
-                        <li>• Battery Calibration Module</li>
-                    </ul>
-                </div>
-                <!-- Cat 2 -->
-                <div class="bg-white/[0.02] border border-white/[0.05] rounded-2xl p-6 hover:bg-white/[0.04] transition-all duration-300" data-aos="zoom-in" data-aos-delay="200">
-                    <i class="fa-solid fa-calculator text-purple-400 text-2xl mb-4 block"></i>
-                    <h4 class="text-lg font-bold text-white mb-2">Advanced Calculation</h4>
-                    <ul class="text-slate-400 text-xs space-y-2">
-                        <li>• Matrix & Graphing Complex</li>
-                        <li>• Scientific Unit Converters</li>
-                        <li>• Financial Investment Analytics</li>
-                        <li>• Geometric Area Systems</li>
-                    </ul>
-                </div>
-                <!-- Cat 3 -->
-                <div class="bg-white/[0.02] border border-white/[0.05] rounded-2xl p-6 hover:bg-white/[0.04] transition-all duration-300" data-aos="zoom-in" data-aos-delay="300">
-                    <i class="fa-solid fa-photo-film text-pink-400 text-2xl mb-4 block"></i>
-                    <h4 class="text-lg font-bold text-white mb-2">Media & Content</h4>
-                    <ul class="text-slate-400 text-xs space-y-2">
-                        <li>• Lossless Image Compressor</li>
-                        <li>• Audio Frequency Generator</li>
-                        <li>• Fast Color Palette Extractor</li>
-                        <li>• Video Frame Analyzer</li>
-                    </ul>
-                </div>
-                <!-- Cat 4 -->
-                <div class="bg-white/[0.02] border border-white/[0.05] rounded-2xl p-6 hover:bg-white/[0.04] transition-all duration-300" data-aos="zoom-in" data-aos-delay="400">
-                    <i class="fa-solid fa-fingerprint text-emerald-400 text-2xl mb-4 block"></i>
-                    <h4 class="text-lg font-bold text-white mb-2">Security & Text</h4>
-                    <ul class="text-slate-400 text-xs space-y-2">
-                        <li>• SHA-256 Crypto Hashing</li>
-                        <li>• Strong Password Engine</li>
-                        <li>• Regex Pattern Matchers</li>
-                        <li>• Markdown Live Previewers</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SCREENSHOTS GALLERY -->
-    <section id="gallery" class="py-24 bg-slate-950/40 border-y border-white/[0.02] overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center space-y-4 mb-16" data-aos="fade-up">
-                <p class="text-sm font-bold uppercase tracking-widest text-purple-400">Visual Showcase</p>
-                <h2 class="text-3xl md:text-5xl font-extrabold text-white">App Screens Interface View</h2>
-                <div class="w-16 h-1 bg-gradient-brand mx-auto rounded-full"></div>
-            </div>
-
-            <!-- Horizontal Infinite Scroll Flex Container -->
-            <div class="flex gap-8 overflow-x-auto pb-6 no-scrollbar snap-x snap-mandatory px-4">
-                <div class="min-w-[240px] sm:min-w-[280px] snap-center bg-slate-900 border border-white/[0.05] rounded-[32px] p-4 text-center">
-                    <div class="bg-slate-950 h-96 w-full rounded-2xl flex items-center justify-center border border-white/[0.03] text-slate-500">Dashboard UI View</div>
-                    <p class="text-sm font-semibold mt-4 text-white">Main Dashboard</p>
-                </div>
-                <div class="min-w-[240px] sm:min-w-[280px] snap-center bg-slate-900 border border-white/[0.05] rounded-[32px] p-4 text-center">
-                    <div class="bg-slate-950 h-96 w-full rounded-2xl flex items-center justify-center border border-white/[0.03] text-slate-500">Unit Converter Module</div>
-                    <p class="text-sm font-semibold mt-4 text-white">Unit Converter</p>
-                </div>
-                <div class="min-w-[240px] sm:min-w-[280px] snap-center bg-slate-900 border border-white/[0.05] rounded-[32px] p-4 text-center">
-                    <div class="bg-slate-950 h-96 w-full rounded-2xl flex items-center justify-center border border-white/[0.03] text-slate-500">Sensors Analytics Layout</div>
-                    <p class="text-sm font-semibold mt-4 text-white">Sensor Hardware Grid</p>
-                </div>
-                <div class="min-w-[240px] sm:min-w-[280px] snap-center bg-slate-900 border border-white/[0.05] rounded-[32px] p-4 text-center">
-                    <div class="bg-slate-950 h-96 w-full rounded-2xl flex items-center justify-center border border-white/[0.03] text-slate-500">Security Encryptions Screen</div>
-                    <p class="text-sm font-semibold mt-4 text-white">Crypto Tools Console</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- STATISTICS -->
-    <section class="py-20 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center bg-gradient-to-br from-slate-900 to-slate-950 border border-white/[0.05] p-12 rounded-[32px]">
-                <div data-aos="fade-up" data-aos-delay="100">
-                    <p class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">5M+</p>
-                    <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-2">Active Devices</p>
-                </div>
-                <div data-aos="fade-up" data-aos-delay="200">
-                    <p class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">100+</p>
-                    <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-2">Native Toolkit</p>
-                </div>
-                <div data-aos="fade-up" data-aos-delay="300">
-                    <p class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">4.9</p>
-                    <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-2">Global Stars Review</p>
-                </div>
-                <div data-aos="fade-up" data-aos-delay="400">
-                    <p class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">0%</p>
-                    <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-2">Data Transmission</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ROADMAP -->
-    <section id="roadmap" class="py-24 bg-slate-950/20">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center space-y-4 mb-16" data-aos="fade-up">
-                <p class="text-sm font-bold uppercase tracking-widest text-blue-400">Development Path</p>
-                <h2 class="text-3xl md:text-5xl font-extrabold text-white">App Roadmap Milestone Plan</h2>
-                <div class="w-16 h-1 bg-gradient-brand mx-auto rounded-full"></div>
-            </div>
-
-            <div class="space-y-8 relative before:absolute before:inset-0 before:left-4 sm:before:left-1/2 before:w-0.5 before:bg-white/[0.05]">
-                <!-- Milestone 1 -->
-                <div class="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pl-10 sm:pl-0" data-aos="fade-right">
-                    <div class="sm:w-[45%] bg-white/[0.02] border border-white/[0.05] p-6 rounded-2xl text-left sm:text-right">
-                        <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Q1 2026 - Completed</span>
-                        <h4 class="text-lg font-bold text-white mt-1">Version 4.0 Launch</h4>
-                        <p class="text-sm text-slate-400 mt-2">Total overhaul architecture migrating calculation speeds to fully multithreaded workflows.</p>
+    <!-- FAQ Section -->
+    <section class="section faq-section" id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Clear and fast answers regarding background requirements, tool limits, and regular feature updates.</p>
+            
+            <div class="faq-wrapper">
+                <div class="faq-item">
+                    <button class="faq-trigger"><span>What Android software iterations can properly load the app?</span></button>
+                    <div class="faq-content">
+                        <p>KVR Smart Tools supports Android 7.0 (Nougat) up to all current releases. The underlying frameworks utilize optimized native API endpoints to guarantee backwards compatibility across older devices.</p>
                     </div>
-                    <div class="absolute left-3.5 sm:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-emerald-400 rounded-full border-4 border-slate-950 z-10"></div>
-                    <div class="sm:w-[45%] hidden sm:block"></div>
                 </div>
-                <!-- Milestone 2 -->
-                <div class="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pl-10 sm:pl-0" data-aos="fade-left">
-                    <div class="sm:w-[45%] hidden sm:block"></div>
-                    <div class="absolute left-3.5 sm:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-500 rounded-full border-4 border-slate-950 z-10"></div>
-                    <div class="sm:w-[45%] bg-white/[0.02] border border-white/[0.05] p-6 rounded-2xl text-left">
-                        <span class="text-xs font-bold text-blue-400 uppercase tracking-widest">Q3 2026 - Current Phase</span>
-                        <h4 class="text-lg font-bold text-white mt-1">WiFi Diagnostics Pack</h4>
-                        <p class="text-sm text-slate-400 mt-2">Deploying dynamic internal network latency analyzers and local channel graphs safely.</p>
+
+                <div class="faq-item">
+                    <button class="faq-trigger"><span>Are internal utility operations reliant on continuous internet connections?</span></button>
+                    <div class="faq-content">
+                        <p>The vast majority of our tool mechanics (Calculators, Health Trackers, Flashlight, and QR Scanners) run locally on your hardware. Network requests are limited only to dynamic modules like real-time currency updates.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-trigger"><span>How much local system storage is required for installation?</span></button>
+                    <div class="faq-content">
+                        <p>Thanks to highly compressed asset files and efficient core code architectures, the final installation size remains remarkably small, leaving room for what matters on your smartphone storage.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FREQUENTLY ASKED QUESTIONS (FAQ) -->
-    <section id="faq" class="py-24 bg-slate-950/40 border-y border-white/[0.02]">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center space-y-4 mb-16" data-aos="fade-up">
-                <p class="text-sm font-bold uppercase tracking-widest text-pink-400">Got Questions?</p>
-                <h2 class="text-3xl md:text-5xl font-extrabold text-white">Frequently Asked Answers</h2>
-                <div class="w-16 h-1 bg-gradient-brand mx-auto rounded-full"></div>
-            </div>
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch With Us</h2>
+            <p class="section-subtitle">Need custom functionality or want to report a technical bug? Send us a direct query using the message channels below.</p>
+            
+            <div class="contact-grid">
+                <div class="contact-info-panel">
+                    <h3>Developer Support</h3>
+                    <p>Our dev operations are committed to refining app stability and addressing high-priority feature updates requested by users.</p>
+                    
+                    <div class="contact-method">
+                        <h4>Office Location</h4>
+                        <p>Hyderabad, Telangana, India</p>
+                    </div>
 
-            <div class="space-y-4">
-                <div class="bg-white/[0.02] border border-white/[0.05] rounded-2xl p-6" data-aos="fade-up">
-                    <h4 class="text-lg font-bold text-white mb-2">Are there hidden subscription fees or trackers inside the APK?</h4>
-                    <p class="text-sm text-slate-400">Absolutely not. KVR Smart Tools is entirely transparent, zero advertisements, full layout operation features offline tracking architecture.</p>
-                </div>
-                <div class="bg-white/[0.02] border border-white/[0.05] rounded-2xl p-6" data-aos="fade-up">
-                    <h4 class="text-lg font-bold text-white mb-2">Which versions of Android system devices are compatible?</h4>
-                    <p class="text-sm text-slate-400">We natively support all major target distributions built upon Android API Level 26 (Android 8.0 Oreo) going forward to newest builds.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="py-24 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center space-y-4 mb-16" data-aos="fade-up">
-                <p class="text-sm font-bold uppercase tracking-widest text-blue-400">Get In Touch</p>
-                <h2 class="text-3xl md:text-5xl font-extrabold text-white">Connect With Our Engineers</h2>
-                <div class="w-16 h-1 bg-gradient-brand mx-auto rounded-full"></div>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 bg-white/[0.01] border border-white/[0.05] rounded-[32px] p-8 md:p-12 backdrop-blur-md">
-                <div class="lg:col-span-5 space-y-6">
-                    <h3 class="text-2xl font-bold text-white">Contact Information</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Have a feature request or looking for custom industrial telemetry builds? Reach out directly via traditional nodes or infrastructure channels.</p>
-                    <div class="space-y-4 text-sm text-slate-300">
-                        <div class="flex items-center gap-3"><i class="fa-solid fa-envelope text-blue-400"></i> support@kvrsmarttools.dev</div>
-                        <div class="flex items-center gap-3"><i class="fa-solid fa-location-dot text-purple-400"></i> Technological Plaza, Silicon Ring Road</div>
+                    <div class="contact-method">
+                        <h4>Direct Email</h4>
+                        <p>support@kvrsmarttools.com</p>
                     </div>
                 </div>
-                <form class="lg:col-span-7 space-y-4">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <input type="text" placeholder="Your Name" class="bg-white/[0.03] border border-white/[0.08] rounded-xl p-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-all w-full">
-                        <input type="email" placeholder="Your Email Address" class="bg-white/[0.03] border border-white/[0.08] rounded-xl p-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-all w-full">
+
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you for reaching out! Form submissions are disabled for preview.');">
+                    <div class="form-group">
+                        <label for="userName">Full Name</label>
+                        <input type="text" id="userName" required placeholder="John Doe">
                     </div>
-                    <textarea placeholder="Message Content Details" rows="4" class="bg-white/[0.03] border border-white/[0.08] rounded-xl p-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-all w-full"></textarea>
-                    <button type="button" class="bg-gradient-brand hover:opacity-90 text-white font-bold text-sm px-6 py-3 rounded-xl transition-all duration-300 w-full sm:w-auto">Transmit Message</button>
+                    <div class="form-group">
+                        <label for="userEmail">Email Address</label>
+                        <input type="email" id="userEmail" required placeholder="john@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="userMsg">Message Details</label>
+                        <textarea id="userMsg" rows="5" required placeholder="Describe your feature suggestions or bugs encountered..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- DOWNLOAD CALL TO ACTION (CTA) SECTION -->
-    <section id="download" class="py-24 relative overflow-hidden bg-gradient-to-b from-transparent to-slate-950">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-8" data-aos="zoom-in">
-            <h2 class="text-4xl md:text-6xl font-extrabold text-white leading-tight">Ready to Elevate Your<br><span class="text-gradient">Android Experience?</span></h2>
-            <p class="text-slate-400 max-w-xl mx-auto text-sm md:text-base">Download the full suite directly and enjoy unrestricted premium ecosystem operations without subscription requirements.</p>
-            <div class="pt-4">
-                <button class="bg-white text-slate-950 font-extrabold px-10 py-5 rounded-full shadow-2xl hover:bg-slate-100 transform hover:-translate-y-1 transition-all duration-300 inline-flex items-center gap-3 text-base">
-                    <i class="fa-brands fa-android text-2xl"></i> Download Core APK (v4.2.0)
-                </button>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <img src="Logo.png" alt="KVR Smart Tools Bottom Logo">
+                        <span>KVR Smart Tools</span>
+                    </a>
+                    <p>Consolidating daily tools into a secure, performant, and premium dark interface layer.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal & Docs</h4>
+                    <ul>
+                        <li><a href="#faq">FAQ Hub</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); alert('Privacy policy details are hosted securely inside the production build distribution channels.');">Privacy Policy</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); alert('Terms of service criteria govern internal application behaviors.');">Terms of Service</a></li>
+                    </ul>
+                </div>
             </div>
-            <p class="text-xs text-slate-500">File Signature Verification MD5: 9E107D9D372BB6826BD81D3542A419D6</p>
-        </div>
-    </section>
-
-    <!-- FOOTER SECTION -->
-    <footer class="bg-slate-950 border-t border-white/[0.05] py-12 text-center text-sm text-slate-500">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-            <div class="flex justify-center gap-6 text-xl text-slate-400">
-                <a href="#" class="hover:text-blue-400 transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="#" class="hover:text-purple-400 transition-colors"><i class="fa-brands fa-discord"></i></a>
-                <a href="#" class="hover:text-pink-400 transition-colors"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-            <p>© 2026 KVR Smart Tools Ecosystem Labs. Fully optimized all rights reserved.</p>
-            <div class="flex justify-center gap-4 text-xs text-slate-600">
-                <a href="#" class="hover:underline">Terms of Protocol</a>
-                <a href="#" class="hover:underline">Privacy Encryptions</a>
-                <a href="#" class="hover:underline">SLA Disclosures</a>
+            <div class="footer-bottom">
+                <p>&copy; 2026 KVR Smart Tools. All rights reserved globally. Made for performance optimization.</p>
             </div>
         </div>
     </footer>
 
-    <!-- AOS & Custom Header Navigation Control Script -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Scripts Section -->
     <script>
-        // Initialize Animations
-        AOS.init({
-            once: true,
-            mirror: false
+        // Responsive Menu Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
         });
 
-        // Dynamic Header Effects & Active Section Tracker Logic
-        const mainHeader = document.getElementById('main-header');
-        const navItems = document.querySelectorAll('.nav-item');
-        const sections = document.querySelectorAll('section');
-
-        window.addEventListener('scroll', () => {
-            // Scroll Shadow & Height Spacing Adjustment
-            if (window.scrollY > 20) {
-                mainHeader.classList.add('scrolled-navbar');
-            } else {
-                mainHeader.classList.remove('scrolled-navbar');
-            }
-
-            // Scroll Active Indicator Mapping
-            let currentSectionId = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (window.scrollY >= (sectionTop - 120)) {
-                    currentSectionId = section.getAttribute('id');
-                }
-            });
-
-            navItems.forEach(item => {
-                item.classList.remove('nav-active');
-                if (item.getAttribute('href') === `#${currentSectionId}`) {
-                    item.classList.add('nav-active');
-                }
+        // Close navbar on route navigation links click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
             });
         });
 
-        // Mobile Menu Drawer Control Logic
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileDrawer = document.getElementById('mobile-drawer');
-        const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+        // Screenshot Slider Mechanism
+        const track = document.getElementById('sliderTrack');
+        const prevBtn = document.getElementById('slidePrev');
+        const nextBtn = document.getElementById('slideNext');
         
-        function toggleDrawer() {
-            const isOpen = !mobileDrawer.classList.contains('translate-x-full');
-            if(isOpen) {
-                mobileDrawer.classList.add('translate-x-full');
-                // Menu button original state
-                document.querySelector('.raw-line-1').classList.remove('rotate-45', 'translate-y-2');
-                document.querySelector('.raw-line-2').classList.remove('opacity-0');
-                document.querySelector('.raw-line-3').classList.remove('-rotate-45', '-translate-y-2');
-            } else {
-                mobileDrawer.classList.remove('translate-x-full');
-                // Menu button cross state
-                document.querySelector('.raw-line-1').classList.add('rotate-45', 'translate-y-2');
-                document.querySelector('.raw-line-2').classList.add('opacity-0');
-                document.querySelector('.raw-line-3').classList.add('-rotate-45', '-translate-y-2');
-            }
+        let currentPos = 0;
+        const slideWidth = 284; // 260px width + 24px gap
+        
+        function getMaxScroll() {
+            const totalWidth = track.scrollWidth;
+            const viewWidth = document.querySelector('.slider-container').clientWidth;
+            return Math.max(0, totalWidth - viewWidth);
         }
 
-        mobileMenuBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            toggleDrawer();
+        nextBtn.addEventListener('click', () => {
+            const maxScroll = getMaxScroll();
+            if (Math.abs(currentPos) < maxScroll) {
+                currentPos -= slideWidth;
+                // Boundaries check
+                if (Math.abs(currentPos) > maxScroll) {
+                    currentPos = -maxScroll;
+                }
+                track.style.transform = `translateX(${currentPos}px)`;
+            }
         });
 
-        // Close mobile drawer on route click
-        mobileNavItems.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileDrawer.classList.add('translate-x-full');
-                document.querySelector('.raw-line-1').classList.remove('rotate-45', 'translate-y-2');
-                document.querySelector('.raw-line-2').classList.remove('opacity-0');
-                document.querySelector('.raw-line-3').classList.remove('-rotate-45', '-translate-y-2');
+        prevBtn.addEventListener('click', () => {
+            if (currentPos < 0) {
+                currentPos += slideWidth;
+                if (currentPos > 0) {
+                    currentPos = 0;
+                }
+                track.style.transform = `translateX(${currentPos}px)`;
+            }
+        });
+
+        // Recalculate slider alignment constraints on resizing window viewport
+        window.addEventListener('resize', () => {
+            currentPos = 0;
+            track.style.transform = `translateX(0px)`;
+        });
+
+        // Accordion Mechanics
+        document.querySelectorAll('.faq-trigger').forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const parent = trigger.parentElement;
+                const content = trigger.nextElementSibling;
+                
+                if (parent.classList.contains('active')) {
+                    content.style.maxHeight = null;
+                    parent.classList.remove('active');
+                } else {
+                    // Close sibling components cleanly
+                    document.querySelectorAll('.faq-item').forEach(item => {
+                        item.classList.remove('active');
+                        item.querySelector('.faq-content').style.maxHeight = null;
+                    });
+                    
+                    parent.classList.add('active');
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
             });
         });
     </script>
