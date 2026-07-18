@@ -7,7 +7,6 @@
     <meta name="description" content="Download KVR Smart Tools, the ultimate Android app featuring 100+ powerful utility, developer, PDF, and security tools. Fast, secure, and privacy-focused.">
     <meta name="keywords" content="KVR Smart Tools, Android App, Utility Tools, Developer Tools, PDF Tools, Smart Tools">
     <meta name="author" content="KVR Smart Developer">
-    <meta name="theme-color" content="#0F172A">
     
     <!-- Open Graph / Social -->
     <meta property="og:type" content="website">
@@ -454,14 +453,27 @@
         .feature-card h3 { margin-bottom: 1rem; }
         .feature-card p { color: var(--text-muted); font-size: 0.95rem; }
 
-        /* Categories */
+        /* Categories Update */
         .category-item {
             text-align: center;
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
         }
         .category-item i { font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem; display: block; }
         .category-item h4 { margin-bottom: 0.5rem; }
-        .category-item span { font-size: 0.85rem; color: var(--text-muted); }
+        .category-subtitle { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.2rem; line-height: 1.4; flex-grow: 1; }
+        .category-item span { 
+            font-size: 0.85rem; 
+            font-weight: 600; 
+            color: var(--accent); 
+            background: rgba(0, 229, 255, 0.1); 
+            padding: 0.3rem 0.8rem; 
+            border-radius: 20px; 
+            border: 1px solid rgba(0, 229, 255, 0.2); 
+        }
 
         .hover-lift:hover { transform: translateY(-10px); border-color: var(--primary); }
 
@@ -615,7 +627,7 @@
     <!-- Navigation -->
     <header id="navbar" class="glass-nav">
         <div class="container nav-container">
-            <a href="#home" class="logo nav-route">
+            <a href="/#home" class="logo nav-route">
                 <img src="Logo.png" alt="KVR Smart Tools Logo">
                 KVR Smart Tools
             </a>
@@ -624,13 +636,13 @@
             </button>
             <nav id="nav-links">
                 <ul class="nav-list">
-                    <li><a href="#features" class="nav-route">Features</a></li>
-                    <li><a href="#categories" class="nav-route">Categories</a></li>
-                    <li><a href="#screenshots" class="nav-route">Screenshots</a></li>
-                    <li><a href="#about" class="nav-route">About</a></li>
-                    <li><a href="#contact" class="nav-route">Contact</a></li>
+                    <li><a href="/#features" class="nav-route">Features</a></li>
+                    <li><a href="/#categories" class="nav-route">Categories</a></li>
+                    <li><a href="/#screenshots" class="nav-route">Screenshots</a></li>
+                    <li><a href="/#about" class="nav-route">About</a></li>
+                    <li><a href="/#contact" class="nav-route">Contact</a></li>
                 </ul>
-                <a href="#hero" class="btn btn-primary btn-sm nav-route">Get App</a>
+                <a href="/#hero" class="btn btn-primary btn-sm nav-route">Get App</a>
             </nav>
         </div>
     </header>
@@ -715,44 +727,64 @@
 
                     <div class="grid grid-4 category-grid">
                         <div class="category-item glass-card hover-lift fade-in">
-                            <i class="ri-code-s-slash-line"></i>
-                            <h4>Developer Tools</h4>
-                            <span>25+ Tools</span>
+                            <i class="ri-calculator-line"></i>
+                            <h4>Calculators</h4>
+                            <p class="category-subtitle">All calculation related tools</p>
+                            <span>5 Tools</span>
                         </div>
                         <div class="category-item glass-card hover-lift fade-in">
-                            <i class="ri-tools-line"></i>
-                            <h4>Utility Tools</h4>
-                            <span>30+ Tools</span>
+                            <i class="ri-qr-code-line"></i>
+                            <h4>QRTools</h4>
+                            <p class="category-subtitle">Generate and Scan QR Codes</p>
+                            <span>2 Tools</span>
+                        </div>
+                        <div class="category-item glass-card hover-lift fade-in">
+                            <i class="ri-money-dollar-circle-line"></i>
+                            <h4>Finance</h4>
+                            <p class="category-subtitle">Money & financial utilities</p>
+                            <span>19 Tools</span>
+                        </div>
+                        <div class="category-item glass-card hover-lift fade-in">
+                            <i class="ri-heart-pulse-line"></i>
+                            <h4>Health</h4>
+                            <p class="category-subtitle">Complete Health & Fitness Tools</p>
+                            <span>20 Tools</span>
                         </div>
                         <div class="category-item glass-card hover-lift fade-in">
                             <i class="ri-file-pdf-line"></i>
-                            <h4>PDF Tools</h4>
-                            <span>15+ Tools</span>
+                            <h4>PDFTools</h4>
+                            <p class="category-subtitle">Create and manage PDF files</p>
+                            <span>11 Tools</span>
+                        </div>
+                        <div class="category-item glass-card hover-lift fade-in">
+                            <i class="ri-folder-open-line"></i>
+                            <h4>File Tools</h4>
+                            <p class="category-subtitle">Complete File Management Tools</p>
+                            <span>10 Tools</span>
                         </div>
                         <div class="category-item glass-card hover-lift fade-in">
                             <i class="ri-global-line"></i>
                             <h4>Internet Tools</h4>
-                            <span>12+ Tools</span>
+                            <p class="category-subtitle">Complete Internet Utilities</p>
+                            <span>10 Tools</span>
                         </div>
                         <div class="category-item glass-card hover-lift fade-in">
                             <i class="ri-lock-password-line"></i>
-                            <h4>Security Tools</h4>
-                            <span>10+ Tools</span>
+                            <h4>Security</h4>
+                            <p class="category-subtitle">Privacy & security tools</p>
+                            <span>10 Tools</span>
                         </div>
                         <div class="category-item glass-card hover-lift fade-in">
-                            <i class="ri-heart-pulse-line"></i>
-                            <h4>Health Tools</h4>
-                            <span>8+ Tools</span>
+                            <i class="ri-tools-line"></i>
+                            <h4>Utility Tools</h4>
+                            <p class="category-subtitle">Daily useful utilities</p>
+                            <span>10 Tools</span>
                         </div>
                         <div class="category-item glass-card hover-lift fade-in">
-                            <i class="ri-book-read-line"></i>
-                            <h4>Education Tools</h4>
-                            <span>14+ Tools</span>
-                        </div>
-                        <div class="category-item glass-card hover-lift fade-in">
-                            <i class="ri-task-line"></i>
-                            <h4>Productivity Tools</h4>
-                            <span>20+ Tools</span>
+                            <i class="ri-code-s-slash-line"></i>
+                            <h4>DevTools</h4>
+                            <p class="category-subtitle">Essential developer utilities</p>
+                            <span>10 Tools</span>
                         </div>
                     </div>
                 </div>
@@ -914,7 +946,7 @@
                 </ul>
 
                 <div class="text-center mt-4">
-                    <a href="#contact" class="btn btn-primary nav-route">Contact Developer</a>
+                    <a href="/#contact" class="btn btn-primary nav-route">Contact Developer</a>
                 </div>
             </div>
         </main>
@@ -936,11 +968,11 @@
             <div class="footer-links">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="#home" class="nav-route">Home</a></li>
-                    <li><a href="#about" class="nav-route">About Us</a></li>
-                    <li><a href="#features" class="nav-route">Features</a></li>
-                    <li><a href="#faq" class="nav-route">FAQ</a></li>
-                    <li><a href="#contact" class="nav-route">Contact</a></li>
+                    <li><a href="/#home" class="nav-route">Home</a></li>
+                    <li><a href="/#about" class="nav-route">About Us</a></li>
+                    <li><a href="/#features" class="nav-route">Features</a></li>
+                    <li><a href="/#faq" class="nav-route">FAQ</a></li>
+                    <li><a href="/#contact" class="nav-route">Contact</a></li>
                 </ul>
             </div>
 
@@ -999,7 +1031,7 @@
                 // Navigation active state
                 document.querySelectorAll('.nav-route').forEach(link => {
                     link.classList.remove('active');
-                    if (link.getAttribute('href') === hash || (hash === '' && link.getAttribute('href') === '#home')) {
+                    if (link.getAttribute('href') === hash || (hash === '' && link.getAttribute('href') === '/#home')) {
                         link.classList.add('active');
                     }
                 });
