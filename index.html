@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KVR Smart Tools - 100+ Powerful Smart Tools in One App</title>
+    <title>KVR Smart Tools - The Ultimate Android Utility Suite</title>
     <meta name="description" content="Download KVR Smart Tools, the ultimate Android app featuring 100+ powerful utility, developer, PDF, and security tools. Fast, secure, and privacy-focused.">
     <meta name="keywords" content="KVR Smart Tools, Android App, Utility Tools, Developer Tools, PDF Tools, Smart Tools">
     <meta name="author" content="KVR Smart Developer">
@@ -12,16 +12,9 @@
     <!-- Open Graph / Social -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jkelectricalstpg.in/">
-    <meta property="og:title" content="KVR Smart Tools - 100+ Powerful Smart Tools in One App">
-    <meta property="og:description" content="Download KVR Smart Tools. Fast, secure, offline tools with zero ads.">
+    <meta property="og:title" content="KVR Smart Tools - The Ultimate Android Utility Suite">
+    <meta property="og:description" content="Download KVR Smart Tools. Fast, secure, and offline tools.">
     <meta property="og:image" content="Logo.png">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://jkelectricalstpg.in/">
-    <meta property="twitter:title" content="KVR Smart Tools - 100+ Powerful Smart Tools in One App">
-    <meta property="twitter:description" content="Download KVR Smart Tools. Fast, secure, offline tools with zero ads.">
-    <meta property="twitter:image" content="Logo.png">
 
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
@@ -76,18 +69,19 @@
             --primary-hover: #4b2fc0;
             --secondary: #7C4DFF;
             --accent: #00E5FF;
-            --bg-dark: #020617;
+            --bg-dark: #020617; /* Very dark modern navy/black */
             --bg-darker: #01030b;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
+            --text-gradient: linear-gradient(180deg, #FFFFFF 0%, #94a3b8 100%);
             
-            --glass-bg: rgba(15, 23, 42, 0.4);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            --glass-bg: rgba(15, 23, 42, 0.3);
+            --glass-border: rgba(255, 255, 255, 0.05);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
             
             --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            --border-radius: 20px;
-            --container-width: 1200px;
+            --border-radius: 24px;
+            --container-width: 1240px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -100,7 +94,7 @@
             overflow-x: hidden; 
             -webkit-font-smoothing: antialiased;
         }
-        
+
         /* Preloader */
         #preloader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -109,19 +103,27 @@
             transition: opacity 0.6s ease, visibility 0.6s ease;
         }
         .spinner {
-            width: 50px; height: 50px; border-radius: 50%;
-            border: 3px solid rgba(255,255,255,0.1);
-            border-top-color: var(--accent);
-            animation: spin 1s linear infinite;
+            width: 40px; height: 40px; border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.1); border-top-color: var(--accent);
+            animation: spin 0.8s linear infinite;
         }
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* Background Grid & Particles */
+        /* Background Effects (Mesh & Particles) */
+        .bg-mesh {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(94, 59, 238, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(0, 229, 255, 0.05) 0px, transparent 50%);
+            z-index: -2; pointer-events: none;
+        }
         .bg-grid {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background-image: linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
                               linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
-            background-size: 50px 50px; z-index: -2; pointer-events: none;
+            background-size: 60px 60px; z-index: -3; pointer-events: none;
+            mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
         }
         #particles {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -133,8 +135,8 @@
         }
         @keyframes floatParticle {
             0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            20% { opacity: 0.3; }
-            80% { opacity: 0.3; }
+            20% { opacity: 0.4; }
+            80% { opacity: 0.4; }
             100% { transform: translateY(-100px) scale(1); opacity: 0; }
         }
 
@@ -144,40 +146,72 @@
         img { max-width: 100%; height: auto; display: block; }
 
         /* Typography */
-        h1, h2, h3, h4, h5, h6 { font-weight: 800; line-height: 1.1; margin-bottom: 1rem; color: #fff; letter-spacing: -0.02em; }
+        h1, h2, h3, h4, h5, h6 { font-weight: 800; line-height: 1.1; margin-bottom: 1rem; color: #fff; letter-spacing: -0.03em; }
         
         .gradient-text {
-            background: linear-gradient(135deg, #a78bfa, var(--accent), var(--secondary));
+            background: linear-gradient(135deg, #fff 0%, #a78bfa 50%, var(--accent) 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
-
+        .text-premium { background: var(--text-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
         .text-center { text-align: center; }
         .w-100 { width: 100%; }
 
-        /* Grid System */
+        /* Layout */
         .container { width: 90%; max-width: var(--container-width); margin: 0 auto; position: relative; z-index: 1; }
         .grid { display: grid; gap: 2.5rem; }
         .grid-2 { grid-template-columns: repeat(2, 1fr); }
         .grid-3 { grid-template-columns: repeat(3, 1fr); }
         .grid-4 { grid-template-columns: repeat(4, 1fr); }
-        
-        .gallery-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2.5rem; align-items: center;
-        }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2.5rem; align-items: center; }
 
-        @media (max-width: 992px) { .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 1024px) { .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 768px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } }
 
         /* Promo Banner */
         .promo-banner {
-            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            background: linear-gradient(90deg, #1e1b4b, var(--primary), #1e1b4b);
             background-size: 200% auto; color: #fff; text-align: center;
-            padding: 0.6rem 1rem; font-size: 0.9rem; font-weight: 600;
-            position: relative; z-index: 1002; animation: gradientMove 3s ease infinite;
+            padding: 0.6rem 1rem; font-size: 0.9rem; font-weight: 500;
+            position: relative; z-index: 1002; animation: gradientMove 4s linear infinite;
         }
         @keyframes gradientMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
-        /* Glass Cards */
+        /* Premium Buttons */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+            padding: 0.85rem 1.8rem; border-radius: 999px; font-weight: 600; font-size: 1rem;
+            cursor: pointer; border: none; transition: var(--transition);
+            position: relative; overflow: hidden; letter-spacing: 0.2px; text-decoration: none;
+        }
+        
+        .btn::after {
+            content: ''; position: absolute; top: 50%; left: 50%; width: 150%; height: 150%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
+            transform: translate(-50%, -50%) scale(0); transition: transform 0.4s ease-out; opacity: 0;
+        }
+        .btn:active::after { transform: translate(-50%, -50%) scale(1); opacity: 1; transition: 0s; }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff; box-shadow: 0 10px 25px -5px rgba(94, 59, 238, 0.6);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px); box-shadow: 0 15px 30px -5px rgba(94, 59, 238, 0.8);
+            background: linear-gradient(135deg, var(--primary-hover), var(--secondary)); color: #fff;
+        }
+        
+        .btn-outline {
+            background: rgba(255,255,255,0.02); color: var(--text-main); border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.3); transform: translateY(-2px);
+        }
+        .btn-lg { padding: 1.2rem 2.8rem; font-size: 1.1rem; }
+
+        /* Premium Glass Cards */
         .glass-card {
             background: var(--glass-bg); backdrop-filter: blur(24px) saturate(150%); -webkit-backdrop-filter: blur(24px) saturate(150%);
             border: 1px solid var(--glass-border); border-radius: var(--border-radius);
@@ -186,113 +220,88 @@
         }
         .glass-card::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
         }
-
-        /* Premium Buttons */
-        .btn {
-            display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
-            padding: 0.85rem 1.8rem; border-radius: 12px; font-weight: 600; font-size: 1rem;
-            cursor: pointer; border: none; transition: var(--transition); text-transform: capitalize;
-            position: relative; overflow: hidden; letter-spacing: 0.5px;
-        }
-        .btn-primary, .btn-download {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: #fff; box-shadow: 0 10px 20px -5px rgba(94, 59, 238, 0.5);
-        }
-        .btn-primary:hover, .btn-download:hover {
-            transform: translateY(-3px); box-shadow: 0 15px 25px -5px rgba(94, 59, 238, 0.7); color: #fff;
-        }
-        .btn-outline {
-            background: rgba(255,255,255,0.03); color: var(--text-main); border: 1px solid rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-        }
-        .btn-outline:hover {
-            background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); transform: translateY(-3px);
-        }
-        .btn-lg { padding: 1.2rem 2.5rem; font-size: 1.1rem; border-radius: 14px; }
 
         /* Phone Mockup */
         .phone-mockup {
-            border: 8px solid #0f172a; border-radius: 38px; overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.1);
+            border: 6px solid #1e293b; border-radius: 40px; overflow: hidden;
+            box-shadow: 0 30px 60px -12px rgba(0,0,0,1), 0 0 0 1px rgba(255,255,255,0.1);
             position: relative; background: #020617; margin: 0 auto; transition: var(--transition);
         }
         .phone-mockup::before {
             content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-            width: 40%; height: 25px; background: #0f172a; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; z-index: 2;
+            width: 40%; height: 28px; background: #1e293b; border-bottom-left-radius: 18px; border-bottom-right-radius: 18px; z-index: 2;
         }
         .phone-mockup img {
-            border-radius: 30px; width: 100%; display: block; position: relative; z-index: 1;
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 34px; width: 100%; display: block; position: relative; z-index: 1;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         /* ==========================================================================
-           Premium Header & Navigation
+           1. PREMIUM HEADER & NAVIGATION
            ========================================================================== */
         #scroll-progress {
             position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--primary), var(--accent));
-            width: 0%; z-index: 1004; box-shadow: 0 0 10px var(--accent);
+            width: 0%; z-index: 1004; box-shadow: 0 0 15px var(--accent);
         }
 
         .glass-nav {
-            position: fixed; top: 38px; /* Below promo banner initially */
-            width: 100%; z-index: 1000; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            background: rgba(2, 6, 23, 0.5); backdrop-filter: blur(24px) saturate(180%);
-            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            position: fixed; top: 35px; width: 100%; z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .glass-nav.scrolled {
-            top: 0;
-            background: rgba(2, 6, 23, 0.85);
-            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
+        .nav-inner-wrapper {
+            margin: 0 auto; width: 95%; max-width: 1300px;
+            background: rgba(2, 6, 23, 0.4); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255,255,255,0.05); border-radius: 999px;
+            transition: var(--transition); padding: 0.5rem 1.5rem;
         }
-        /* Animated gradient bottom border */
-        .glass-nav::after {
-            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 1px;
-            background: linear-gradient(90deg, transparent, var(--primary), var(--accent), transparent);
-            opacity: 0.5;
+        
+        .glass-nav.scrolled { top: 15px; }
+        .glass-nav.scrolled .nav-inner-wrapper {
+            background: rgba(2, 6, 23, 0.85); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.8);
+            border-color: rgba(255,255,255,0.1);
         }
 
-        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; transition: height 0.4s ease; }
-        .glass-nav.scrolled .nav-container { height: 70px; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 60px; }
         
-        .logo { font-size: 1.4rem; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 0.75rem; letter-spacing: -0.5px; }
-        .logo img { height: 36px; width: auto; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .logo { font-size: 1.3rem; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 0.75rem; letter-spacing: -0.5px; }
+        .logo img { height: 32px; width: auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         
         .nav-center { position: relative; display: flex; align-items: center; }
-        .nav-list { display: flex; gap: 2rem; align-items: center; position: relative; }
+        .nav-list { display: flex; gap: 0.5rem; align-items: center; position: relative; }
+        .nav-list li { position: relative; }
         .nav-list a { 
             color: var(--text-muted); font-weight: 500; font-size: 0.95rem; 
-            padding: 0.5rem 0; position: relative; transition: color 0.3s ease;
+            padding: 0.5rem 1.2rem; border-radius: 999px; transition: all 0.3s ease; position: relative; z-index: 2;
         }
-        .nav-list a:hover, .nav-list a.active { color: #fff; text-shadow: 0 0 15px rgba(255,255,255,0.3); }
         
-        /* Interactive Nav Hover Underline */
-        .nav-list a::after {
-            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px;
-            background: var(--accent); transform: scaleX(0); transform-origin: right; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        /* Animated Pill Indicator */
+        #nav-indicator {
+            position: absolute; background: rgba(255,255,255,0.08); border-radius: 999px;
+            height: 100%; top: 0; left: 0; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 1; opacity: 0;
         }
-        .nav-list a:hover::after, .nav-list a.active::after {
-            transform: scaleX(1); transform-origin: left;
-        }
+        .nav-list a:hover { color: #fff; }
+        .nav-list a.active { color: #fff; text-shadow: 0 0 15px rgba(255,255,255,0.4); }
 
         /* Right Nav Actions */
-        .nav-actions { display: flex; align-items: center; gap: 1.5rem; }
-        .nav-badge {
+        .nav-actions { display: flex; align-items: center; gap: 1.2rem; }
+        .nav-badge-play {
             display: flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; font-weight: 600;
-            color: var(--text-muted); background: rgba(255,255,255,0.05); padding: 0.4rem 0.8rem;
-            border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);
+            color: #94a3b8; padding: 0.4rem 0.8rem; border-radius: 20px;
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
         }
-        .nav-badge i { color: #10B981; }
+        .nav-badge-play i { color: #10B981; }
 
         .mobile-toggle { display: none; background: none; border: none; color: #fff; font-size: 1.8rem; cursor: pointer; }
 
-        @media (max-width: 1024px) {
-            .nav-badge { display: none; }
-        }
+        @media (max-width: 1060px) { .nav-badge-play { display: none; } }
         @media (max-width: 860px) {
             .mobile-toggle { display: block; z-index: 1005; }
-            .nav-actions .btn-download { display: none; }
+            .nav-actions .btn { display: none; }
+            .nav-inner-wrapper { border-radius: 16px; width: 100%; padding: 0.5rem 1rem; border: none; border-bottom: 1px solid rgba(255,255,255,0.05); border-radius: 0;}
+            .glass-nav { top: 35px; } .glass-nav.scrolled { top: 0; }
+            
             #nav-center-wrapper {
                 position: fixed; top: 0; left: -100%; width: 100%; height: 100vh;
                 background: rgba(2, 6, 23, 0.98); backdrop-filter: blur(20px);
@@ -300,176 +309,249 @@
                 transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 1004;
             }
             #nav-center-wrapper.active { left: 0; }
-            .nav-list { flex-direction: column; margin-bottom: 2rem; gap: 2rem; }
+            .nav-list { flex-direction: column; gap: 1.5rem; }
             .nav-list a { font-size: 1.5rem; }
-            .nav-actions-mobile { display: flex; margin-top: 2rem; }
+            #nav-indicator { display: none; }
+            .nav-actions-mobile { display: flex; flex-direction: column; gap: 1rem; margin-top: 3rem; align-items: center;}
         }
         @media (min-width: 861px) { .nav-actions-mobile { display: none; } }
 
         /* ==========================================================================
-           Sections Layout
+           2. HERO SECTION
            ========================================================================== */
-        .section { padding: 8rem 0; position: relative; }
-        .bg-darker { background-color: rgba(15,23,42,0.2); border-top: 1px solid rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.02); }
-
-        .section-header { text-align: center; margin-bottom: 5rem; max-width: 700px; margin-inline: auto; position: relative; z-index: 2; }
-        .section-header h2 { font-size: 3.5rem; margin-bottom: 1.2rem; }
-        .section-header p { color: var(--text-muted); font-size: 1.15rem; }
-        @media (max-width: 768px) { .section-header h2 { font-size: 2.5rem; } }
-
-        /* ==========================================================================
-           Hero Section
-           ========================================================================== */
-        .hero-section { min-height: 100vh; display: flex; align-items: center; position: relative; padding-top: 80px; }
-        .glow-orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.5; z-index: 0; pointer-events: none; }
-        .orb-1 { top: 10%; left: 5%; width: 400px; height: 400px; background: var(--primary); }
-        .orb-2 { bottom: 10%; right: 5%; width: 500px; height: 500px; background: var(--secondary); }
-        .orb-3 { top: 40%; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: var(--accent); opacity: 0.2; }
-
-        .hero-container { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 5rem; align-items: center; }
+        .hero-section { min-height: 100vh; display: flex; align-items: center; position: relative; padding-top: 100px; }
         
-        .hero-title { font-size: 5rem; line-height: 1.05; margin-bottom: 1.5rem; }
-        .hero-subtitle { font-size: 1.3rem; color: var(--text-muted); margin-bottom: 3rem; max-width: 90%; }
-        .hero-cta { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+        /* Gradient Lighting */
+        .glow-orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.4; z-index: 0; pointer-events: none; }
+        .orb-1 { top: 5%; left: 5%; width: 400px; height: 400px; background: var(--primary); animation: pulseOrb 8s alternate infinite; }
+        .orb-2 { bottom: 10%; right: 5%; width: 500px; height: 500px; background: var(--accent); opacity: 0.2; animation: pulseOrb 10s alternate-reverse infinite; }
+        @keyframes pulseOrb { 0% { transform: scale(1); opacity: 0.3; } 100% { transform: scale(1.2); opacity: 0.5; } }
+
+        .hero-container { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 4rem; align-items: center; }
+        
+        .badge-pill {
+            display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1.2rem; border-radius: 30px;
+            font-size: 0.9rem; font-weight: 600; color: var(--text-main); margin-bottom: 2rem;
+            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        .badge-pill span { color: var(--accent); }
+
+        .hero-title { font-size: 5.5rem; line-height: 1.05; margin-bottom: 1.5rem; }
+        .hero-subtitle { font-size: 1.35rem; color: var(--text-muted); margin-bottom: 3rem; max-width: 90%; font-weight: 400; }
+        .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
 
         .hero-image { position: relative; perspective: 1000px; }
-        .hero-image .phone-mockup { transform: rotateY(-15deg) rotateX(5deg); max-width: 320px; box-shadow: -20px 30px 60px rgba(0,0,0,0.6); }
+        .hero-image .phone-mockup { 
+            transform: rotateY(-18deg) rotateX(8deg) translateY(0); 
+            max-width: 320px; box-shadow: -30px 40px 80px rgba(0,0,0,0.8); 
+            animation: floatPhone 6s ease-in-out infinite;
+        }
+        @keyframes floatPhone { 0% { transform: rotateY(-18deg) rotateX(8deg) translateY(0); } 50% { transform: rotateY(-18deg) rotateX(8deg) translateY(-20px); } 100% { transform: rotateY(-18deg) rotateX(8deg) translateY(0); } }
 
-        @media (max-width: 992px) {
+        @media (max-width: 1024px) {
             .hero-container { grid-template-columns: 1fr; text-align: center; gap: 4rem; padding-top: 4rem; }
-            .hero-title { font-size: 3.5rem; }
+            .hero-title { font-size: 4rem; }
             .hero-subtitle { margin-inline: auto; }
             .hero-cta { justify-content: center; }
-            .hero-image .phone-mockup { transform: none; margin: 0 auto; box-shadow: 0 30px 60px rgba(0,0,0,0.6); }
+            .hero-image .phone-mockup { transform: none; margin: 0 auto; box-shadow: 0 40px 80px rgba(0,0,0,0.8); animation: floatPhoneMobile 6s ease-in-out infinite; }
+            @keyframes floatPhoneMobile { 0% { transform: translateY(0); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0); } }
         }
-        @media (max-width: 576px) { .hero-title { font-size: 2.8rem; } }
+        @media (max-width: 576px) { .hero-title { font-size: 3rem; } }
 
         /* ==========================================================================
-           Stats / Animated Counters
+           Animated Statistics
            ========================================================================== */
-        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: -3rem; position: relative; z-index: 10; padding: 0 5%; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: -3rem; position: relative; z-index: 10; padding: 0 2%; }
         .stat-card {
-            background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 20px; padding: 2rem; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 24px; padding: 2.5rem 1.5rem; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
             transition: var(--transition);
         }
-        .stat-card:hover { transform: translateY(-5px); border-color: var(--accent); }
-        .stat-number { font-size: 3rem; font-weight: 900; color: #fff; line-height: 1; margin-bottom: 0.5rem; display: flex; justify-content: center; align-items: baseline; }
-        .stat-suffix { color: var(--accent); font-size: 2rem; margin-left: 2px; }
+        .stat-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.15); background: rgba(15, 23, 42, 0.8); }
+        .stat-number { font-size: 3.5rem; font-weight: 900; color: #fff; line-height: 1; margin-bottom: 0.5rem; display: flex; justify-content: center; align-items: baseline; letter-spacing: -2px;}
+        .stat-suffix { color: var(--accent); font-size: 2.2rem; margin-left: 2px; }
         .stat-label { color: var(--text-muted); font-size: 1rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
         
         @media (max-width: 992px) { .stats-grid { grid-template-columns: repeat(2, 1fr); margin-top: 3rem; } }
         @media (max-width: 576px) { .stats-grid { grid-template-columns: 1fr; } }
 
         /* ==========================================================================
-           Features & Categories
+           Sections Layout
            ========================================================================== */
-        .feature-card { text-align: left; border-top: 1px solid rgba(255,255,255,0.1); background: linear-gradient(180deg, rgba(30,41,59,0.5) 0%, rgba(15,23,42,0.2) 100%); }
-        .feature-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); border-top-color: var(--accent); }
+        .section { padding: 8rem 0; position: relative; }
+        .bg-darker { background-color: rgba(15,23,42,0.2); border-top: 1px solid rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.02); }
+        .section-header { text-align: center; margin-bottom: 5rem; max-width: 750px; margin-inline: auto; position: relative; z-index: 2; }
+        .section-header h2 { font-size: 3.5rem; margin-bottom: 1.2rem; }
+        .section-header p { color: var(--text-muted); font-size: 1.2rem; }
+        @media (max-width: 768px) { .section-header h2 { font-size: 2.5rem; } }
+
+        /* ==========================================================================
+           3. FEATURES SECTION
+           ========================================================================== */
+        .feature-card { text-align: left; background: linear-gradient(180deg, rgba(30,41,59,0.4) 0%, rgba(15,23,42,0.1) 100%); }
+        .feature-card:hover { transform: translateY(-8px); box-shadow: 0 25px 50px rgba(0,0,0,0.5); border-color: rgba(255,255,255,0.15); }
         .icon-box {
             width: 64px; height: 64px; background: linear-gradient(135deg, rgba(94, 59, 238, 0.2), rgba(0, 229, 255, 0.1));
             color: var(--accent); border-radius: 16px; display: flex; align-items: center; justify-content: center;
-            font-size: 2rem; margin-bottom: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.05); transition: var(--transition);
+            font-size: 2rem; margin-bottom: 1.8rem; border: 1px solid rgba(255, 255, 255, 0.05); transition: var(--transition);
         }
         .feature-card:hover .icon-box { background: var(--primary); color: #fff; transform: scale(1.1) rotate(5deg); }
-        .feature-card h3 { font-size: 1.4rem; margin-bottom: 1rem; }
+        .feature-card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #fff; }
+        .feature-card p { color: var(--text-muted); font-size: 1.05rem; }
 
+        /* Categories / Utilities */
         .category-item {
             text-align: center; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: space-between;
-            padding: 2.5rem 1.5rem; background: rgba(15, 23, 42, 0.5); border: 1px solid rgba(255,255,255,0.05);
+            padding: 3rem 2rem; background: rgba(15, 23, 42, 0.4); border: 1px solid rgba(255,255,255,0.03); border-radius: 24px;
         }
-        .category-item:hover { border-color: var(--primary); background: rgba(30, 41, 59, 0.8); transform: translateY(-8px); box-shadow: 0 15px 30px rgba(94, 59, 238, 0.2); }
-        .category-item i { font-size: 2.8rem; color: #fff; margin-bottom: 1.2rem; transition: var(--transition); opacity: 0.9; }
+        .category-item:hover { border-color: rgba(255,255,255,0.1); background: rgba(30, 41, 59, 0.6); transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .category-item i { font-size: 3rem; color: #fff; margin-bottom: 1.5rem; transition: var(--transition); opacity: 0.8; }
         .category-item:hover i { color: var(--accent); transform: scale(1.1); opacity: 1; }
-        .category-item h4 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .category-item h4 { font-size: 1.3rem; margin-bottom: 0.5rem; }
         .category-subtitle { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.4; flex-grow: 1; }
         .category-item span { 
             font-size: 0.85rem; font-weight: 700; color: #fff; 
-            background: linear-gradient(135deg, var(--primary), var(--secondary)); 
-            padding: 0.4rem 1rem; border-radius: 20px; box-shadow: 0 4px 10px rgba(94, 59, 238, 0.3);
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            padding: 0.4rem 1.2rem; border-radius: 20px; transition: var(--transition);
         }
+        .category-item:hover span { background: var(--primary); border-color: var(--primary); }
 
-        /* ==========================================================================
-           Screenshots & Roadmap
-           ========================================================================== */
+        /* Screenshots */
         .screenshot-gallery .phone-mockup { max-width: 280px; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
-        .screenshot-gallery .phone-mockup:hover { transform: translateY(-15px) scale(1.05); box-shadow: 0 30px 60px rgba(0, 229, 255, 0.2); border-color: rgba(0, 229, 255, 0.4); }
-
-        /* Roadmap Timeline */
-        .timeline { position: relative; max-width: 800px; margin: 0 auto; padding: 2rem 0; }
-        .timeline::before { content: ''; position: absolute; top: 0; left: 50%; width: 2px; height: 100%; background: rgba(255,255,255,0.1); transform: translateX(-50%); }
-        .timeline-item { margin-bottom: 3rem; position: relative; width: 50%; padding-right: 3rem; left: 0; }
-        .timeline-item:nth-child(even) { left: 50%; padding-right: 0; padding-left: 3rem; text-align: left; }
-        .timeline-item:nth-child(odd) { text-align: right; }
-        .timeline-dot {
-            position: absolute; top: 0; right: -11px; width: 24px; height: 24px; border-radius: 50%;
-            background: var(--bg-dark); border: 4px solid var(--accent); box-shadow: 0 0 15px var(--accent); z-index: 2;
-        }
-        .timeline-item:nth-child(even) .timeline-dot { left: -11px; right: auto; }
-        .timeline-content { background: rgba(15,23,42,0.6); padding: 1.5rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); transition: var(--transition); }
-        .timeline-content:hover { border-color: var(--primary); transform: translateY(-5px); }
-        .timeline-date { color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; display: inline-block; }
-        @media (max-width: 768px) {
-            .timeline::before { left: 20px; }
-            .timeline-item { width: 100%; padding-left: 60px; padding-right: 0; text-align: left !important; }
-            .timeline-item:nth-child(even), .timeline-item:nth-child(odd) { left: 0; }
-            .timeline-dot { left: 8px !important; right: auto !important; }
-        }
+        .screenshot-gallery .phone-mockup:hover { transform: translateY(-15px) scale(1.03); box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8); border-color: rgba(255,255,255,0.2); }
+        
+        /* Premium Animated Separator */
+        .premium-separator { height: 1px; width: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); margin: 0; position: relative;}
+        .premium-separator::after { content: ''; position: absolute; top: -1px; left: 50%; transform: translateX(-50%); width: 20%; height: 3px; background: linear-gradient(90deg, transparent, var(--primary), var(--accent), transparent); filter: blur(2px); }
 
         /* ==========================================================================
-           Testimonials
+           4. NEW PREMIUM SECTIONS
            ========================================================================== */
-        .testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-        .testi-card { background: rgba(30,41,59,0.3); border-radius: 20px; padding: 2rem; border: 1px solid rgba(255,255,255,0.05); }
-        .testi-stars { color: #F59E0B; font-size: 1.2rem; margin-bottom: 1rem; display: flex; gap: 0.2rem; }
-        .testi-text { font-size: 1.05rem; color: var(--text-main); font-style: italic; margin-bottom: 1.5rem; line-height: 1.6; }
+        
+        /* Testimonials */
+        .testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+        .testi-card { background: rgba(30,41,59,0.2); border-radius: 24px; padding: 2.5rem; border: 1px solid rgba(255,255,255,0.05); position: relative; }
+        .testi-card::before { content: '"'; position: absolute; top: 1rem; right: 2rem; font-size: 5rem; color: rgba(255,255,255,0.03); font-family: serif; line-height: 1;}
+        .testi-stars { color: #F59E0B; font-size: 1.2rem; margin-bottom: 1.5rem; display: flex; gap: 0.3rem; }
+        .testi-text { font-size: 1.1rem; color: var(--text-main); margin-bottom: 2rem; line-height: 1.6; }
         .testi-user { display: flex; align-items: center; gap: 1rem; }
         .testi-avatar { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--accent)); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem; color: #fff; }
-        .testi-info h4 { margin-bottom: 0; font-size: 1rem; }
-        .testi-info p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0;}
+        .testi-info h4 { margin-bottom: 0; font-size: 1.05rem; }
+        .testi-info p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0;}
         @media (max-width: 992px) { .testimonial-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 768px) { .testimonial-grid { grid-template-columns: 1fr; } }
 
-        /* ==========================================================================
-           Premium CTA Section & Footer
-           ========================================================================== */
+        /* Trust Badges */
+        .trust-section { padding: 4rem 0; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.02); }
+        .trust-text { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 2rem; font-weight: 600;}
+        .trust-badges { display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap; opacity: 0.6; }
+        .trust-badges i { font-size: 2.5rem; color: #fff; transition: var(--transition); }
+        .trust-badges i:hover { opacity: 1; color: var(--accent); transform: scale(1.1); }
+
+        /* Feature Timeline / Roadmap */
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; padding: 2rem 0; }
+        .timeline::before { content: ''; position: absolute; top: 0; left: 50%; width: 2px; height: 100%; background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.1) 10%, rgba(255,255,255,0.1) 90%, transparent); transform: translateX(-50%); }
+        .timeline-item { margin-bottom: 4rem; position: relative; width: 50%; padding-right: 4rem; left: 0; }
+        .timeline-item:nth-child(even) { left: 50%; padding-right: 0; padding-left: 4rem; text-align: left; }
+        .timeline-item:nth-child(odd) { text-align: right; }
+        .timeline-dot {
+            position: absolute; top: 0; right: -12px; width: 24px; height: 24px; border-radius: 50%;
+            background: var(--bg-dark); border: 4px solid var(--primary); z-index: 2; transition: var(--transition);
+        }
+        .timeline-item:hover .timeline-dot { border-color: var(--accent); box-shadow: 0 0 20px var(--accent); transform: scale(1.2); }
+        .timeline-item:nth-child(even) .timeline-dot { left: -12px; right: auto; }
+        .timeline-content { background: rgba(15,23,42,0.4); padding: 2rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); transition: var(--transition); }
+        .timeline-content:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-5px); background: rgba(15,23,42,0.6); }
+        .timeline-date { color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; display: inline-block; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase;}
+        @media (max-width: 768px) {
+            .timeline::before { left: 30px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 0; text-align: left !important; }
+            .timeline-item:nth-child(even), .timeline-item:nth-child(odd) { left: 0; }
+            .timeline-dot { left: 18px !important; right: auto !important; }
+        }
+
+        /* FAQ */
+        .faq-container { max-width: 850px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.2rem; }
+        .faq-item { padding: 0; background: rgba(30, 41, 59, 0.2); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; transition: var(--transition); }
+        .faq-item:hover { border-color: rgba(255,255,255,0.1); }
+        .faq-question {
+            width: 100%; text-align: left; padding: 1.8rem 2rem; background: transparent; border: none;
+            color: #fff; font-size: 1.2rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+        }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1); padding: 0 2rem; }
+        .faq-answer p { padding-bottom: 1.8rem; color: var(--text-muted); font-size: 1.05rem; }
+        .faq-item.active { border-color: var(--primary); background: rgba(94, 59, 238, 0.05); }
+        .faq-item.active .faq-answer { max-height: 300px; }
+        .faq-item.active .faq-question i { transform: rotate(45deg); color: var(--accent); }
+        .faq-question i { transition: transform 0.4s ease; font-size: 1.5rem; color: var(--text-muted); }
+
+        /* Contact Section */
+        .contact-info { background: transparent; padding: 0; border: none; box-shadow: none; }
+        .info-item { display: flex; gap: 1.5rem; align-items: center; padding: 2rem; background: rgba(30, 41, 59, 0.3); border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 1.5rem; transition: var(--transition); }
+        .info-item:hover { border-color: var(--primary); transform: translateX(10px); background: rgba(30, 41, 59, 0.6); }
+        .icon-large { font-size: 2.5rem; color: var(--accent); background: rgba(0, 229, 255, 0.1); padding: 1.2rem; border-radius: 50%; }
+        .info-item h4 { margin-bottom: 0.3rem; font-size: 1.2rem; }
+        .info-item a, .info-item p { color: var(--text-muted); font-size: 1.05rem; }
+        
+        .form-group { margin-bottom: 1.5rem; text-align: left; }
+        .form-group label { display: block; margin-bottom: 0.6rem; font-weight: 500; color: #cbd5e1; font-size: 0.95rem; }
+        .glass-input {
+            width: 100%; padding: 1.2rem; background: rgba(2, 6, 23, 0.5); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px; color: #fff; font-family: inherit; font-size: 1rem; transition: var(--transition);
+        }
+        .glass-input:focus { outline: none; border-color: var(--accent); background: rgba(2, 6, 23, 0.8); box-shadow: 0 0 0 4px rgba(0, 229, 255, 0.1); }
+
+        /* Premium Download CTA */
         .cta-box {
-            background: linear-gradient(135deg, rgba(94, 59, 238, 0.2), rgba(0, 229, 255, 0.1));
-            border: 1px solid rgba(0, 229, 255, 0.2); border-radius: 30px;
-            padding: 5rem 3rem; text-align: center; position: relative; overflow: hidden;
+            background: linear-gradient(135deg, rgba(30,27,75,0.8), rgba(15,23,42,0.9));
+            border: 1px solid rgba(94, 59, 238, 0.3); border-radius: 40px;
+            padding: 6rem 3rem; text-align: center; position: relative; overflow: hidden;
+            box-shadow: 0 30px 60px -10px rgba(0,0,0,0.8);
         }
         .cta-box::before {
             content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
-            animation: rotateGlow 10s linear infinite; pointer-events: none;
+            background: radial-gradient(circle, rgba(94, 59, 238, 0.15) 0%, transparent 50%);
+            animation: rotateGlow 15s linear infinite; pointer-events: none;
         }
         @keyframes rotateGlow { 100% { transform: rotate(360deg); } }
-        .cta-box h2 { font-size: 3.5rem; margin-bottom: 1rem; position: relative; z-index: 1; }
-        .cta-box p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2.5rem; position: relative; z-index: 1; }
+        .cta-box h2 { font-size: 4rem; margin-bottom: 1.5rem; position: relative; z-index: 1; }
+        .cta-box p { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 3rem; position: relative; z-index: 1; max-width: 600px; margin-inline: auto;}
 
-        .site-footer { background: #01030b; padding-top: 5rem; border-top: 1px solid rgba(255,255,255,0.05); position: relative; overflow: hidden; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 3rem; margin-bottom: 4rem; }
+        /* Premium Footer */
+        .site-footer { background: #01030b; padding-top: 6rem; position: relative; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 4rem; margin-bottom: 4rem; }
         @media (max-width: 992px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-        @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; text-align: center; } .social-links { justify-content: center; } }
+        @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; text-align: center; } .social-links, .footer-contact p { justify-content: center; } }
         
-        .footer-brand p { color: var(--text-muted); margin: 1.5rem 0; font-size: 1rem; max-width: 300px; }
+        .footer-brand p { color: var(--text-muted); margin: 1.5rem 0; font-size: 1.05rem; max-width: 320px; }
         .social-links { display: flex; gap: 1rem; }
         .social-links a {
-            width: 45px; height: 45px; border-radius: 12px; background: rgba(30, 41, 59, 0.5);
+            width: 48px; height: 48px; border-radius: 14px; background: rgba(255, 255, 255, 0.03);
             display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.05);
-            font-size: 1.2rem; color: #fff; transition: var(--transition);
+            font-size: 1.3rem; color: #fff; transition: var(--transition);
         }
         .social-links a:hover { background: var(--primary); border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(94, 59, 238, 0.4); }
 
-        .footer-links h4, .footer-contact h4 { margin-bottom: 1.8rem; color: #fff; font-size: 1.2rem; }
-        .footer-links li { margin-bottom: 1rem; }
-        .footer-links a { color: var(--text-muted); font-size: 1rem; transition: var(--transition); display: inline-block; }
-        .footer-links a:hover { color: var(--accent); transform: translateX(5px); }
-        .footer-contact p { color: var(--text-muted); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start;}
-        @media (max-width: 768px){ .footer-contact p { justify-content: center; } }
-        .footer-contact i { color: var(--accent); }
+        .footer-links h4, .footer-contact h4 { margin-bottom: 2rem; color: #fff; font-size: 1.2rem; font-weight: 700; letter-spacing: 0.5px;}
+        .footer-links li { margin-bottom: 1.2rem; }
+        .footer-links a { color: var(--text-muted); font-size: 1.05rem; transition: var(--transition); display: inline-block; font-weight: 500;}
+        .footer-links a:hover { color: var(--text-main); transform: translateX(5px); }
+        .footer-contact p { color: var(--text-muted); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.8rem; font-size: 1.05rem; justify-content: flex-start;}
+        .footer-contact i { color: var(--accent); font-size: 1.2rem; }
 
-        .footer-bottom { padding: 2rem 0; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; color: var(--text-muted); font-size: 0.95rem; }
+        .footer-bottom { padding: 2.5rem 0; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; color: var(--text-muted); font-size: 0.95rem; }
+
+        /* Back to Top */
+        #back-to-top {
+            position: fixed; bottom: 40px; right: 40px; width: 60px; height: 60px; border-radius: 20px;
+            background: rgba(2, 6, 23, 0.8); backdrop-filter: blur(10px); color: white; border: 1px solid rgba(255,255,255,0.1); cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); opacity: 0; visibility: hidden;
+            transform: translateY(20px); transition: var(--transition); z-index: 999; font-size: 1.8rem;
+            display: flex; align-items: center; justify-content: center;
+        }
+        #back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+        #back-to-top:hover { background: var(--primary); transform: translateY(-5px); border-color: var(--primary); }
 
         /* General Utilities */
         .fade-in { opacity: 0; transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -485,50 +567,54 @@
     </div>
 
     <!-- Background Elements -->
+    <div class="bg-mesh"></div>
     <div class="bg-grid"></div>
     <div id="particles"></div>
     <div id="scroll-progress"></div>
 
     <!-- Promo Banner -->
     <div class="promo-banner">
-        <span>🚀 Join the exclusive Beta waitlist! 100+ Premium Utilities. Zero Ads. Forever Free.</span>
+        <span>🚀 Join the exclusive Beta waitlist! 100+ Premium Utilities. Forever Free.</span>
     </div>
 
     <!-- Premium Navigation -->
     <header id="navbar" class="glass-nav">
-        <div class="container nav-container">
-            <a href="#" class="logo nav-route">
-                <img src="Logo.png" alt="KVR Smart Tools Logo">
-                KVR Smart Tools
-            </a>
-            
-            <button class="mobile-toggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="nav-center-wrapper">
-                <i class="ri-menu-4-line"></i>
-            </button>
-            
-            <div id="nav-center-wrapper">
-                <nav class="nav-center">
-                    <ul class="nav-list" id="nav-links">
-                        <li><a href="#features" class="nav-route">Features</a></li>
-                        <li><a href="#categories" class="nav-route">Toolkit</a></li>
-                        <li><a href="#screenshots" class="nav-route">Gallery</a></li>
-                        <li><a href="#roadmap" class="nav-route">Roadmap</a></li>
-                    </ul>
-                </nav>
-                <div class="nav-actions-mobile">
-                    <a href="#cta" class="btn btn-download nav-route">
-                        <i class="ri-download-cloud-2-line"></i> Download
+        <div class="nav-inner-wrapper">
+            <div class="nav-container">
+                <a href="#home" class="logo nav-route">
+                    <img src="Logo.png" alt="KVR Smart Tools Logo">
+                    KVR Smart Tools
+                </a>
+                
+                <button class="mobile-toggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="nav-center-wrapper">
+                    <i class="ri-menu-4-line"></i>
+                </button>
+                
+                <div id="nav-center-wrapper">
+                    <nav class="nav-center">
+                        <div id="nav-indicator"></div>
+                        <ul class="nav-list" id="nav-links">
+                            <li><a href="#features" class="nav-route">Features</a></li>
+                            <li><a href="#categories" class="nav-route">Toolkit</a></li>
+                            <li><a href="#screenshots" class="nav-route">Gallery</a></li>
+                            <li><a href="#roadmap" class="nav-route">Roadmap</a></li>
+                        </ul>
+                    </nav>
+                    <div class="nav-actions-mobile">
+                        <a href="#cta" class="btn btn-primary nav-route">
+                            <i class="ri-download-cloud-2-line"></i> Download APK
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-actions">
+                    <span class="nav-badge-play">
+                        <i class="ri-google-play-fill"></i> Coming Soon
+                    </span>
+                    <a href="#cta" class="btn btn-primary nav-route">
+                        <i class="ri-download-cloud-2-line" style="font-size: 1.2rem;"></i> Download APK
                     </a>
                 </div>
-            </div>
-
-            <div class="nav-actions">
-                <span class="nav-badge">
-                    <i class="ri-google-play-fill"></i> Coming Soon
-                </span>
-                <a href="#cta" class="btn btn-download nav-route">
-                    <i class="ri-download-cloud-2-line"></i> Download
-                </a>
             </div>
         </div>
     </header>
@@ -536,16 +622,12 @@
     <main>
         <!-- ==================== HERO SECTION ==================== -->
         <section id="hero" class="hero-section">
-            <div class="glow-orb orb-1"></div>
-            <div class="glow-orb orb-2"></div>
-            <div class="glow-orb orb-3"></div>
-            
             <div class="container hero-container">
                 <div class="hero-content fade-in-up">
-                    <div class="badge">
-                        <i class="ri-sparkling-fill" style="font-size: 1.2rem;"></i> The Ultimate Android Utility Suite
+                    <div class="badge-pill">
+                        <i class="ri-sparkling-fill" style="color: var(--accent);"></i> <span>The Ultimate Android Utility Suite</span>
                     </div>
-                    <h1 class="hero-title">100+ <span class="gradient-text">Powerful Tools</span> in One App</h1>
+                    <h1 class="hero-title">100+ <span class="text-premium">Powerful Tools</span><br>in One App</h1>
                     <p class="hero-subtitle">Elevate your productivity with a comprehensive suite of developer, utility, and security tools. Engineered for ultimate speed, full offline capability, and absolute privacy.</p>
                     
                     <div class="hero-cta">
@@ -558,7 +640,7 @@
                     </div>
                 </div>
                 <div class="hero-image fade-in-up" style="transition-delay: 0.2s;">
-                    <div class="phone-mockup floating">
+                    <div class="phone-mockup">
                         <img src="home.png" alt="KVR Smart Tools Home Interface" loading="lazy">
                     </div>
                 </div>
@@ -577,8 +659,8 @@
                     <div class="stat-label">Offline Ready</div>
                 </div>
                 <div class="stat-card fade-in-up" style="transition-delay: 0.2s;">
-                    <div class="stat-number"><span class="counter" data-target="100">0</span><span class="stat-suffix">%</span></div>
-                    <div class="stat-label">Ad-Free Privacy</div>
+                    <div class="stat-number"><span class="counter" data-target="10">0</span><span class="stat-suffix">M+</span></div>
+                    <div class="stat-label">Computations</div>
                 </div>
                 <div class="stat-card fade-in-up" style="transition-delay: 0.3s;">
                     <div class="stat-number"><span class="counter" data-target="10">0</span><span class="stat-suffix">k+</span></div>
@@ -586,6 +668,22 @@
                 </div>
             </div>
         </section>
+
+        <!-- Trust Badges -->
+        <div class="trust-section fade-in">
+            <div class="container">
+                <div class="trust-text">Built with modern architecture for reliability</div>
+                <div class="trust-badges">
+                    <i class="ri-android-fill"></i>
+                    <i class="ri-shield-check-fill"></i>
+                    <i class="ri-smartphone-line"></i>
+                    <i class="ri-speed-up-fill"></i>
+                    <i class="ri-code-box-fill"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="premium-separator"></div>
 
         <!-- ==================== FEATURES SECTION ==================== -->
         <section id="features" class="section bg-darker">
@@ -611,11 +709,14 @@
                         <h3>Offline First</h3>
                         <p>Over 95% of our powerful tools work completely offline, saving your battery and mobile data.</p>
                     </div>
+                    
+                    <!-- Replaced Feature -->
                     <div class="glass-card feature-card fade-in-up" style="transition-delay: 0.3s;">
-                        <div class="icon-box"><i class="ri-prohibited-line"></i></div>
-                        <h3>No Ads Experience</h3>
-                        <p>Enjoy a clean, premium, distraction-free environment forever. No pop-ups, no banners, no tracking.</p>
+                        <div class="icon-box"><i class="ri-cpu-line"></i></div>
+                        <h3>Lightweight & Optimized</h3>
+                        <p>Designed for absolute speed, exceptionally low memory usage, and smooth performance on every Android device.</p>
                     </div>
+                    
                     <div class="glass-card feature-card fade-in-up" style="transition-delay: 0.4s;">
                         <div class="icon-box"><i class="ri-loop-left-fill"></i></div>
                         <h3>Regular Updates</h3>
@@ -639,61 +740,61 @@
                 </div>
 
                 <div class="grid grid-4 category-grid">
-                    <div class="category-item glass-card hover-lift fade-in-up">
+                    <div class="category-item fade-in-up">
                         <i class="ri-calculator-fill"></i>
                         <h4>Calculators</h4>
                         <p class="category-subtitle">All calculation related tools</p>
                         <span>5 Tools</span>
                     </div>
-                    <div class="category-item glass-card hover-lift fade-in-up" style="transition-delay: 0.1s;">
+                    <div class="category-item fade-in-up" style="transition-delay: 0.1s;">
                         <i class="ri-qr-code-line"></i>
                         <h4>QRTools</h4>
                         <p class="category-subtitle">Generate and Scan QR Codes</p>
                         <span>2 Tools</span>
                     </div>
-                    <div class="category-item glass-card hover-lift fade-in-up" style="transition-delay: 0.2s;">
+                    <div class="category-item fade-in-up" style="transition-delay: 0.2s;">
                         <i class="ri-bank-card-fill"></i>
                         <h4>Finance</h4>
                         <p class="category-subtitle">Money & financial utilities</p>
                         <span>19 Tools</span>
                     </div>
-                    <div class="category-item glass-card hover-lift fade-in-up" style="transition-delay: 0.3s;">
+                    <div class="category-item fade-in-up" style="transition-delay: 0.3s;">
                         <i class="ri-heart-pulse-fill"></i>
                         <h4>Health</h4>
                         <p class="category-subtitle">Complete Health & Fitness Tools</p>
                         <span>20 Tools</span>
                     </div>
-                    <div class="category-item glass-card hover-lift fade-in-up">
+                    <div class="category-item fade-in-up">
                         <i class="ri-file-pdf-2-fill"></i>
                         <h4>PDFTools</h4>
                         <p class="category-subtitle">Create and manage PDF files</p>
                         <span>11 Tools</span>
                     </div>
-                    <div class="category-item glass-card hover-lift fade-in-up" style="transition-delay: 0.1s;">
+                    <div class="category-item fade-in-up" style="transition-delay: 0.1s;">
                         <i class="ri-folder-open-fill"></i>
                         <h4>File Tools</h4>
                         <p class="category-subtitle">Complete File Management Tools</p>
                         <span>10 Tools</span>
                     </div>
-                    <div class="category-item glass-card hover-lift fade-in-up" style="transition-delay: 0.2s;">
+                    <div class="category-item fade-in-up" style="transition-delay: 0.2s;">
                         <i class="ri-global-fill"></i>
                         <h4>Internet Tools</h4>
                         <p class="category-subtitle">Complete Internet Utilities</p>
                         <span>10 Tools</span>
                     </div>
-                    <div class="category-item glass-card hover-lift fade-in-up" style="transition-delay: 0.3s;">
+                    <div class="category-item fade-in-up" style="transition-delay: 0.3s;">
                         <i class="ri-lock-password-fill"></i>
                         <h4>Security</h4>
                         <p class="category-subtitle">Privacy & security tools</p>
                         <span>10 Tools</span>
                     </div>
-                    <div class="category-item glass-card hover-lift fade-in-up">
+                    <div class="category-item fade-in-up">
                         <i class="ri-tools-fill"></i>
                         <h4>Utility Tools</h4>
                         <p class="category-subtitle">Daily useful utilities</p>
                         <span>10 Tools</span>
                     </div>
-                    <div class="category-item glass-card hover-lift fade-in-up" style="transition-delay: 0.1s;">
+                    <div class="category-item fade-in-up" style="transition-delay: 0.1s;">
                         <i class="ri-terminal-box-fill"></i>
                         <h4>DevTools</h4>
                         <p class="category-subtitle">Essential developer utilities</p>
@@ -702,6 +803,8 @@
                 </div>
             </div>
         </section>
+
+        <div class="premium-separator"></div>
 
         <!-- ==================== SCREENSHOTS GALLERY ==================== -->
         <section id="screenshots" class="section bg-darker">
@@ -750,7 +853,7 @@
                         <div class="testi-stars">
                             <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
                         </div>
-                        <p class="testi-text">"I uninstalled 5 different apps after finding this. The UI is gorgeous, and the fact that it works offline and has zero ads makes it a must-have on any Android device."</p>
+                        <p class="testi-text">"I uninstalled 5 different apps after finding this. The UI is gorgeous, and the fact that it works offline makes it a must-have on any Android device."</p>
                         <div class="testi-user">
                             <div class="testi-avatar">JD</div>
                             <div class="testi-info">
@@ -764,7 +867,7 @@
                         <div class="testi-stars">
                             <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
                         </div>
-                        <p class="testi-text">"The PDF tools and Finance calculators are incredibly accurate and fast. Best utility app I've used in years. Highly recommend to everyone!"</p>
+                        <p class="testi-text">"The PDF tools and Finance calculators are incredibly accurate and fast. It is highly optimized and exceptionally lightweight. Highly recommend!"</p>
                         <div class="testi-user">
                             <div class="testi-avatar">SM</div>
                             <div class="testi-info">
@@ -817,8 +920,8 @@
                         </div>
                     </div>
                     <div class="timeline-item fade-in-up">
-                        <div class="timeline-dot" style="border-color: #10B981; box-shadow: 0 0 15px #10B981;"></div>
-                        <div class="timeline-content" style="border-color: rgba(16, 185, 129, 0.3);">
+                        <div class="timeline-dot" style="border-color: #10B981; box-shadow: 0 0 20px #10B981; background: #10B981;"></div>
+                        <div class="timeline-content" style="border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.05);">
                             <span class="timeline-date" style="color: #10B981;">Current Phase</span>
                             <h4>Public APK Release</h4>
                             <p>Opening the platform to the public via direct APK download on our premium landing page.</p>
@@ -826,7 +929,7 @@
                     </div>
                     <div class="timeline-item fade-in-up">
                         <div class="timeline-dot" style="background: var(--bg-dark); border-color: var(--text-muted); box-shadow: none;"></div>
-                        <div class="timeline-content" style="opacity: 0.7;">
+                        <div class="timeline-content" style="opacity: 0.6;">
                             <span class="timeline-date" style="color: var(--text-muted);">Upcoming</span>
                             <h4>Google Play Store Launch</h4>
                             <p>Official release on the Google Play Store with automated updates, cloud sync features, and expanded device support.</p>
@@ -845,7 +948,7 @@
                 </div>
 
                 <div class="faq-container fade-in-up">
-                    <div class="faq-item glass-card active">
+                    <div class="faq-item active">
                         <button class="faq-question" aria-expanded="true">
                             <span>1. What exactly is KVR Smart Tools?</span>
                             <i class="ri-add-line"></i>
@@ -855,7 +958,7 @@
                         </div>
                     </div>
 
-                    <div class="faq-item glass-card">
+                    <div class="faq-item">
                         <button class="faq-question" aria-expanded="false">
                             <span>2. Is the app really 100% free?</span>
                             <i class="ri-add-line"></i>
@@ -865,17 +968,17 @@
                         </div>
                     </div>
 
-                    <div class="faq-item glass-card">
+                    <div class="faq-item">
                         <button class="faq-question" aria-expanded="false">
-                            <span>3. Does it contain annoying ads or popups?</span>
+                            <span>3. Are there in-app purchases?</span>
                             <i class="ri-add-line"></i>
                         </button>
                         <div class="faq-answer">
-                            <p>Absolutely not. We provide a strict 100% ad-free experience. No banners, no interstitial pop-ups, no interruptions. Just pure productivity.</p>
+                            <p>Currently, there are no in-app purchases required to use the core functionalities. All 100+ tools are unlocked and available immediately upon installation.</p>
                         </div>
                     </div>
 
-                    <div class="faq-item glass-card">
+                    <div class="faq-item">
                         <button class="faq-question" aria-expanded="false">
                             <span>4. Do I need an internet connection to use it?</span>
                             <i class="ri-add-line"></i>
@@ -885,7 +988,7 @@
                         </div>
                     </div>
 
-                    <div class="faq-item glass-card">
+                    <div class="faq-item">
                         <button class="faq-question" aria-expanded="false">
                             <span>5. Is my data secure and private?</span>
                             <i class="ri-add-line"></i>
@@ -894,6 +997,61 @@
                             <p>Yes. KVR Smart Tools processes almost everything locally on your device's hardware. We do not collect, store, or transmit your personal data to external servers. Your privacy is paramount.</p>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="premium-separator"></div>
+
+        <!-- ==================== CONTACT SECTION ==================== -->
+        <section id="contact" class="section">
+            <div class="container text-center fade-in">
+                <div class="section-header" style="margin-bottom: 3rem;">
+                    <h2>Get in <span class="gradient-text">Touch</span></h2>
+                    <p>Have a feature request, found a bug, or just want to say hi? We'd love to hear from you.</p>
+                </div>
+            </div>
+
+            <div class="container grid grid-2">
+                <div class="contact-info fade-in-up">
+                    <div class="info-item">
+                        <i class="ri-mail-send-fill icon-large"></i>
+                        <div>
+                            <h4>Email Us Directly</h4>
+                            <a href="mailto:venkatesh.official4775@gmail.com">venkatesh.official4775@gmail.com</a>
+                            <p style="margin-top: 0.3rem; font-size: 0.9rem;">Response within 24-48 hours</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item mt-2">
+                        <i class="ri-github-fill icon-large"></i>
+                        <div>
+                            <h4>Open Source Community</h4>
+                            <p>Contribute or report issues on our official GitHub repository.</p>
+                            <a href="https://github.com" target="_blank" style="color: var(--accent); font-weight: 600; display: inline-block; margin-top: 0.5rem;">View Repository &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card fade-in-up" style="transition-delay: 0.2s;">
+                    <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem;">Send a Message</h3>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" class="glass-input" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="glass-input" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="4" class="glass-input" placeholder="How can we improve the app?" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 btn-lg" style="border-radius: 16px;">
+                            Send Message <i class="ri-send-plane-fill"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
         </section>
@@ -908,7 +1066,7 @@
                         <button class="btn btn-primary btn-lg" onclick="alert('Downloading KVR_Smart_Tools_v1.0.apk...')">
                             <i class="ri-download-cloud-2-line" style="font-size: 1.4rem;"></i> Download Latest APK
                         </button>
-                        <a href="https://github.com" target="_blank" rel="noopener" class="btn btn-outline btn-lg">
+                        <a href="https://github.com" target="_blank" rel="noopener" class="btn btn-outline btn-lg" style="border-radius: 999px;">
                             <i class="ri-github-fill" style="font-size: 1.4rem;"></i> Star on GitHub
                         </a>
                     </div>
@@ -955,6 +1113,7 @@
                 <h4>Developer Contact</h4>
                 <p style="color:#fff; font-weight:600;">KVR Smart Developer</p>
                 <p><i class="ri-mail-fill"></i> venkatesh.official4775@gmail.com</p>
+                <a href="#contact" class="btn btn-outline btn-sm mt-1 nav-route w-100" style="border-radius: 12px;">Send Feedback</a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -979,16 +1138,16 @@
                 setTimeout(() => {
                     preloader.style.opacity = '0';
                     preloader.style.visibility = 'hidden';
-                }, 500); // Small delay for premium feel
+                }, 400); 
             });
 
             /* Particle Generation */
             const particlesContainer = document.getElementById('particles');
-            const particleCount = 20;
+            const particleCount = 25;
             for(let i=0; i<particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
-                const size = Math.random() * 5 + 2;
+                const size = Math.random() * 4 + 2;
                 particle.style.width = `${size}px`;
                 particle.style.height = `${size}px`;
                 particle.style.left = `${Math.random() * 100}vw`;
@@ -999,7 +1158,7 @@
 
             /* Animated Counters */
             const counters = document.querySelectorAll('.counter');
-            const speed = 200; // lower is slower
+            const speed = 200; 
             
             const counterObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
@@ -1026,10 +1185,33 @@
 
             /* Navigation & Scroll Logic */
             const navbar = document.getElementById('navbar');
+            const navWrapper = document.querySelector('.nav-inner-wrapper');
             const progressBar = document.getElementById('scroll-progress');
             const backToTopBtn = document.getElementById('back-to-top');
             const sections = document.querySelectorAll('section');
             const navLinksArray = document.querySelectorAll('.nav-list a.nav-route');
+            const navIndicator = document.getElementById('nav-indicator');
+
+            function updateNavIndicator(activeLink) {
+                if(!activeLink || !navIndicator || window.innerWidth <= 860) {
+                    if(navIndicator) navIndicator.style.opacity = '0';
+                    return;
+                }
+                navIndicator.style.opacity = '1';
+                navIndicator.style.width = `${activeLink.offsetWidth}px`;
+                navIndicator.style.left = `${activeLink.offsetLeft}px`;
+            }
+
+            // Init indicator
+            setTimeout(() => {
+                const active = document.querySelector('.nav-list a.active');
+                if(active) updateNavIndicator(active);
+            }, 100);
+
+            window.addEventListener('resize', () => {
+                const active = document.querySelector('.nav-list a.active');
+                if(active) updateNavIndicator(active);
+            });
 
             window.addEventListener('scroll', () => {
                 const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -1063,9 +1245,7 @@
                 let current = '';
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    // Adjusted for navbar height offset
-                    if (pageYOffset >= (sectionTop - 150)) {
+                    if (pageYOffset >= (sectionTop - 200)) {
                         current = section.getAttribute('id');
                     }
                 });
@@ -1074,9 +1254,22 @@
                     link.classList.remove('active');
                     if (link.getAttribute('href').includes(current) && current !== '') {
                         link.classList.add('active');
+                        updateNavIndicator(link);
                     } else if (current === 'hero' && link.getAttribute('href') === '#home') {
-                        link.classList.add('active'); // fallback
+                        link.classList.add('active'); 
+                        updateNavIndicator(link);
                     }
+                });
+            });
+
+            // Nav Hover effects
+            navLinksArray.forEach(link => {
+                link.addEventListener('mouseenter', (e) => {
+                    updateNavIndicator(e.target);
+                });
+                link.addEventListener('mouseleave', () => {
+                    const active = document.querySelector('.nav-list a.active');
+                    updateNavIndicator(active);
                 });
             });
 
@@ -1089,15 +1282,16 @@
                     
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
-                        const yOffset = -80; 
+                        const yOffset = -90; 
                         const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
                         window.scrollTo({top: y, behavior: 'smooth'});
                     }
                     
                     // Close mobile menu
-                    if (navLinks && navLinks.classList.contains('active')) {
-                        navLinks.classList.remove('active');
-                        document.getElementById('nav-center-wrapper').classList.remove('active');
+                    const navMenuWrapper = document.getElementById('nav-center-wrapper');
+                    if (navMenuWrapper && navMenuWrapper.classList.contains('active')) {
+                        navMenuWrapper.classList.remove('active');
+                        const toggleIcon = document.querySelector('.mobile-toggle i');
                         if (toggleIcon) toggleIcon.className = 'ri-menu-4-line';
                     }
                 });
@@ -1111,17 +1305,17 @@
 
             // Mobile Menu
             const mobileToggle = document.querySelector('.mobile-toggle');
-            const navWrapper = document.getElementById('nav-center-wrapper');
+            const navMenuWrapper = document.getElementById('nav-center-wrapper');
             const toggleIcon = mobileToggle?.querySelector('i');
 
-            if (mobileToggle && navWrapper) {
+            if (mobileToggle && navMenuWrapper) {
                 mobileToggle.addEventListener('click', () => {
-                    const isActive = navWrapper.classList.contains('active');
+                    const isActive = navMenuWrapper.classList.contains('active');
                     if(isActive) {
-                        navWrapper.classList.remove('active');
+                        navMenuWrapper.classList.remove('active');
                         toggleIcon.className = 'ri-menu-4-line';
                     } else {
-                        navWrapper.classList.add('active');
+                        navMenuWrapper.classList.add('active');
                         toggleIcon.className = 'ri-close-line';
                     }
                 });
@@ -1145,6 +1339,31 @@
                     }
                 });
             });
+
+            // Contact Form mock submission
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const btn = contactForm.querySelector('button[type="submit"]');
+                    const originalText = btn.innerHTML;
+                    
+                    btn.innerHTML = '<i class="ri-loader-4-line ri-spin"></i> Sending...';
+                    
+                    setTimeout(() => {
+                        btn.innerHTML = '<i class="ri-check-line"></i> Sent Successfully!';
+                        btn.style.background = '#10B981';
+                        btn.style.borderColor = '#10B981';
+                        contactForm.reset();
+                        
+                        setTimeout(() => {
+                            btn.innerHTML = originalText;
+                            btn.style.background = '';
+                            btn.style.borderColor = '';
+                        }, 3000);
+                    }, 1500);
+                });
+            }
 
             // Reveal Animations Observer
             const animationObserverOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
